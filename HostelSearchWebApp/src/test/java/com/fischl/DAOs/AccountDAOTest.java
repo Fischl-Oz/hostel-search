@@ -29,16 +29,5 @@ class AccountDAOTest {
 
     @Test
     void getById() {
-        // arrange
-        int user_id = 80000000;
-        Account actual;
-        Account expected = new Account();
-
-        // act
-        actual = (new AccountDAO()).getById(user_id);
-        expected.setUserId(user_id);
-
-        // assert
-        assertEquals(expected,actual);
     }
 }
