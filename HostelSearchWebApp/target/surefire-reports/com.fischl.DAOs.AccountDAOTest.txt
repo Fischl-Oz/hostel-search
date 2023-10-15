@@ -1,8 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.fischl.DAOs.AccountDAOTest
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.55 s <<< FAILURE! - in com.fischl.DAOs.AccountDAOTest
-getById  Time elapsed: 0.55 s  <<< ERROR!
-java.lang.NullPointerException: Cannot invoke "java.sql.Connection.prepareStatement(String)" because "this.conn" is null
-	at com.fischl.DAOs.AccountDAOTest.getById(AccountDAOTest.java:38)
-
+Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.031 s - in com.fischl.DAOs.AccountDAOTest
