@@ -79,4 +79,9 @@ public class Account {
     public void setEmail(String email) {
         this.email = email;
     }
+    @Override
+    public boolean equals(Object o) {
+        Account obj = (Account) o;
+        return (obj.getUserId() == this.user_id);
+    }
 }

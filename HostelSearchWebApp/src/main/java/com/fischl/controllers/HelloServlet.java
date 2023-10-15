@@ -1,4 +1,4 @@
-package com.fischl;
+package com.fischl.controllers;
 
 import java.io.*;
 import jakarta.servlet.http.*;
