@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.fischl.DAOs.AccountDAOTest" time="0.031" tests="5" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.fischl.DAOs.AccountDAOTest" time="0.02" tests="5" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="20"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -15,7 +15,7 @@
     <property name="user.country" value="US"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-20.0.2\bin"/>
-    <property name="sun.java.command" value="C:\Users\hoang\AppData\Local\Temp\surefire5003315653838181283\surefirebooter15469846418667604570.jar C:\Users\hoang\AppData\Local\Temp\surefire5003315653838181283 2023-10-15T16-24-01_625-jvmRun1 surefire4177289342379060802tmp surefire_05900533674061777351tmp"/>
+    <property name="sun.java.command" value="C:\Users\hoang\AppData\Local\Temp\surefire10852345109852793517\surefirebooter13801836482753894941.jar C:\Users\hoang\AppData\Local\Temp\surefire10852345109852793517 2023-10-15T16-27-08_262-jvmRun1 surefire4827026568109327325tmp surefire_013472064983875584489tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="C:\Users\hoang\OneDrive\Máy tính\FA23\SWT301\hostel-search\HostelSearchWebApp\target\test-classes;C:\Users\hoang\OneDrive\Máy tính\FA23\SWT301\hostel-search\HostelSearchWebApp\target\classes;C:\Users\hoang\.m2\repository\jakarta\ejb\jakarta.ejb-api\4.0.1\jakarta.ejb-api-4.0.1.jar;C:\Users\hoang\.m2\repository\jakarta\transaction\jakarta.transaction-api\2.0.0\jakarta.transaction-api-2.0.0.jar;C:\Users\hoang\.m2\repository\jakarta\json\bind\jakarta.json.bind-api\3.0.0\jakarta.json.bind-api-3.0.0.jar;C:\Users\hoang\.m2\repository\jakarta\json\jakarta.json-api\2.1.2\jakarta.json-api-2.1.2.jar;C:\Users\hoang\.m2\repository\jakarta\servlet\jakarta.servlet-api\6.0.0\jakarta.servlet-api-6.0.0.jar;C:\Users\hoang\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.9.2\junit-jupiter-api-5.9.2.jar;C:\Users\hoang\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\hoang\.m2\repository\org\junit\platform\junit-platform-commons\1.9.2\junit-platform-commons-1.9.2.jar;C:\Users\hoang\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\hoang\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.9.2\junit-jupiter-engine-5.9.2.jar;C:\Users\hoang\.m2\repository\org\junit\platform\junit-platform-engine\1.9.2\junit-platform-engine-1.9.2.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -30,7 +30,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\hoang\AppData\Local\Temp\surefire5003315653838181283\surefirebooter15469846418667604570.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\hoang\AppData\Local\Temp\surefire10852345109852793517\surefirebooter13801836482753894941.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="20.0.2+9-78"/>
@@ -59,9 +59,9 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="64.0"/>
   </properties>
-  <testcase name="delete" classname="com.fischl.DAOs.AccountDAOTest" time="0.018"/>
+  <testcase name="delete" classname="com.fischl.DAOs.AccountDAOTest" time="0.02"/>
   <testcase name="getAll" classname="com.fischl.DAOs.AccountDAOTest" time="0"/>
-  <testcase name="update" classname="com.fischl.DAOs.AccountDAOTest" time="0.009"/>
+  <testcase name="update" classname="com.fischl.DAOs.AccountDAOTest" time="0"/>
   <testcase name="getById" classname="com.fischl.DAOs.AccountDAOTest" time="0"/>
   <testcase name="add" classname="com.fischl.DAOs.AccountDAOTest" time="0"/>
 </testsuite>
