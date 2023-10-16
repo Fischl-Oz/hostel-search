@@ -11,10 +11,11 @@ public class Account {
     private String password;
     private String phone;
     private String email;
+    private String user_type;
 
     public Account() {}
 
-    public Account(int user_id, Date date_signup, String full_name, String user_name, String password, String phone, String email) {
+    public Account(int user_id, Date date_signup, String full_name, String user_name, String password, String phone, String email, String user_type) {
         this.user_id = user_id;
         this.date_signup = date_signup;
         this.full_name = full_name;
@@ -22,6 +23,7 @@ public class Account {
         this.password = password;
         this.phone = phone;
         this.email = email;
+        this.user_type = user_type;
     }
 
     public int getUserId() {
@@ -79,6 +81,15 @@ public class Account {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    public String getUserType() {
+        return user_type;
+    }
+
+    public void setUserType(String user_type) {
+        this.user_type = user_type;
+    }
+    
     @Override
     public boolean equals(Object o) {
         Account obj = (Account) o;

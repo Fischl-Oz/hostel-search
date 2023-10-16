@@ -18,8 +18,8 @@ public class AccountDAO implements IDao<Account,Integer> {
     }
 
     public void add(Account account) {
-        String sql = "INSERT INTO account (user_id, date_signup, full_name, user_name, password, phone, email)\n" +
-                    "VALUES (?, ?, ?, ?, ?, ?, ?);";
+        String sql = "INSERT INTO account (user_id, date_signup, full_name, user_name, password, phone, email, user_type)\n" +
+                    "VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setInt(1, account.getUserId());
@@ -29,6 +29,7 @@ public class AccountDAO implements IDao<Account,Integer> {
             ps.setString(5, account.getPassword());
             ps.setString(6, account.getPhone());
             ps.setString(7, account.getEmail());
+            ps.setString(8, account.getUserType());
             ps.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -47,15 +48,16 @@ public class AccountDAO implements IDao<Account,Integer> {
     }
 
     public void update(Account account) {
-        String sql = "UPDATE account SET full_name=?, user_name=?, password=?, phone=?, email=? WHERE user_id=?";
+        String sql = "UPDATE account SET full_name=?, user_name=?, password=?, phone=?, email=?, user_type=? WHERE user_id=?";
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, account.getFullName());
-            ps.setString(1, account.getUserName());
-            ps.setString(2, account.getPassword());
-            ps.setString(3, account.getPhone());
-            ps.setString(3, account.getEmail());
-            ps.setInt(4, account.getUserId());
+            ps.setString(2, account.getUserName());
+            ps.setString(3, account.getPassword());
+            ps.setString(4, account.getPhone());
+            ps.setString(5, account.getEmail());
+            ps.setString(6, account.getUserType());
+            ps.setInt(7, account.getUserId());
             ps.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -77,6 +79,7 @@ public class AccountDAO implements IDao<Account,Integer> {
                 acc.setPassword(rs.getString("password"));
                 acc.setPhone(rs.getString("phone"));
                 acc.setEmail(rs.getString("email"));
+                acc.setUserType(rs.getString("user_type"));
                 accounts.add(acc);
             }
         } catch (SQLException e) {
@@ -100,6 +103,7 @@ public class AccountDAO implements IDao<Account,Integer> {
                 account.setPassword(rs.getString("password"));
                 account.setPhone(rs.getString("phone"));
                 account.setEmail(rs.getString("email"));
+                account.setUserType(rs.getString("user_type"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -108,7 +112,7 @@ public class AccountDAO implements IDao<Account,Integer> {
     }
 
     public Account getByUsernamePassword(String user_name, String password) {
-        Account account = new Account();
+        Account account = null;
         String sql = "SELECT user_id FROM account WHERE user_name = ? AND password = ?";
         ResultSet rs = null;
         try{
@@ -117,6 +121,7 @@ public class AccountDAO implements IDao<Account,Integer> {
             ps.setString(2, password);
             rs = ps.executeQuery();
             if (rs.next()){
+                account = new Account();
                 account.setUserId(rs.getInt("user_id"));
                 account.setDateSignup(rs.getDate("date_signup"));
                 account.setFullName(rs.getString("full_name"));
@@ -124,6 +129,7 @@ public class AccountDAO implements IDao<Account,Integer> {
                 account.setPassword(rs.getString("password"));
                 account.setPhone(rs.getString("phone"));
                 account.setEmail(rs.getString("email"));
+                account.setUserType(rs.getString("user_type"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
