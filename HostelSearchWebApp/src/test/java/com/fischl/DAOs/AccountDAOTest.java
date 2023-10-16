@@ -29,5 +29,16 @@ class AccountDAOTest {
 
     @Test
     void getById() {
+        // arrange
+        AccountDAO accDao = new AccountDAO();
+        int user_id = 80000000;
+        String expected_full_name = "Nguyen Khoi Minh";
+        String actual;
+        
+        // act
+        actual = accDao.getById(user_id).getFullName();
+        
+        // assert
+        assertEquals(expected_full_name, actual);
     }
 }
