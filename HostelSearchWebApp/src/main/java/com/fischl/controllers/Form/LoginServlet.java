@@ -17,7 +17,6 @@ import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-
 /**
  *
  * @author Trung Thanh
@@ -47,9 +46,9 @@ public class LoginServlet extends HttpServlet {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         String remember = request.getParameter("remember");
-        AccountDAO udb = new AccountDAO();
-        Account u = udb.getByUsernamePassword(username, password);
-        if (u != null) {
+        LoginValidator loginV = new LoginValidator();
+        Account login_acc = loginV.checkAccount(username, password);
+        if (login_acc != null) {
             if (remember != null && remember.equals("on")) {
                 Cookie cookie = new Cookie("accountt", username + ":" + password);
                 cookie.setMaxAge(3600 * 24 * 365); // Cookie expires in 1 year
@@ -59,16 +58,16 @@ public class LoginServlet extends HttpServlet {
 
             }
 //            Create cookie to still login
-            Cookie loginCokie = new Cookie("login", username);
-            loginCokie.setMaxAge(3600); // Cookie expires in 1 year
-            loginCokie.setPath("/");    // Cookie is valid for the entire website
-            response.addCookie(loginCokie); // Set the cookie in the response
-            
+            Cookie loginCookie = new Cookie("login", username);
+            loginCookie.setMaxAge(3600); // Cookie expires in 1 year
+            loginCookie.setPath("/");    // Cookie is valid for the entire website
+            response.addCookie(loginCookie); // Set the cookie in the response
+
             HttpSession session = request.getSession();
             session.setMaxInactiveInterval(Integer.MAX_VALUE);
             session.setAttribute("username", username);
-           session.setAttribute("usertype", u.getUserType());
-            System.out.println("Usertype: " + u.getUserType());
+            session.setAttribute("usertype", login_acc.getUserType());
+            System.out.println("Usertype: " + login_acc.getUserType());
             session.setAttribute("login", "true");
             response.sendRedirect(request.getContextPath() + "/home");
 

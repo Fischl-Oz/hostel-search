@@ -5,11 +5,11 @@ import com.fischl.models.Account;
 
 public class LoginValidator {
 
-    public int checkAccount(String user_name, String password) {
+    public Account checkAccount(String user_name, String password) {
         Account acc = null;
 
         acc = new AccountDAO().getByUsernamePassword(user_name,MD5.getMd5(password));
 
-        return (acc == null) ? -1 : acc.getUserId();
+        return acc;
     }
 }
