@@ -81,6 +81,13 @@
     padding: 0;
     z-index: 9999;
 }
+.search-bar.sticky-top {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: #007bff; /* Màu nền của thanh tìm kiếm */
+}
 
 .navbar {
     box-shadow: 0 0 30px rgba(0, 0, 0, .08);
@@ -108,7 +115,6 @@
     text-transform: uppercase;
     outline: none;
 }
-
 .navbar-light .navbar-nav .nav-link:hover,
 .navbar-light .navbar-nav .nav-link.active {
     color: var(--primary);

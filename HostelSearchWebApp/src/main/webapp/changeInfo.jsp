@@ -1,10 +1,12 @@
 <%-- 
-    Document   : login
-    Created on : Jul 6, 2023, 3:42:41 PM
-    Author     : Trung Thanh
+    Document   : changeInfo
+    Created on : Jul 9, 2023, 4:23:54 PM
+    Author     : Quoc Anh
 --%>
 
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page import ="com.fischl.models.Account" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,11 +14,11 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Login Form</title>
+        <title>Change Information</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
               integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
-
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
         <!-- Additional CSS Files -->
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
@@ -27,21 +29,13 @@
         <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
 
         <style>
-
-            body{
-               background-image: url("https://images.unsplash.com/photo-1615873968403-89e068629265?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1032&q=80 1032w");
-                
-                background-repeat: no-repeat;
-                background-size: cover;
-                background-position: center;
-            }
-            
             @media screen and (min-width: 1920px) {
                 .footer {
                     position: fixed;
                     left: 0;
                     bottom: 0;
                     width: 100%;
+                    background-color: #f8f8f8;
                 }
             }
 
@@ -50,12 +44,12 @@
                     margin-top: 70px;
                 }
             }
-
         </style>
 
     </head>
 
     <body>
+
 
         <!-- ***** Preloader Start ***** -->
         <div id="js-preloader" class="js-preloader">
@@ -75,18 +69,43 @@
             <nav class="container main-nav">
                 <!-- ***** Logo Start ***** -->
                 <a href="./home" class="logo">
-                    <!--<img src="../src/java/imgs/logo3.jpg" alt="">-->
-                    <img style="object-fit: contain;" src="./assets/images/logohss2.png" alt="">
+                    <!--<img src="../src/java/imgs/logo2.jpg" alt="">-->
+                    <img style="object-fit: contain;" src="./assets/images/logo3.png" alt="">
                 </a>
                 <!-- ***** Logo End ***** -->
-      
+
+                <% 
+                    String user = null;
+                    HttpSession section = request.getSession(false);
+                    if (session != null) {
+                        user = (String) session.getAttribute("username");
+                    } 
+                %>
+
                 <!-- ***** Menu Start ***** -->
                 <ul class="nav" style="align-items: center;">
-                    <li class="effect"><a href="./home" >Home</a></li>
+                    <li class="effect"><a href="./home" class="active">Home</a></li>
                     <li class="effect"><a href="./rental">Rental</a></li>
                     <li class="effect"><a href="./instruction">Instruction</a></li>
-                    <li class="effect"><a href="./register">Register</a></li>
-                    <li class="effect"><a href="./login"  class="active">Login</a></li>
+                    <li class="effect"><a href="./post">Post</a></li>
+                    <% 
+                        if ("admin".equals(session.getAttribute("usertype"))) {
+                    %>
+                        <li class="effect"><a href="./admin">Admin</a></li>
+                    <%
+                        }
+                    %>
+                    <li class="dropdown">
+                        <a class="nav-link dropdown-toggle" href="" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-user"></i> <%= user %>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="./profile">Profile</a>
+                            <a class="dropdown-item" href="./post">Post</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="./login">Logout</a>
+                        </div>
+                    </li>
                 </ul>
 
                 <a class='menu-trigger'>
@@ -98,53 +117,37 @@
         <!-- ***** Header Area End ***** -->
 
 
-        <div class="container-fluid" style="margin-top:70px; padding: 70px 0;">
-            <div id="toast" style="z-index: 1000000;"></div>
+        <div class="container-fluid vh-40" style="margin-top:150px">
+            <div id="toast" style="z-index: 1;"></div>
             <div class="">
                 <div class="rounded d-flex justify-content-center" style="margin-bottom: 70px;">
-
-                    <div class="col-lg-4 col-md-6 col-sm-12 background-light" style="background-color: rgb(233 218 182 / 76%); border-radius: 25px;">
+                    <div class="col-lg-4 col-md-6 col-sm-12 shadow-lg p-5 background-light" style="background-color: rgba(255, 255, 255, 0.5); border-radius: 25px;">
                         <div class="text-center">
-                            <h3 style="margin-top:30px; color: #aa5e2e; padding: 20px; padding-bottom: 20px;">WELCOME</h3>
+                            <h3 class="text-primary">Change Information</h3>
                         </div>
-                        
-                        
-                        <!<!-- Start Form -->
-                        <form id="loginform" method="post" action="login">
-                            <div style="padding: 20px 48px;">
+                        <% User u = (User) request.getAttribute("data"); %>
+                        <form id="changeInfoform" method="POST" action="changeInfo">
+                            <div class="p-4">
                                 <div class="row input-group mb-3">
-                                    
-                                    <span class="input-group-text" style="width: 36px; background: #aa5e2e;"><i class="bi bi-person-plus-fill text-white mr-auto"></i></span>
-                                    <input name="username" type="text" class="col-lg-10 col-md-10 col-sm-8 form-control" placeholder="Usernames">
+                                    <span class="input-group-text bg-primary" style="width: 36px;"><i class="bi bi-person-plus-fill text-white"></i></span>
+                                    <input name="fullname" type="text" class="form-control" placeholder="Full Name" value="<%= u.getFullName() %>">
                                 </div>
                                 <div class="row input-group mb-3">
-                                    <span class="input-group-text" style="width: 36px; background: #aa5e2e;"><i class="bi bi-key-fill text-white"></i></span>
-                                    <input name="password" type="password" class="col-lg-10 col-md-10 col-sm-8 form-control" placeholder="Password">
+                                    <span class="col-1 input-group-text bg-primary" style="width: 36px;"><i class="bi bi-person-plus-fill text-white"></i></span>
+                                    <input name="username" type="text" class="form-control" placeholder="User Name" value="<%= u.getUserName() %>">
                                 </div>
-                                <div class="form-check">
-                                    <input name="remember" class="form-check-input" type="checkbox" value="on" id="flexCheckDefault">
-                                    <label class="form-check-label" style="color: #ffffff" for="flexCheckDefault">
-                                        <i class="far fa-check-square"></i> Remember Me
-                                    </label>
+                                <div class="row input-group mb-3">
+                                    <span class="input-group-text bg-primary" style="width: 36px;"><i class="bi bi-phone text-white"></i></span>
+                                    <input name="phoneNumber" type="text" class="form-control" placeholder="Phone Number" value="<%= u.getPhoneNumber() %>">
+                                </div>
+                                <div class="row input-group mb-3">
+                                    <span class="col-1 input-group-text bg-primary" style="width: 36px;"><i class="bi bi-envelope text-white"></i></span>
+                                    <input name="email" type="email" class="form-control" placeholder="Email" value="<%= u.getEmail() %>">
                                 </div>
 
-                                <button class="w-50 mx-auto btn btn-primary text-center mt-2" style="display: flex; justify-content: center; background: #aa5e2e; border: none;" type="submit" type="submit">
-                                    Login
+                                <button class="w-50 mx-auto btn btn-primary text-center mt-2" style="display: flex; justify-content: center;" type="submit">
+                                    Change
                                 </button>
-                                <p class="text-center " style="color: #ffffff; margin-top: 20px;">
-                                    Don't have an account?
-                                    <a href="./register" style="color:#aa5e2e; cursor: pointer">
-                                        Sign Up
-                                    </a>
-                                </p>
-                                <p class="text-center">
-                                    <a href="./forgot"  style="cursor: pointer; color: #aa5e2e;">
-                                        Forgot your password?
-                                    </a>
-                                </p>
-                       
-                                <!<!-- End Form -->
-                            </div>
                         </form>
                     </div>
                 </div>
@@ -152,14 +155,13 @@
         </div>
 
 
-
         <div class="footer">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
-                        <div class="row">
+                        <div class="row mr-bottom-0">
                             <div class="col-lg-4 right-logo">
-                                <a href="index.html"><img style="object-fit: contain;" src="assets/images/logohss2.png" alt="" class="footer-logo" /></a>
+                                <a href="index.html"><img style="object-fit: contain;" src="assets/images/logo3.png" alt="" class="footer-logo" /></a>
                             </div>
 
                             <div class="col-lg-4 center-info">
@@ -208,51 +210,15 @@
         <script src="./assets/js/custom.js"></script>
         <script src="./assets/js/toast.js"></script>
 
-
-
-
-        <!--<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>-->
-        <!--<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>-->
         <script>
-            if ("${requestScope.loginStatus}" === "failure") {
-                showErrorLogin();
+            if ("${requestScope.registrationStatus}" === "failure") {
+                showErrorRegister();
             <%
-                request.setAttribute("loginStatus", null);
+                request.setAttribute("registrationStatus", null);
             %>
             }
-            $(document).ready(function () {
-                $('#loginform').validate({
-                    rules: {
-                        // Define validation rules for your form fields
-                        username: {
-                            required: true, // Field is required
-                            minlength: 5, // Minimum length of 5 characters
-                            maxlength: 50, // Minimum length of 5 characters
-                        },
-                        password: {
-                            required: true, // Field is required
-                            minlength: 6, // Minimum length of 5 characters
-                            maxlength: 50, // Minimum length of 5 characters
-                        }
-                        // Add more fields and rules as needed
-                    },
-                    messages: {
-                        // Define error messages for your form fields
-                        username: {
-                            required: 'Please enter a value for this field',
-                            minlength: 'Minimum length is 6 characters',
-                            maxlength: 'Maximum length is 50 characters',
-                        },
-                        password: {
-                            required: 'Please enter a value for this field',
-                            minlength: 'Minimum length is 6 characters',
-                            maxlength: 'Maximum length is 50 characters',
-                        }
-                        // Add more fields and messages as needed
-                    }
-                });
-            });
         </script>
     </body>
 
 </html>
+

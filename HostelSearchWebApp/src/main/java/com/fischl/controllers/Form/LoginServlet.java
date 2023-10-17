@@ -47,10 +47,9 @@ public class LoginServlet extends HttpServlet {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         String remember = request.getParameter("remember");
-        LoginValidator l = new LoginValidator();
- 
-       int userId = l.checkAccount(username, password);
-        if (userId != -1) {
+        AccountDAO udb = new AccountDAO();
+        Account u = udb.getByUsernamePassword(username, password);
+        if (u != null) {
             if (remember != null && remember.equals("on")) {
                 Cookie cookie = new Cookie("accountt", username + ":" + password);
                 cookie.setMaxAge(3600 * 24 * 365); // Cookie expires in 1 year
@@ -68,10 +67,10 @@ public class LoginServlet extends HttpServlet {
             HttpSession session = request.getSession();
             session.setMaxInactiveInterval(Integer.MAX_VALUE);
             session.setAttribute("username", username);
-           // session.setAttribute("usertype", u.getUserType());
-            //System.out.println("Usertype: " + u.getUserType());
+           session.setAttribute("usertype", u.getUserType());
+            System.out.println("Usertype: " + u.getUserType());
             session.setAttribute("login", "true");
-            response.sendRedirect(request.getContextPath() + "/hello-servlet");
+            response.sendRedirect(request.getContextPath() + "/home");
 
         } else {
             System.out.println("Could not login");

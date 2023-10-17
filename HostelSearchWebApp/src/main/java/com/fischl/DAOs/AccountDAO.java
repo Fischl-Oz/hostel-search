@@ -136,4 +136,28 @@ public class AccountDAO implements IDao<Account,Integer> {
         }
         return account;
     }
+      public Account getUserByUsername(String username) {
+           Account account = null;
+        String query = "SELECT * FROM account WHERE user_name = ?";
+        try {
+            PreparedStatement st = conn.prepareStatement(query);
+            st.setString(1, username);
+            ResultSet rs = st.executeQuery();
+            if (rs.next()) {
+                  account = new Account();
+                account.setUserId(rs.getInt("user_id"));
+                account.setDateSignup(rs.getDate("date_signup"));
+                account.setFullName(rs.getString("full_name"));
+                account.setUserName(rs.getString("user_name"));
+                account.setPassword(rs.getString("password"));
+                account.setPhone(rs.getString("phone"));
+                account.setEmail(rs.getString("email"));
+                account.setUserType(rs.getString("user_type"));
+             
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } 
+        return account;
+    }
 }
