@@ -20,10 +20,10 @@ public class DBConnectionTest {
     @Test
     public void testGetConnection() {
         System.out.println("Connecting to database...");
-        Connection unExpResult = null;
+        
         Connection result = DBConnection.getConnection();
-        assertNotEquals(unExpResult, result);
-        // TODO review the generated test code and remove the default call to fail.
+        
+        assertNotNull(result);
     }
     
 }
