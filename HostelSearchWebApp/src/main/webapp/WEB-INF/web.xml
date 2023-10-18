@@ -13,6 +13,10 @@
         <servlet-name>AdminPageServlet</servlet-name>
         <servlet-class>com.fischl.controllers.Page.AdminPageServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>RegisterServlet</servlet-name>
+        <servlet-class>com.fischl.controllers.Form.RegisterServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>HomeServlet</servlet-name>
         <url-pattern>/home</url-pattern>
@@ -20,5 +24,9 @@
     <servlet-mapping>
         <servlet-name>AdminPageServlet</servlet-name>
         <url-pattern>/admin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RegisterServlet</servlet-name>
+        <url-pattern>/signup</url-pattern>
     </servlet-mapping>
 </web-app>

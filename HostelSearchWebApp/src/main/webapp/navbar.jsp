@@ -69,7 +69,7 @@
             <%
             } else {
             %>
-            <a href="" class="btn btn-primary px-3 d-none d-lg-flex nav-link" id="btn-signup">đăng ký</a>
+            <a href="signup" class="btn btn-primary px-3 d-none d-lg-flex nav-link" id="btn-signup">đăng ký</a>
             <%
                 }
             %>
