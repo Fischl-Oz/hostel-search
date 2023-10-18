@@ -1,5 +1,6 @@
 package com.fischl.tools;
 
+import com.fischl.database.DBConnection;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -10,6 +11,10 @@ import java.sql.Statement;
 public class IdGenerator {
     private Connection conn = null;
 
+    public IdGenerator() {
+        this.conn = DBConnection.getConnection();
+    }
+    
     /**
      * Constructor for IdGenerator class.
      * @param conn The database connection object.
