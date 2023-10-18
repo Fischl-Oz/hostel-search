@@ -59,7 +59,7 @@
 
         <!-- Header Start -->
         <jsp:include page="header.jsp" />
-        <!-- Navbar End -->
+        <!-- Header End -->
 
 
         <!-- Search Start -->
