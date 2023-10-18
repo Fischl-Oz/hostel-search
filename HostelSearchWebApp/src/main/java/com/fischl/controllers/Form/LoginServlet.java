@@ -4,26 +4,33 @@
  */
 package com.fischl.controllers.Form;
 
-import com.fischl.DAOs.AccountDAO;
 import com.fischl.models.Account;
 import com.fischl.tools.LoginValidator;
+import java.io.IOException;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import java.io.IOException;
-import java.io.PrintWriter;
 
 /**
  *
  * @author Trung Thanh
  */
-@WebServlet(name = "LoginServlet", urlPatterns = {"/login"})
 public class LoginServlet extends HttpServlet {
 
+ 
+
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    /**
+     * Handles the HTTP <code>GET</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -37,13 +44,20 @@ public class LoginServlet extends HttpServlet {
         cookie.setPath("/"); // Đặt lại path của cookie để khớp với path ban đầu khi tạo cookie
         response.addCookie(cookie); // Gửi cookie xóa đến client
         request.getRequestDispatcher("/login.jsp").forward(request, response);
-
     }
 
+    /**
+     * Handles the HTTP <code>POST</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String username = request.getParameter("username");
+  String username = request.getParameter("username");
         String password = request.getParameter("password");
         String remember = request.getParameter("remember");
         LoginValidator loginV = new LoginValidator();
@@ -76,7 +90,8 @@ public class LoginServlet extends HttpServlet {
             request.setAttribute("loginStatus", "failure");
             request.getRequestDispatcher("/login.jsp").forward(request, response);
         }
-
     }
+
+    
 
 }
