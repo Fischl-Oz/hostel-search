@@ -1,8 +1,14 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page import="java.io.InputStream" %>
+<%@ page import="java.io.ByteArrayOutputStream" %>
+<%@ page import="java.text.DecimalFormat, java.text.NumberFormat, java.util.Locale" %>
+<%@ page import="java.io.IOException" %>
+<%@ page import="java.util.Base64" %>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Hostel Searching</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
@@ -28,6 +34,10 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Template Stylesheet -->
+    <link href="css/template_style.css" rel="stylesheet">
+    
+    <!-- Our custom Stylesheet -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro">
     <link href="css/style.css" rel="stylesheet">
 </head>
 
@@ -43,72 +53,13 @@
 
 
         <!-- Navbar Start -->
-        <div class="container-fluid nav-bar bg-transparent">
-            <nav class="navbar navbar-expand-lg bg-white navbar-light py-0 px-4">
-                <!-- logo icon nbar -->
-                <a href="" class="navbar-brand d-flex align-items-center text-center">
-                    <div class="icon p-2 me-2">
-                        <img class="img-fluid" src="./assets/images/logohss3.png" alt="Icon" style="width: 150px; height: 60px;">
-                    </div>
-                    <h1 class="m-0 text-primary"></h1>
-                </a>
-
-                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarCollapse">
-                    <div class="navbar-nav ms-auto">
-                        <a href="" class="nav-item nav-link active">Home</a>
-                        <a href="about.html" class="nav-item nav-link">FIND IN THE COMPOUND</a>
-                        <a href="about.html" class="nav-item nav-link">Rental</a>
-                        <a href="about.html" class="nav-item nav-link">INSTRUCTION</a>
-                        <a href="about.html" class="nav-item nav-link">REGISTER</a>
-
-                        <!-- <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Property</a>
-                            <div class="dropdown-menu rounded-0 m-0">
-                                <a href="property-list.html" class="dropdown-item">Property List</a>
-                                <a href="property-type.html" class="dropdown-item">Property Type</a>
-                                <a href="property-agent.html" class="dropdown-item">Property Agent</a>
-                            </div>
-                        </div> -->
-                        <!-- <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
-                            <div class="dropdown-menu rounded-0 m-0">
-                                <a href="testimonial.html" class="dropdown-item">Testimonial</a>
-                                <a href="404.html" class="dropdown-item">404 Error</a>
-                            </div>
-                        </div> -->
-                        <a href="/login" class="nav-item nav-link">Login</a>
-                    </div>
-                    <a href="" class="btn btn-primary px-3 d-none d-lg-flex">POST NEWS</a>
-                </div>
-            </nav>
-        </div>
+        <jsp:include page="navbar.jsp" />
         <!-- Navbar End -->
 
 
         <!-- Header Start -->
-        <div class="container-fluid header bg-white p-0">
-            <div class="row g-0 align-items-center flex-column-reverse flex-md-row">
-                <div class="col-md-6 p-5 mt-lg-5">
-                    <h1 class="display-5 animated fadeIn mb-4">SEARCH QUICKLY, <span class="text-primary">EASILY FIND</span> NEW HOSTEL NATIONWIDE</h1>
-                    <p class="animated fadeIn mb-4 pb-2">-hss.com - Information page for finding and renting rooms quickly and effectively digitally with more than 500 new postings and 30,000 views per day.</p>
-                    <a href="" class="btn btn-primary py-3 px-5 me-3 animated fadeIn">Get Started</a>
-                </div>
-                <div class="col-md-6 animated fadeIn">
-                    <div class="owl-carousel header-carousel">
-                        <div class="owl-carousel-item">
-                            <img class="img-fluid" src="img/carousel-1.jpg" alt="">
-                        </div>
-                        <div class="owl-carousel-item">
-                            <img class="img-fluid" src="img/carousel-2.jpg" alt="">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Header End -->
+        <jsp:include page="header.jsp" />
+        <!-- Navbar End -->
 
 
         <!-- Search Start -->
