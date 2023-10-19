@@ -103,7 +103,7 @@ public class RegisterServlet extends HttpServlet {
                     HttpSession session = request.getSession();
                     session.setAttribute("username", username);
                     session.setAttribute("login", "true");
-                    response.sendRedirect(request.getContextPath());
+                    response.sendRedirect(request.getContextPath() +"/home" );
                 } else {
                     System.out.println("Could not send user register");
                     request.setAttribute("registrationStatus", "success");
