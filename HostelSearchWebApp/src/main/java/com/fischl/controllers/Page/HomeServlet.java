@@ -8,6 +8,7 @@ import com.fischl.DAOs.AccountDAO;
 import com.fischl.DAOs.HostelDAO;
 import com.fischl.models.Account;
 import com.fischl.models.Hostel;
+import com.fischl.tools.MD5;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -65,38 +66,39 @@ public class HomeServlet extends HttpServlet {
                     String username = accountInfo[0];
                     String password = accountInfo[1];
                     
-//                    Account u = udb.getByUsernamePassword(username, password);
-//                    if (u != null) {
-//                        session.setMaxInactiveInterval(Integer.MAX_VALUE);
-//                        session.setAttribute("username", username);
-//                        session.setAttribute("usertype", u.getUserType());
-//                        session.setAttribute("login", "true");
-//                        //            Create cookie to still login
-//                        Cookie loginCokie = new Cookie("login", username);
-//                        loginCokie.setMaxAge(3600); // Cookie expires in 1 year
-//                        loginCokie.setPath("/");    // Cookie is valid for the entire website
-//                        response.addCookie(loginCokie); // Set the cookie in the response
-//                        response.sendRedirect(request.getContextPath() + "/home");
-//                        break;
-//                    } else {
-//                        if (request.getSession().getAttribute("username") != null) {
-//                            session.setMaxInactiveInterval(Integer.MAX_VALUE);
-//                            session.setAttribute("username", request.getSession().getAttribute("username"));
-//                            request.getRequestDispatcher("/home.jsp").forward(request, response);
-//                        } else {
-//                            request.getRequestDispatcher("/index.jsp").forward(request, response);
-//                        }
-//                    }
+                    Account u = udb.getByUsernamePassword(username, MD5.getMd5(password));
+                    if (u != null) {
+                        session.setMaxInactiveInterval(Integer.MAX_VALUE);
+                        session.setAttribute("username", username);
+                        session.setAttribute("usertype", u.getUserType());
+                        session.setAttribute("login", "true");
+                        //            Create cookie to still login
+                        Cookie loginCokie = new Cookie("login", username);
+                        loginCokie.setMaxAge(3600); // Cookie expires in 1 year
+                        loginCokie.setPath("/");    // Cookie is valid for the entire website
+                        response.addCookie(loginCokie); // Set the cookie in the response
+                        response.sendRedirect(request.getContextPath() + "/home");
+                        break;
+                    } else {
+                        if (request.getSession().getAttribute("username") != null) {
+                            session.setMaxInactiveInterval(Integer.MAX_VALUE);
+                            session.setAttribute("username", request.getSession().getAttribute("username"));
+                            request.getRequestDispatcher("/home.jsp").forward(request, response);
+                        } else {
+                            request.getRequestDispatcher("/index.jsp").forward(request, response);
+                        }
+                    }
                     break; // Exit the loop since we found the desired cookie
                 }
             }
         } else {
             if (request.getSession().getAttribute("username") != null) {
-//                Account u = udb.getUserByUsername((String) request.getSession().getAttribute("username"));
-//                session.setMaxInactiveInterval(Integer.MAX_VALUE);
-//                session.setAttribute("username", request.getSession().getAttribute("username"));
-//                session.setAttribute("usertype", u.getUserType());
-//                request.getRequestDispatcher("/home.jsp").forward(request, response);
+                Account u = udb.getUserByUsername((String) request.getSession().getAttribute("username"));
+                System.out.println("u == null ?  " + (u == null));
+                session.setMaxInactiveInterval(Integer.MAX_VALUE);
+                session.setAttribute("username", request.getSession().getAttribute("username"));
+                session.setAttribute("usertype", u.getUserType());
+                request.getRequestDispatcher("/home.jsp").forward(request, response);
             } else {
                 request.getRequestDispatcher("/index.jsp").forward(request, response);
             }
