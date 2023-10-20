@@ -35,6 +35,28 @@
         <link rel="stylesheet" href="assets/css/owl.css">
         <link rel="stylesheet" href="assets/css/animate.css">
         <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+        <!-- TEMPLATE -->
+           <!-- Favicon -->
+        <link href="img/favicon.ico" rel="icon">
+
+        <!-- Google Web Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Inter:wght@700;800&display=swap" rel="stylesheet">
+
+        <!-- Icon Font Stylesheet -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+        <!-- Libraries Stylesheet -->
+        <link href="lib/animate/animate.min.css" rel="stylesheet">
+        <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+        <!-- Customized Bootstrap Stylesheet -->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Template Stylesheet -->
+        <link href="css/template_style.css" rel="stylesheet">
 
         <style>
             .container-fluid.background-light {
@@ -139,53 +161,22 @@
 
         <!-- ***** Header Area Start ***** -->
         <header class="header-area">
-            <nav class="container main-nav">
-                <!-- ***** Logo Start ***** -->
-                <a href="./home" class="logo">
-                    <!--<img src="../src/java/imgs/logo2.jpg" alt="">-->
-                    <img style="object-fit: contain;" src="./assets/images/logohss2.png" alt="">
-                </a>
-                <!-- ***** Logo End ***** -->
+          
+                   <!-- Navbar Start -->
+            <jsp:include page="navbar.jsp" />
+            <!-- Navbar End -->
 
-                <!-- ***** Menu Start ***** -->
-                <% 
-                      String user = null;
-                      HttpSession section = request.getSession(false);
-                      if (session != null) {
-                          user = (String) session.getAttribute("username");
-                      } 
-                %>
-                <!-- ***** Menu Start ***** -->
-                <ul class="nav" style="align-items: center;">
-                    <li class="effect"><a href="./home" class="active">Home</a></li>
-                    <li class="effect"><a href="./rental">Rental</a></li>
-                    <li class="effect"><a href="./instruction">Instruction</a></li>
-                    <li class="effect"><a href="./post">Post</a></li>
-                    <li class="effect"><a href="./admin">Admin</a></li> <!-- Add Admin page link -->
-                    <li class="dropdown">
-                        <a class="nav-link dropdown-toggle" href="" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fas fa-user"></i><%= user %>
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="./profile">Profile</a>
-                            <a class="dropdown-item" href="./post">Post</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="./login">Logout</a>
-                        </div>
-                    </li>
-                </ul>
-
-                <a class='menu-trigger'>
-                    <span>Menu</span>
-                </a>
-                <!-- ***** Menu End ***** -->
-            </nav>
+       
         </header>
         <!-- ***** Header Area End ***** -->
 
 
         <div class="container-fluid background-light" style="margin-top: 70px; margin-bottom: 40px; background-color: #fff; padding: 20px;">
-
+              <td>
+                <!-- Add action buttons for managing posts (e.g., update, delete) -->
+               
+             
+            </td>
             <ul class="nav nav-tabs mt-5">
                 <li class="nav-item">
                     <a class="nav-link active" data-bs-toggle="tab" href="#posts">Post</a>
@@ -197,11 +188,12 @@
                     <a class="nav-link" data-bs-toggle="tab" href="#users">Accounts</a>
                 </li>
             </ul>
-            <%--        TAB POST      --%>
+ <%--        TAB POST      --%>
             <div class="tab-content mt-3">
                 <div class="tab-pane fade show active" id="posts">
                     <h2 class="text-center text-primary">Post Detail</h2>
                     <!-- Table for displaying list of posts -->
+                       
                     <table class="table table-bordered table-hover">
                         <thead>
                             <tr>
@@ -216,8 +208,8 @@
                         <tbody id="postsTableBody">
                             <!-- Search Bar -->
                         <div class="search-bar">
-                            <input type="text" id="postSearchQuery" placeholder="Search by title or address">
-                            <button type="button" "><i class="bi bi-search"></i></button>
+                            <input type="text" id="postSearchQuery" placeholder="Tìm kiếm theo ID hoặc Tiêu đề">
+                            <button type="button" onclick="searchHostel()"><i class="bi bi-search"></i></button>
                         </div>
 
                         <%-- Iterate over the list of posts and display the information --%>
@@ -254,16 +246,16 @@
                             <td><%= pList.getPostStatus()%></td>
                             <td>
                                 <!-- Add action buttons for managing posts (e.g., update, delete) -->
-                                <button class="btn btn-primary" >Update</button>
-                                <button class="btn btn-danger" >Delete</button>
+                                <button class="btn btn-primary" >Accepted</button>
+                                <button class="btn btn-danger" >Rejected</button>
                             </td>
                         </tr>
                         <% }
                             } %>
                         </tbody>
                     </table>
-                    <%--      END  TAB POST      --%>
-                    <%--        TAB HOSTEL      --%>
+<%--      END  TAB POST      --%>
+ <%--        TAB HOSTEL      --%>
                 </div>
                 <div class="tab-pane fade " id="hostel">
                     <h2 class="text-center text-primary">Hostel Detail</h2>
@@ -279,14 +271,16 @@
                                 <th>Area</th>
                                 <th>Total Room</th>
                                 <th>A-Room</th>
-                                <th>Actions</th>
+<!--                                <button class="btn btn-danger" onclick="addHostel()">Add Hostel</button>
+                                <th>Actions</th>-->
                             </tr>
+                            
                         </thead>
                         <tbody id="postsTableBody">
                             <!-- Search Bar -->
                         <div class="search-bar">
-                            <input type="text" id="postSearchQuery" placeholder="Search by title or address">
-                            <button type="button" "><i class="bi bi-search"></i></button>
+                            <input type="text" id="userSearchQuery" placeholder="Tìm kiếm theo ID hoặc Tên chủ nhà trọ">
+                            <button type="button" onclick="searchHostel()"><i class="bi bi-search"></i></button>
                         </div>
 
                         <%-- Iterate over the list of posts and display the information --%>
@@ -326,19 +320,20 @@
                             <td><%= hostel.getTotalRoom()%></td>
                             <td><%= hostel.getAvailableRoom()%></td>
 
-
-                            <td>
-                                <!-- Add action buttons for managing posts (e.g., update, delete) -->
-                                <button class="btn btn-primary" >Update</button>
-                                <button class="btn btn-danger" >Delete</button>
-                            </td>
+                         <!-- 
+                           <td>
+                               
+                                <button class="btn btn-primary" onclick="updateHostel(<%= hostel.getHostelId() %>)">Update</button>
+                                <button class="btn btn-danger" onclick="deleteHostel()(<%= hostel.getHostelId() %>)">Delete</button>
+                           </td> 
+                           -->
                         </tr>
                         <% }
                             } %>
                         </tbody>
                     </table>
-                    <%--       END TAB HOSTEL      --%>
-                    <%--        TAB ACCOUNT      --%>
+ <%--       END TAB HOSTEL      --%>
+ <%--        TAB ACCOUNT      --%>
 
                 </div>
                 <div class="tab-pane fade" id="users">
@@ -354,12 +349,13 @@
                                 <th>Email</th>
                                 <th>Phone Number</th>
                                 <th>User Type</th>
+                                 <button class="btn btn-primary" onclick="addUser()">Add User</button>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody id="usersTableBody">
                         <div class="search-bar">
-                            <input type="text" id="userSearchQuery" placeholder="Search by username or full name">
+                            <input type="text" id="userSearchQuery" placeholder="Tìm kiếm theo ID hoặc Tên người dùng">
                             <button type="button" onclick="searchUsers()"><i class="bi bi-search"></i></button>
                         </div>
                         <%-- Iterate over the list of users and display the information --%>
@@ -379,7 +375,7 @@
                             <td>
                                 <!-- Add action buttons for managing posts (e.g., update, delete) -->
                                 <button class="btn btn-primary"  onclick="updateUser(<%= u.getUserId() %>)">Update</button>
-                                <button class="btn btn-danger" >Delete</button>
+                                <button class="btn btn-danger"  onclick="deleteUser(<%= u.getUserId() %>)">Delete</button>
                             </td>
 
 
@@ -398,44 +394,11 @@
 
         </div>   
 
-        <div class="footer">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="row">
-                            <div class="col-lg-4 right-logo">
-                                <a href="index.html"><img style="object-fit: contain;" src="./assets/images/logohss2.png" alt="" class="footer-logo" /></a>
-                            </div>
-
-                            <div class="col-lg-4 center-info">
-                                <h2>Kết nối với chúng tôi</h2>
-                                <ul>
-                                    <li>Hotline: <a href="tel:0987654321">098.765.4321</a></li>
-
-                                    <li>Email: <a href="mailto:group1@gmail.com" target="_blank">group1@gmail.com</a></li>
-                                    <li class="social">
-                                        <a href="https://www.facebook.com/" target="_blank">
-                                            <i class="bi bi-facebook" style="color: #ffffff; font-size: 20px;" ></i>
-                                        </a>
-                                        <a href="https://www.youtube.com/" target="_blank">
-                                            <i class="bi bi-youtube" style="color: #ffffff; font-size: 20px;"></i>
-                                        </a>
-                                        <a href="https://www.instagram.com" target="_blank">
-                                            <i class="bi bi-instagram" style="color: #ffffff; font-size: 20px;"></i>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-
-                            <div class="col-lg-4 left-contact">
-                                <p>Copyright © 2023 <a href="#">Group 6</a> Company. <br>All rights reserved.</p>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </div>
+        
+              <!-- Footer Start -->
+        <jsp:include page="footer.jsp"/>
+        <!-- Footer End -->
+                 
 
         <!-- Scripts -->
         <!-- Bootstrap core JavaScript -->
