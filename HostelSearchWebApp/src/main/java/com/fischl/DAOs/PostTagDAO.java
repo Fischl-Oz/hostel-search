@@ -20,61 +20,71 @@ public class PostTagDAO {
         conn = DBConnection.getConnection();
     }
 
-    public void add(PostTag ptag) {
+    public boolean add(PostTag ptag) {
         String sql = "INSERT INTO posttag (tag_id, post_id) VALUES (?, ?)";
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, ptag.getTagId());
             ps.setInt(2, ptag.getPostId());
             ps.executeUpdate();
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
+            return false;
         }
     }
 
-    public void update(PostTag ptag) {
+    public boolean update(PostTag ptag) {
         String sql = "UPDATE posttag SET tag_id=? WHERE post_id=?";
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, ptag.getTagId());
             ps.setInt(2, ptag.getPostId());
             ps.executeUpdate();
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
+            return false;
         }
     }
     
-    public void delete(String tag_id, int post_id) {
+    public boolean delete(String tag_id, int post_id) {
         String sql = "DELETE FROM posttag WHERE tag_id=? AND post_id=?";
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, tag_id);
             ps.setInt(2, post_id);
             ps.executeUpdate();
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
+            return false;
         }
     }
 
-    public void delete(int post_id) {
+    public boolean delete(int post_id) {
         String sql = "DELETE FROM posttag WHERE post_id=?";
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setInt(1, post_id);
             ps.executeUpdate();
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
+            return false;
         }
     }
 
-    public void delete(String tag_id) {
+    public boolean delete(String tag_id) {
         String sql = "DELETE FROM posttag WHERE tag_id=?";
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, tag_id);
             ps.executeUpdate();
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
+            return false;
         }
     }
 

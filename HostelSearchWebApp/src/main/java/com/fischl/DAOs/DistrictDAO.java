@@ -14,6 +14,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+
 public class DistrictDAO implements IDao<District,String> {
     private Connection conn = null;
 
@@ -21,7 +22,7 @@ public class DistrictDAO implements IDao<District,String> {
         conn = DBConnection.getConnection();
     }
 
-    public void add(District dt) {
+    public boolean add(District dt) {
         String sql = "INSERT INTO district (district_id, district_name, city_id) VALUES (?, ?, ?)";
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
@@ -29,12 +30,14 @@ public class DistrictDAO implements IDao<District,String> {
             ps.setString(2, dt.getDistrictName());
             ps.setString(3, dt.getCityId());
             ps.executeUpdate();
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
+            return false;
         }
     }
 
-    public void update(District dt) {
+    public boolean update(District dt) {
         String sql = "UPDATE district SET district_name=?, city_id=? WHERE district_id=?";
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
@@ -42,19 +45,23 @@ public class DistrictDAO implements IDao<District,String> {
             ps.setString(2, dt.getCityId());
             ps.setString(3, dt.getDistrictId());
             ps.executeUpdate();
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
+            return false;
         }
     }
 
-    public void delete(String id) {
+    public boolean delete(String id) {
         String sql = "DELETE FROM district WHERE district_id=?";
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, id);
             ps.executeUpdate();
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
+            return false;
         }
     }
 

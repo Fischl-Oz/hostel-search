@@ -24,7 +24,7 @@ public class ImgDAO implements IDao<Img,Integer> {
         this.conn = DBConnection.getConnection();
     }
 
-    public void add(Img img) {
+    public boolean add(Img img) {
         String sql = "INSERT INTO img (img_id, img_name, img_uri, img_desc, user_id, hostel_id) "
                 + "VALUES (?, ?, ?, ?, ?, ?)";
         try {
@@ -36,12 +36,14 @@ public class ImgDAO implements IDao<Img,Integer> {
             ps.setInt(5, img.getUserId());
             ps.setInt(6, img.getHostelId());
             ps.executeUpdate();
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
+            return false;
         }
     }
 
-    public void update(Img img) {
+    public boolean update(Img img) {
         String sql = "UPDATE img SET img_name=?, img_uri=?, img_desc=?, user_id=?, hostel_id=? WHERE img_id=?";
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
@@ -52,19 +54,23 @@ public class ImgDAO implements IDao<Img,Integer> {
             ps.setInt(5, img.getHostelId());
             ps.setInt(6, img.getImgId());
             ps.executeUpdate();
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
+            return false;
         }
     }
 
-    public void delete(Integer id) {
+    public boolean delete(Integer id) {
         String sql = "DELETE FROM img WHERE img_id=?";
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setInt(1, id);
             ps.executeUpdate();
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
+            return false;
         }
     }
 

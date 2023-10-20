@@ -14,8 +14,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import javax.naming.spi.DirStateFactory.Result;
-
 public class CityDAO implements IDao<City,String> {
     private Connection conn = null;
 
@@ -23,38 +21,44 @@ public class CityDAO implements IDao<City,String> {
         conn = DBConnection.getConnection();
     }
 
-    public void add(City ct) {
+    public boolean add(City ct) {
         String sql = "INSERT INTO city (city_id, city_name) VALUES (?, ?)";
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, ct.getCityId());
             ps.setString(2, ct.getCityName());
             ps.executeUpdate();
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
+            return false;
         }
     }
 
-    public void update(City ct) {
+    public boolean update(City ct) {
         String sql = "UPDATE city SET city_name=? WHERE city_id=?";
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, ct.getCityName());
             ps.setString(2, ct.getCityId());
             ps.executeUpdate();
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
+            return false;
         }
     }
 
-    public void delete(String id) {
+    public boolean delete(String id) {
         String sql = "DELETE FROM city WHERE city_id=?";
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, id);
             ps.executeUpdate();
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
+            return false;
         }
     }
 

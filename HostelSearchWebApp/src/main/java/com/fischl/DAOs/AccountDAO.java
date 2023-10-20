@@ -17,7 +17,7 @@ public class AccountDAO implements IDao<Account,Integer> {
         conn = DBConnection.getConnection();
     }
 
-    public void add(Account account) {
+    public boolean add(Account account) {
         String sql = "INSERT INTO account (user_id, date_signup, full_name, user_name, password, phone, email, user_type)\n" +
                     "VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
         try {
@@ -31,23 +31,27 @@ public class AccountDAO implements IDao<Account,Integer> {
             ps.setString(7, account.getEmail());
             ps.setString(8, account.getUserType());
             ps.executeUpdate();
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
+            return false;
         }
     }
 
-    public void delete(Integer id) {
+    public boolean delete(Integer id) {
         String sql = "DELETE FROM account WHERE user_id=?";
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setInt(1, id);
             ps.executeUpdate();
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
+            return false;
         }
     }
 
-    public void update(Account account) {
+    public boolean update(Account account) {
         String sql = "UPDATE account SET full_name=?, user_name=?, password=?, phone=?, email=?, user_type=? WHERE user_id=?";
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
@@ -59,8 +63,10 @@ public class AccountDAO implements IDao<Account,Integer> {
             ps.setString(6, account.getUserType());
             ps.setInt(7, account.getUserId());
             ps.executeUpdate();
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
+            return false;
         }
     }
 

@@ -22,38 +22,44 @@ public class TagDAO implements IDao<Tag,String> {
         conn = DBConnection.getConnection();
     }
 
-    public void add(Tag t) {
+    public boolean add(Tag t) {
         String sql = "INSERT INTO tag (tag_id, tag_txt) VALUES (?, ?)";
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, t.getTagId());
             ps.setString(2, t.getTagTxt());
             ps.executeUpdate();
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
+            return false;
         }
     }
     
-    public void update(Tag t) {
+    public boolean update(Tag t) {
         String sql = "UPDATE tag SET tag_txt=? WHERE tag_id=?";
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, t.getTagTxt());
             ps.setString(2, t.getTagId());
             ps.executeUpdate();
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
+            return false;
         }
     }
 
-    public void delete(String id) {
+    public boolean delete(String id) {
         String sql = "DELETE FROM tag WHERE tag_id=?";
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, id);
             ps.executeUpdate();
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
+            return false;
         }
     }
 

@@ -26,7 +26,7 @@ public class PostDAO implements IDao<Post,Integer> {
         conn = DBConnection.getConnection();
     }
 
-    public void add(Post p) {
+    public boolean add(Post p) {
         String sql = "INSERT INTO post (post_id, post_title, post_date, post_content, post_status, hostel_id, district_id) "
                 + "VALUES (?, ?, ?, ?, ?, ?, ?)";
         try {
@@ -39,12 +39,14 @@ public class PostDAO implements IDao<Post,Integer> {
             ps.setInt(6, p.getHostelId());
             ps.setString(7, p.getDistrictId());
             ps.executeUpdate();
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
+            return false;
         }
     }
 
-    public void update(Post p) {
+    public boolean update(Post p) {
         String sql = "UPDATE post SET post_title=?, post_date=?, post_content=?, post_status=?, hostel_id=?, district_id=? WHERE post_id=?";
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
@@ -56,19 +58,23 @@ public class PostDAO implements IDao<Post,Integer> {
             ps.setString(6, p.getDistrictId());
             ps.setInt(7, p.getPostId());
             ps.executeUpdate();
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
+            return false;
         }
     }
 
-    public void delete(Integer id) {
+    public boolean delete(Integer id) {
         String sql = "DELETE FROM post WHERE post_id=?";
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setInt(1, id);
             ps.executeUpdate();
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
+            return false;
         }
     }
 

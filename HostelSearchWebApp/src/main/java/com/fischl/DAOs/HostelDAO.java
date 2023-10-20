@@ -4,8 +4,8 @@ import com.fischl.DAOs.interfaces.IDao;
 import com.fischl.database.DBConnection;
 import com.fischl.models.Hostel;
 
-import  java.sql.Connection;
-import  java.sql.PreparedStatement;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -17,7 +17,7 @@ public class HostelDAO implements IDao<Hostel,Integer> {
         this.conn = DBConnection.getConnection();
     }
 
-    public void add(Hostel hostel) {
+    public boolean add(Hostel hostel) {
         String sql = "INSERT INTO hostel (hostel_id, hostel_name, hostel_addr, hostel_desc, price, area, total_room, available_room, district_id, user_id) "
                 +
                 "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
@@ -33,24 +33,28 @@ public class HostelDAO implements IDao<Hostel,Integer> {
             ps.setInt(8, hostel.getAvailableRoom());
             ps.setString(9, hostel.getDistrictId());
             ps.setInt(10, hostel.getUserId());
-            ps.executeUpdate();
+            int result = ps.executeUpdate();
+            return result > 0;
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return false;
     }
-    
-    public void delete(Integer id) {
+
+    public boolean delete(Integer id) {
         String sql = "DELETE FROM hostel WHERE hostel_id=?";
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setInt(1, id);
-            ps.executeUpdate();
+            int result = ps.executeUpdate();
+            return result > 0;
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return false;
     }
 
-    public void update(Hostel hostel) {
+    public boolean update(Hostel hostel) {
         String sql = "UPDATE hostel SET hostel_name=?, hostel_addr=?, hostel_desc=?, price=?, area=?, total_room=?, available_room=?, district_id=?, user_id=? WHERE hostel_id=?";
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
@@ -64,10 +68,12 @@ public class HostelDAO implements IDao<Hostel,Integer> {
             ps.setString(8, hostel.getDistrictId());
             ps.setInt(9, hostel.getUserId());
             ps.setInt(10, hostel.getHostelId());
-            ps.executeUpdate();
+            int result = ps.executeUpdate();
+            return result > 0;
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return false;
     }
 
     public ArrayList<Hostel> getAll() {
@@ -95,7 +101,7 @@ public class HostelDAO implements IDao<Hostel,Integer> {
         }
         return hostels;
     }
-    
+
     public Hostel getById(Integer id) {
         Hostel hostel = new Hostel();
         String sql = "SELECT * FROM hostel WHERE hostel_id=?";

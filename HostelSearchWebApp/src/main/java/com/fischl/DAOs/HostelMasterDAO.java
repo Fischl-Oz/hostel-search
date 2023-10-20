@@ -17,7 +17,7 @@ public class HostelMasterDAO implements IDao<HostelMaster,Integer> {
         conn = DBConnection.getConnection();
     }
 
-    public void add(HostelMaster hostelMaster) {
+    public boolean add(HostelMaster hostelMaster) {
         String sql = "INSERT INTO hostel_master (user_id, hm_addr, authenticated)\n" +
                 "VALUES (?, ?, ?);";
         try {
@@ -26,23 +26,27 @@ public class HostelMasterDAO implements IDao<HostelMaster,Integer> {
             ps.setString(2, hostelMaster.getHmAddr());
             ps.setBoolean(3, hostelMaster.isAuthenticated());
             ps.executeUpdate();
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
+            return false;
         }
     }
     
-    public void delete(Integer id) {
+    public boolean delete(Integer id) {
         String sql = "DELETE FROM hostel_master WHERE user_id=?";
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setInt(1, id);
             ps.executeUpdate();
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
+            return false;
         }
     }
 
-    public void update(HostelMaster hm) {
+    public boolean update(HostelMaster hm) {
         String sql = "UPDATE hostel_master SET hm_addr=?, authenticated=? WHERE user_id=?";
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
@@ -50,8 +54,10 @@ public class HostelMasterDAO implements IDao<HostelMaster,Integer> {
             ps.setBoolean(2, hm.isAuthenticated());
             ps.setInt(3, hm.getUserId());
             ps.executeUpdate();
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
+            return false;
         }
     }
 
