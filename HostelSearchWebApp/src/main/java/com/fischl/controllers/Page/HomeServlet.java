@@ -26,8 +26,6 @@ import java.util.ArrayList;
  */
 public class HomeServlet extends HttpServlet {
 
-   
-
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -40,20 +38,19 @@ public class HomeServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-         HttpSession session = request.getSession();
+        HttpSession session = request.getSession();
         HostelDAO pdb = new HostelDAO();
         AccountDAO udb = new AccountDAO();
         ArrayList<Hostel> newestPost = new ArrayList<>();
         ArrayList<Hostel> priciestPost = new ArrayList<>();
 //        priciestPost = pdb.getPriciestPosts(5);
 //        newestPost = pdb.getNewestPosts(4);
-        
+
         session.setAttribute("newestPost", newestPost);
         session.setAttribute("priciestPost", priciestPost);
 
         // Get all the cookies from the request
         Cookie[] cookies = request.getCookies();
-
         if (cookies != null && request.getSession().getAttribute("username") == null && request.getSession().getAttribute("login") == null) {
             for (Cookie cookie : cookies) {
                 if (cookie.getName().equals("accountt")) {
@@ -65,7 +62,7 @@ public class HomeServlet extends HttpServlet {
                     String[] accountInfo = accountCookieValue.split(":");
                     String username = accountInfo[0];
                     String password = accountInfo[1];
-                    
+
                     Account u = udb.getByUsernamePassword(username, MD5.getMd5(password));
                     if (u != null) {
                         session.setMaxInactiveInterval(Integer.MAX_VALUE);
@@ -105,10 +102,12 @@ public class HomeServlet extends HttpServlet {
         }
     }
 // Method to remove diacritics from a Vietnamese string
+
     public String removeDiacritics(String vietnameseString) {
         String normalizedString = Normalizer.normalize(vietnameseString, Normalizer.Form.NFD);
         return normalizedString.replaceAll("\\p{M}", "");
     }
+
     /**
      * Handles the HTTP <code>POST</code> method.
      *
@@ -120,7 +119,7 @@ public class HomeServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       try {
+        try {
             // Set character encoding for request and response
             request.setCharacterEncoding("UTF-8");
             response.setCharacterEncoding("UTF-8");
@@ -163,17 +162,17 @@ public class HomeServlet extends HttpServlet {
                         // Add more cases for other price ranges if needed
                     }
 
-                    if ("Select City".equals(searchCity) && !searchCity.isEmpty() ){
+                    if ("Select City".equals(searchCity) && !searchCity.isEmpty()) {
                         searchCity = "none";
                     }
-                    if ("Select Rental Price".equals(searchPrice) && !searchPrice.isEmpty()){
+                    if ("Select Rental Price".equals(searchPrice) && !searchPrice.isEmpty()) {
                         searchPrice = "all";
                     }
 
                     // Encode searchCity and searchPrice with proper encoding
                     String encodedSearchCity = java.net.URLEncoder.encode(searchCity, "UTF-8");
                     String encodedSearchPrice = java.net.URLEncoder.encode(searchPrice, "UTF-8");
-                    
+
                     response.sendRedirect(request.getContextPath() + "/find?city=" + encodedSearchCity + "&price=" + encodedSearchPrice);
                 } else {
                     response.sendRedirect(request.getContextPath() + "/rental");
@@ -184,6 +183,5 @@ public class HomeServlet extends HttpServlet {
             response.sendRedirect(request.getContextPath() + "/rental");
         }
     }
-
 
 }
