@@ -20,8 +20,6 @@ import jakarta.servlet.http.HttpSession;
  */
 public class LoginServlet extends HttpServlet {
 
- 
-
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -35,6 +33,7 @@ public class LoginServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession();
+        String path = request.getRequestURI();
         session.setMaxInactiveInterval(Integer.MAX_VALUE);
         session.setAttribute("login", "false");
         session.removeAttribute("username");
@@ -57,7 +56,7 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-  String username = request.getParameter("username");
+        String username = request.getParameter("username");
         String password = request.getParameter("password");
         String remember = request.getParameter("remember");
         LoginValidator loginV = new LoginValidator();
@@ -83,7 +82,7 @@ public class LoginServlet extends HttpServlet {
             session.setAttribute("usertype", login_acc.getUserType());
             System.out.println("Usertype: " + login_acc.getUserType());
             session.setAttribute("login", "true");
-             //request.getRequestDispatcher("/home").forward(request, response);
+            //request.getRequestDispatcher("/home").forward(request, response);
             response.sendRedirect(request.getContextPath() + "/index.jsp");
 
         } else {
@@ -92,7 +91,5 @@ public class LoginServlet extends HttpServlet {
             request.getRequestDispatcher("/login.jsp").forward(request, response);
         }
     }
-
-    
 
 }
