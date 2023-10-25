@@ -119,7 +119,7 @@ public class AccountDAO implements IDao<Account,Integer> {
 
     public Account getByUsernamePassword(String user_name, String password) {
         Account account = null;
-        String sql = "SELECT user_id FROM account WHERE user_name = ? AND password = ?";
+        String sql = "SELECT * FROM account WHERE user_name = ? AND password = ?";
         ResultSet rs = null;
         try{
             PreparedStatement ps = conn.prepareStatement(sql);
