@@ -71,7 +71,7 @@ public class IdGenerator {
         int maxId = 0;
         try {
             Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT MAX(img_id) FROM imginventory");
+            ResultSet rs = stmt.executeQuery("SELECT MAX(img_id) FROM img");
             if (rs.next()) {
                 maxId = rs.getInt(1);
             }
