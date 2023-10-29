@@ -21,7 +21,7 @@ import jakarta.servlet.http.Cookie;
  * @author Trung Thanh
  * XONG ROI NHA
  */
-public class AddUserServlet extends HttpServlet {
+public class AddUserController extends HttpServlet {
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

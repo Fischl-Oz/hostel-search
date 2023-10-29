@@ -6,7 +6,6 @@ package com.fischl.controllers.AdminPage;
 
 import com.fischl.DAOs.AccountDAO;
 import com.fischl.models.Account;
-import com.fischl.tools.IdGenerator;
 import com.fischl.tools.MD5;
 import java.io.IOException;
 import jakarta.servlet.ServletException;
@@ -20,7 +19,7 @@ import jakarta.servlet.http.HttpSession;
  *
  * @author Trung Thanh
  */
-public class UpdateUserServlet extends HttpServlet {
+public class UpdateUserController extends HttpServlet {
 
   
 
