@@ -10,19 +10,18 @@ import com.fischl.tools.IdGenerator;
 import com.fischl.tools.MD5;
 import java.io.IOException;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import jakarta.servlet.http.Cookie;
 
 /**
  *
  * @author Trung Thanh
+ * XONG ROI NHA
  */
-public class UpdateUserServlet extends HttpServlet {
-
-  
+public class AddUserController extends HttpServlet {
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -36,12 +35,9 @@ public class UpdateUserServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-           AccountDAO udb = new AccountDAO();
-        HttpSession session = request.getSession();
-        Cookie[] cookies = request.getCookies();
-
-        if (cookies != null && request.getSession().getAttribute("username") == null && request.getSession().getAttribute("login") == null) {
-
+         Cookie[] cookies = request.getCookies();
+        
+        if (cookies != null && request.getSession().getAttribute("username") == null && request.getSession().getAttribute("login") == null ) {
             for (Cookie cookie : cookies) {
                 if (cookie.getName().equals("accountt")) {
                     // Read the value of the "account" cookie
@@ -53,16 +49,15 @@ public class UpdateUserServlet extends HttpServlet {
                     String username = accountInfo[0];
                     String password = accountInfo[1];
                     System.out.println("username: " + username);
-                    System.out.println("password: " + password);
+                    System.out.println("password: "+ password);
+                    AccountDAO udb = new AccountDAO();
                     Account u = udb.getByUsernamePassword(username, MD5.getMd5(password));
                     if (u != null) {
-
+                        HttpSession session = request.getSession();
                         session.setMaxInactiveInterval(Integer.MAX_VALUE);
                         session.setAttribute("username", username);
                         session.setAttribute("login", "true");
-                        Account user = udb.getUserByUsername(username);
-                        request.setAttribute("data", user);
-                        response.sendRedirect(request.getContextPath() + "/changeInfo");
+                        request.getRequestDispatcher("/profile.jsp").forward(request, response);
                         break;
                     } else {
                         response.sendRedirect(request.getContextPath() + "/home");
@@ -70,27 +65,21 @@ public class UpdateUserServlet extends HttpServlet {
                     break; // Exit the loop since we found the desired cookie
                 }
             }
-
-        } else { 
+        } else {
             if (request.getSession().getAttribute("username") != null) {
+                AccountDAO udb = new AccountDAO();
                 String username = (String) request.getSession().getAttribute("username");
-                String id_raw = request.getParameter("id");
-               int id;
-                AccountDAO accDao = new AccountDAO();
-               
-                        id = Integer.parseInt(id_raw);
-                        Account acc  = accDao.getById(id);
-                        request.setAttribute("data", acc);
-
-                    session.setMaxInactiveInterval(Integer.MAX_VALUE);
-                    session.setAttribute("username", username);
-                    request.getRequestDispatcher("/updateUser.jsp").forward(request, response);
-
-               
+                Account u = udb.getUserByUsername(username);
+                request.setAttribute("data", u);
+                HttpSession session = request.getSession();
+                session.setMaxInactiveInterval(Integer.MAX_VALUE);
+                session.setAttribute("username", username);
+                request.getRequestDispatcher("/addUser.jsp").forward(request, response);
             } else {
                 request.getRequestDispatcher("/index.jsp").forward(request, response);
             }
         }
+        
     }
 
     /**
@@ -104,15 +93,13 @@ public class UpdateUserServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String id_raw = request.getParameter("id");
-          String fullname = request.getParameter("fullname");
+        String fullname = request.getParameter("fullname");
         String username = request.getParameter("username");
         String phonenumber = request.getParameter("phoneNumber");
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         String usertype = request.getParameter("userType");
-         int id;
-         
+
         AccountDAO accDAO = new AccountDAO();
         long millis = System.currentTimeMillis();
         java.sql.Date date_signup = new java.sql.Date(millis);
@@ -129,15 +116,14 @@ public class UpdateUserServlet extends HttpServlet {
                 session.setAttribute("usertype", u.getUserType());
 // Thêm người dùng vào cơ sở dữ liệu (sử dụng accDAO hoặc lớp xử lý tương ứng)
      }
-               id = Integer.parseInt(id_raw);
-             Account accNew = new Account(id, date_signup, fullname, username, MD5.getMd5(password), phonenumber, email, usertype);
-            accDAO.update(accNew);
+             Account accNew = new Account(new IdGenerator().getNewUserId(), date_signup, fullname, username, MD5.getMd5(password), phonenumber, email, usertype);
+            accDAO.add(accNew);
             // Chuyển hướng người dùng đến trang quản trị
             response.sendRedirect(request.getContextPath() + "/admin");
         } catch (IOException e) {
             System.out.println("Could not send user register");
             request.setAttribute("registrationStatus", "failure");
-            request.getRequestDispatcher("/updateUser.jsp").forward(request, response);
+            request.getRequestDispatcher("/addUser.jsp").forward(request, response);
         }
 
     }

@@ -16,7 +16,7 @@ import jakarta.servlet.http.HttpServletResponse;
  * @author Trung Thanh
  * XONG ROI NHA
  */
-public class DeleteUserServlet extends HttpServlet {
+public class DeleteUserController extends HttpServlet {
 
  
 

@@ -11,39 +11,39 @@
     </servlet>
     <servlet>
         <servlet-name>AdminPageServlet</servlet-name>
-        <servlet-class>com.fischl.controllers.Page.AdminPageServlet</servlet-class>
+        <servlet-class>com.fischl.controllers.Page.AdminPageController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>RegisterServlet</servlet-name>
-        <servlet-class>com.fischl.controllers.Form.RegisterServlet</servlet-class>
+        <servlet-class>com.fischl.controllers.Form.RegisterController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>LoginServlet</servlet-name>
-        <servlet-class>com.fischl.controllers.Form.LoginServlet</servlet-class>
+        <servlet-class>com.fischl.controllers.Form.LoginController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ChangeInforServlet</servlet-name>
-        <servlet-class>com.fischl.controllers.User.ChangeInforServlet</servlet-class>
+        <servlet-class>com.fischl.controllers.User.ChangeInfoController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ChangeInfoServlet</servlet-name>
-        <servlet-class>com.fischl.controllers.User.ChangeInfoServlet</servlet-class>
+        <servlet-class>com.fischl.controllers.User.ChangeInfoController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>DeleteUserServlet</servlet-name>
-        <servlet-class>com.fischl.controllers.AdminPage.DeleteUserServlet</servlet-class>
+        <servlet-class>com.fischl.controllers.AdminPage.DeleteUserController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>AddUserServlet</servlet-name>
-        <servlet-class>com.fischl.controllers.AdminPage.AddUserServlet</servlet-class>
+        <servlet-class>com.fischl.controllers.AdminPage.AddUserController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>UpdateUserServlet</servlet-name>
-        <servlet-class>com.fischl.controllers.AdminPage.UpdateUserServlet</servlet-class>
+        <servlet-class>com.fischl.controllers.AdminPage.UpdateUserController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>HomeServlet</servlet-name>
-        <url-pattern>/home</url-pattern>
+        <url-pattern>/</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>AdminPageServlet</servlet-name>

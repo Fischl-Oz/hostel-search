@@ -7,8 +7,7 @@ package com.fischl.controllers.Form;
 import com.fischl.DAOs.AccountDAO;
 import com.fischl.models.Account;
 import com.fischl.tools.IdGenerator;
-import com.sun.jdi.connect.Transport;
-import jakarta.servlet.RequestDispatcher;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -17,19 +16,15 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import jakarta.servlet.annotation.*;
-import java.net.PasswordAuthentication;
-import java.sql.Date;
-import java.util.Properties;
-import java.util.Random;
 import com.fischl.tools.MD5;
 
 /**
  *
  * @author User
  */
-@WebServlet(name = "RegisterServlet", urlPatterns = {"/signup"})
+@WebServlet(name = "RegisterController", urlPatterns = {"/signup"})
 
-public class RegisterServlet extends HttpServlet {
+public class RegisterController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -48,10 +43,10 @@ public class RegisterServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet RegisterServlet</title>");
+            out.println("<title>Servlet RegisterController</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet RegisterServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet RegisterController at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
