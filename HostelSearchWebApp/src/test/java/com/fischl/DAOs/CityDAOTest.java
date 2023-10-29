@@ -26,8 +26,8 @@ public class CityDAOTest {
      * Test of add method, of class CityDAO.
      */
     @Test
-    public void CityDAO_ADD_UTCID01() {
-        System.out.println("add");
+    public void CityDAO_add_UTCID01() {
+        System.out.println("Execute CityDAO_add_UTCID01");
         City ct = null;
         CityDAO instance = new CityDAO();
         boolean expResult = false;
@@ -38,8 +38,8 @@ public class CityDAOTest {
     }
 
     @Test
-    public void CityDAO_ADD_UTCID02() {
-        System.out.println("Testing add() method with valid city");
+    public void CityDAO_add_UTCID02() {
+        System.out.println("Execute CityDAO_add_UTCID02");
 
         // Tạo một thành phố hợp lệ với các thông tin cần thiết
         String cityId = "CT-0001";
@@ -55,8 +55,8 @@ public class CityDAOTest {
     }
 
     @Test
-    public void CityDAO_ADD_UTCID03() {
-        System.out.println("Testing add() method with invalid city");
+    public void CityDAO_add_UTCID03() {
+        System.out.println("Execute CityDAO_add_UTCID03");
         String cityId = "CT-0001";
         String cityName = "Hà Nội";
 
@@ -67,8 +67,8 @@ public class CityDAOTest {
     }
 
     @Test
-    public void CityDAO_ADD_UTCID04() {
-        System.out.println("Testing add() method with duplicate city");
+    public void CityDAO_add_UTCID04() {
+        System.out.println("Execute CityDAO_add_UTCID04");
         String cityId = "CT-0001";
         String cityName = "Hà Nội";
 
@@ -86,8 +86,8 @@ public class CityDAOTest {
      * Test of update method, of class CityDAO.
      */
     @Test
-    public void CityDAO_UPDATE_UTCID01() {
-        System.out.println("update");
+    public void CityDAO_update_UTCID01() {
+        System.out.println("Execute CityDAO_update_UTCID01");
         City ct = null;
         CityDAO instance = new CityDAO();
         boolean expResult = false;
@@ -98,8 +98,8 @@ public class CityDAOTest {
     }
 
     @Test
-    public void CityDAO_UPDATE_UTCID02() {
-        System.out.println("Testing update() method with valid city");
+    public void CityDAO_update_UTCID02() {
+        System.out.println("Execute CityDAO_update_UTCID02");
 
         // Tạo một thành phố hợp lệ với các thông tin cần thiết
         String cityId = "CT-0001";
@@ -126,8 +126,8 @@ public class CityDAOTest {
      * Test of delete method, of class CityDAO.
      */
     @Test
-    public void CityDAO_DELETE_UTCID01() {
-        System.out.println("delete");
+    public void CityDAO_delete_UTCID01() {
+        System.out.println("Execute CityDAO_delete_UTCID01");
         String id = "";
         CityDAO instance = new CityDAO();
         boolean expResult = false;
@@ -138,8 +138,8 @@ public class CityDAOTest {
     }
 
     @Test
-    public void CityDAO_DELETE_UTCID02() {
-        System.out.println("Testing delete() method with non-existing city");
+    public void CityDAO_delete_UTCID02() {
+        System.out.println("Execute CityDAO_delete_UTCID02");
         CityDAO instance = new CityDAO();
         // Sử dụng một ID không tồn tại trong cơ sở dữ liệu
         String nonExistingId = "CT-0030";
@@ -149,8 +149,8 @@ public class CityDAOTest {
     }
 
     @Test
-    public void CityDAO_DELETE_UTCID03() {
-        System.out.println("Testing delete() method with empty or null ID");
+    public void CityDAO_delete_UTCID03() {
+        System.out.println("Execute CityDAO_delete_UTCID03");
         CityDAO instance = new CityDAO();
         // Sử dụng ID rỗng hoặc null
         String emptyId = "";
@@ -165,9 +165,9 @@ public class CityDAOTest {
     }
 
     @Test
-    public void CityDAO_DELETE_UTCID04() {
+    public void CityDAO_delete_UTCID04() {
         // Khởi tạo cơ sở dữ liệu thử nghiệm hoặc đảm bảo cơ sở dữ liệu ở một trạng thái ban đầu cụ thể
-
+  System.out.println("Execute CityDAO_delete_UTCID04");
         // Thêm một thành phố vào cơ sở dữ liệu để xóa
         CityDAO instance = new CityDAO();
         City city = new City("CT-0001", "Hà Nội");
@@ -186,8 +186,8 @@ public class CityDAOTest {
      * Test of getAll method, of class CityDAO.
      */
     @Test
-    public void CityDAO_GetAll_UTCID01() {
-        System.out.println("getAll");
+    public void CityDAO_getAll_UTCID01() {
+        System.out.println("Execute CityDAO_getAll_UTCID01");
         CityDAO instance = new CityDAO();
         ArrayList<City> expResult = null;
         ArrayList<City> result = instance.getAll();
@@ -197,8 +197,8 @@ public class CityDAOTest {
     }
 
     @Test
-    public void CityDAO_GetAll_UTCID02() {
-        System.out.println("Testing getAll() method with non-empty database");
+    public void CityDAO_getAll_UTCID02() {
+        System.out.println("Execute CityDAO_getAll_UTCID02");
 
         // Khởi tạo cơ sở dữ liệu thử nghiệm hoặc đảm bảo cơ sở dữ liệu ở một trạng thái ban đầu cụ thể
         CityDAO instance = new CityDAO();
@@ -219,8 +219,8 @@ public class CityDAOTest {
     }
 
     @Test
-    public void CityDAO_GetAll_UTCID03() {
-        System.out.println("Testing getAll() method with null city");
+    public void CityDAO_getAll_UTCID03() {
+        System.out.println("Execute CityDAO_getAll_UTCID03");
         CityDAO instance = new CityDAO();
         instance.add(null); // Thêm một thành phố null vào cơ sở dữ liệu
         ArrayList<City> result = instance.getAll();
@@ -232,8 +232,8 @@ public class CityDAOTest {
      * Test of getById method, of class CityDAO.
      */
     @Test
-    public void CityDAO_GetById_UTCID01() {
-        System.out.println("getById");
+    public void CityDAO_getById_UTCID01() {
+        System.out.println("Execute CityDAO_getById_UTCID01");
         String id = "";
         CityDAO instance = new CityDAO();
         City expResult = null;
@@ -244,8 +244,8 @@ public class CityDAOTest {
     }
 
     @Test
-    public void CityDAO_GetById_UTCID02() {
-        System.out.println("Testing getById() method with valid id");
+    public void CityDAO_getById_UTCID02() {
+        System.out.println("Execute CityDAO_getById_UTCID02");
         CityDAO instance = new CityDAO();
         City city = new City("CT-0007", "Huế");
         instance.add(city); // Thêm một thành phố vào cơ sở dữ liệu
@@ -255,8 +255,8 @@ public class CityDAOTest {
     }
 
     @Test
-    public void CityDAO_GetById_UTCID03() {
-        System.out.println("Testing getById() method with non-existent id");
+    public void CityDAO_getById_UTCID03() {
+        System.out.println("Execute CityDAO_getById_UTCID03");
         CityDAO instance = new CityDAO();
         String nonExistentId = "CT-0021"; // Giả sử id không tồn tại trong cơ sở dữ liệu
         City expResult = null; // Không có thành phố tương ứng với nonExistentId

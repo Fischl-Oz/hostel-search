@@ -25,8 +25,8 @@ public class AccountDAOTest {
      * Test of add method, of class AccountDAO.
      */
     @Test
-    public void AccountDAO_ADD_UTCID01() {
-        System.out.println("add");
+    public void AccountDAO_add_UTCID01() {
+        System.out.println("Execute AccountDAO_add_UTCID01");
         Account account = null;
         AccountDAO instance = new AccountDAO();
         boolean expResult = false;
@@ -37,11 +37,11 @@ public class AccountDAOTest {
     }
 
     @Test
-    public void AccountDAO_ADD_UTCID02() {
+    public void AccountDAO_add_UTCID02() {
         // Mục tiêu của test case này là kiểm tra việc thêm một tài khoản hợp lệ vào cơ sở dữ liệu.
 
         // Hiển thị thông báo để biết test case đang được chạy
-        System.out.println("Testing add() method with valid account");
+        System.out.println("Execute AccountDAO_add_UTCID02");
 
         // Tạo một đối tượng Account hợp lệ
            int user_id = 80000003;
@@ -67,8 +67,8 @@ public class AccountDAOTest {
     }
 
     @Test
-    public void AccountDAO_ADD_UTCID03() {
-        System.out.println("Testing addInvalidAccount");
+    public void AccountDAO_add_UTCID03() {
+        System.out.println("Execute AccountDAO_add_UTCID03");
         // Tạo một đối tượng Account không hợp lệ
           int user_id = 80000009;
         Date date_signup = Date.valueOf("2023-10-20");
@@ -94,8 +94,8 @@ public class AccountDAOTest {
         assertEquals("Successfully added an invalid account to the database", expResult, result);
     }
     @Test
-    public void AccountDAO_ADD_UTCID04() {
-        System.out.println("Testing add() method with duplicate account");
+    public void AccountDAO_add_UTCID04() {
+        System.out.println("Execute AccountDAO_add_UTCID04");
         // Tạo một đối tượng Account hợp lệ
         int user_id = 80000003;
         Date date_signup = Date.valueOf("2023-10-15");
@@ -133,8 +133,8 @@ public class AccountDAOTest {
      * Test of delete method, of class AccountDAO.
      */
     @Test
-    public void AccountDAO_DELETE_UTCID01() {
-        System.out.println("delete");
+    public void AccountDAO_delete_UTCID01() {
+        System.out.println("Execute AccountDAO_delete_UTCID01");
         Integer id = null;
         AccountDAO instance = new AccountDAO();
         boolean expResult = false;
@@ -145,8 +145,8 @@ public class AccountDAOTest {
     }
 
     @Test
-    public void AccountDAO_DELETE_UTCID02() {
-        System.out.println("Testing delete() method with valid account ID");
+    public void AccountDAO_delete_UTCID02() {
+        System.out.println("Execute AccountDAO_delete_UTCID02");
         Integer id = 80000001; // ID của một tài khoản tồn tại trong cơ sở dữ liệu
         AccountDAO instance = new AccountDAO();
         boolean expResult = true; // Kết quả mong đợi: việc xóa tài khoản tồn tại thành công
@@ -155,8 +155,8 @@ public class AccountDAOTest {
     }
 
     @Test
-    public void AccountDAO_DELETE_UTCID03() {
-        System.out.println("Testing delete() method with non-existent account ID");
+    public void AccountDAO_delete_UTCID03() {
+        System.out.println("Execute AccountDAO_delete_UTCID03");
         Integer id = 9999; // ID của một tài khoản không tồn tại trong cơ sở dữ liệu
         AccountDAO instance = new AccountDAO();
         boolean expResult = false; // Kết quả mong đợi: việc xóa tài khoản không tồn tại sẽ thất bại
@@ -165,8 +165,8 @@ public class AccountDAOTest {
     }
 
     @Test
-    public void AccountDAO_DELETE_UTCID04() {
-        System.out.println("Testing delete() method with negative account ID");
+    public void AccountDAO_delete_UTCID04() {
+        System.out.println("Execute AccountDAO_delete_UTCID04");
         Integer id = -1; // ID âm
         AccountDAO instance = new AccountDAO();
         boolean expResult = false; // Kết quả mong đợi: việc xóa tài khoản với ID âm sẽ thất bại
@@ -178,8 +178,8 @@ public class AccountDAOTest {
      * Test of update method, of class AccountDAO.
      */
     @Test
-    public void AccountDAO_Update_UTCID01() {
-        System.out.println("update");
+    public void AccountDAO_update_UTCID01() {
+        System.out.println("Execute AccountDAO_update_UTCID04");
         Account account = null;
         AccountDAO instance = new AccountDAO();
         boolean expResult = false;
@@ -190,8 +190,8 @@ public class AccountDAOTest {
     }
 
     @Test
-    public void AccountDAO_Update_UTCID02() {
-        System.out.println("Testing update() method with valid account");
+    public void AccountDAO_update_UTCID02() {
+        System.out.println("Execute AccountDAO_update_UTCID02");
         // Tạo một đối tượng Account hợp lệ
         int user_id = 80000003;
         Date date_signup = Date.valueOf("2023-10-15");
@@ -214,8 +214,8 @@ public class AccountDAOTest {
     }
 
     @Test
-    public void AccountDAO_Update_UTCID03() {
-        System.out.println("Testing update() method with non-existent account");
+    public void AccountDAO_update_UTCID03() {
+        System.out.println("Execute AccountDAO_update_UTCID03");
         // Tạo một đối tượng Account không tồn tại trong cơ sở dữ liệu
         int nonExistentUserId = 99999999; // Giả sử user_id này không tồn tại trong cơ sở dữ liệu
         Date nonExistentDateSignup = Date.valueOf("2023-10-20");
@@ -242,7 +242,7 @@ public class AccountDAOTest {
      */
     @Test
     public void AccountDAO_getAll_UTCID01() {
-        System.out.println("getAll");
+        System.out.println("Execute AccountDAO_getAll_UTCID0");
         AccountDAO instance = new AccountDAO();
         ArrayList<Account> expResult = null;
         ArrayList<Account> result = instance.getAll();
@@ -253,7 +253,7 @@ public class AccountDAOTest {
 
     @Test
     public void AccountDAO_getAll_UTCID02() {
-        System.out.println("Testing getAll() method with specific account");
+        System.out.println("Execute AccountDAO_getAll_UTCID02");
 
         // Tạo một đối tượng Account với thông tin được cung cấp
         int user_id = 80000003;
@@ -281,7 +281,7 @@ public class AccountDAOTest {
     @Test
     public void AccountDAO_getAll_UTCID03() {
         //testGetAllMultipleAccounts
-        System.out.println("Testing getAll() method with multiple accounts");
+        System.out.println("Execute AccountDAO_getAll_UTCID03");
         AccountDAO instance = new AccountDAO();
         // Tạo danh sách tài khoản để làm dữ liệu giả định
         ArrayList<Account> expResult = new ArrayList<>();
@@ -304,8 +304,8 @@ public class AccountDAOTest {
      * Test of getById method, of class AccountDAO.
      */
     @Test
-    public void AccountDAO_GetById_UTCID01() {
-        System.out.println("getById");
+    public void AccountDAO_GgetById_UTCID01() {
+        System.out.println("Execute AccountDAO_getAll_UTCID01");
         Integer id = null;
         AccountDAO instance = new AccountDAO();
         Account expResult = null;
@@ -316,8 +316,8 @@ public class AccountDAOTest {
     }
 
     @Test
-    public void AccountDAO_GetById_UTCID02() {
-        System.out.println("Testing getById() method with valid id");
+    public void AccountDAO_getById_UTCID02() {
+        System.out.println("Execute AccountDAO_getById_UTCID02");
         int validId = 80000003; // Giả sử id hợp lệ
         AccountDAO instance = new AccountDAO();
         int user_id = 80000003;
@@ -337,8 +337,8 @@ public class AccountDAOTest {
     }
 
     @Test
-    public void AccountDAO_GetById_UTCID03() {
-        System.out.println("Testing getById() method with non-existent id");
+    public void AccountDAO_getById_UTCID03() {
+        System.out.println("Execute AccountDAO_getById_UTCID03");
         int nonExistentId = 99999999; // Giả sử id không tồn tại trong cơ sở dữ liệu
         AccountDAO instance = new AccountDAO();
         Account expResult = null; // Không có tài khoản tương ứng với nonExistentId
@@ -350,8 +350,8 @@ public class AccountDAOTest {
      * Test of getByUsernamePassword method, of class AccountDAO.
      */
     @Test
-    public void AccountDAO_GetByUP_UTCID01() {
-        System.out.println("getByUsernamePassword");
+    public void AccountDAO_getByUsernamePassword_UTCID01() {
+        System.out.println("Execute AccountDAO_getByUsernamePassword_UTCID01");
         String user_name = "";
         String password = "";
         AccountDAO instance = new AccountDAO();
@@ -363,8 +363,8 @@ public class AccountDAOTest {
     }
 
     @Test
-    public void AccountDAO_GetByUP_UTCID02() {
-        System.out.println("Testing getByUsernamePassword() with existing account");
+    public void AccountDAO_getByUsernamePassword_UTCID02() {
+        System.out.println("Execute AccountDAO_getByUsernamePassword_UTCID02");
         String existingUsername = "ThanhNTT";
         String existingpassword = "123456";
         AccountDAO instance = new AccountDAO();
@@ -385,8 +385,8 @@ public class AccountDAOTest {
     }
 
     @Test
-    public void AccountDAO_GetByUP_UTCID03() {
-        System.out.println("Testing getByUsernamePassword() with incorrect password");
+    public void AccountDAO_getByUsernamePassword_UTCID03() {
+        System.out.println("Execute AccountDAO_getByUsernamePassword_UTCID03");
         String correctUsername = "ThanhNTT";
         String correctPassword = "123456";
         String incorrectPassword = "12345677";
@@ -401,8 +401,8 @@ public class AccountDAOTest {
      * Test of getUserByUsername method, of class AccountDAO.
      */
     @Test
-    public void AccountDAO_GetByU_UTCID01() {
-        System.out.println("getUserByUsername");
+    public void AccountDAO_getUserByUsername_UTCID01() {
+        System.out.println("Execute AccountDAO_getByUsername_UTCID01");
         String username = "";
         AccountDAO instance = new AccountDAO();
         Account expResult = null;
@@ -413,8 +413,8 @@ public class AccountDAOTest {
     }
 
     @Test
-    public void AccountDAO_GetByU_UTCID02() {
-        System.out.println("Testing getUserByUsername() with existing username");
+    public void AccountDAO_getByUsername_UTCID02() {
+        System.out.println("Execute AccountDAO_getByUsername_UTCID02");
         String existingUsername = "ThanhNTT";
         AccountDAO instance = new AccountDAO();
         // Giả sử có một tài khoản tương ứng với existingUsername trong cơ sở dữ liệu
@@ -433,8 +433,8 @@ public class AccountDAOTest {
     }
 
     @Test
-    public void AccountDAO_GetByU_UTCID03() {
-        System.out.println("Testing getUserByUsername() with username containing special characters");
+    public void AccountDAO_getByUsername_UTCID03() {
+        System.out.println("Execute AccountDAO_getByUsername_UTCID03");
         String specialCharactersUsername = "!@#$%^";
         AccountDAO instance = new AccountDAO();
         Account expResult = null; // Không nên có tài khoản với username chứa ký tự đặc biệt

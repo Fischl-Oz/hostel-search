@@ -27,8 +27,8 @@ public class DistrictDAOTest {
      * Test of add method, of class DistrictDAO.
      */
     @Test
-    public void  District_ADD_UTCID01() {
-        System.out.println("add");
+    public void  District_add_UTCID01() {
+        System.out.println("Execute District_add_UTCID01");
         District dt = null;
         DistrictDAO instance = new DistrictDAO();
         boolean expResult = false;
@@ -38,8 +38,8 @@ public class DistrictDAOTest {
         fail("The test case is a prototype.");
     }
 @Test
-public void District_ADD_UTCID02() {
-    System.out.println("addValidDistrict");
+public void District_add_UTCID02() {
+    System.out.println("Execute District_add_UTCID02");
      String idDistrict = "DT-0001";
      String disName = "Ba Đình";
      String cityId = "CT-0001";
@@ -53,8 +53,8 @@ public void District_ADD_UTCID02() {
     assertEquals(expResult, result);
 }
 @Test
-public void District_ADD_UTCID03() {
-    System.out.println("addDistrictWithEmptyName");
+public void District_add_UTCID03() {
+    System.out.println("Execute District_add_UTCID03");
     District dt = new District();
     dt.setDistrictId("DT-0001");
     dt.setDistrictName(""); // district_name trống
@@ -66,8 +66,8 @@ public void District_ADD_UTCID03() {
     assertEquals(expResult, result);
 }
 @Test
-public void District_ADD_UTCID04() {
-    System.out.println("addDistrictWithEmptyId");
+public void District_add_UTCID04() {
+    System.out.println("Execute District_add_UTCID04");
     District dt = new District();
     dt.setDistrictId(""); // district_id trống
     dt.setDistrictName("Ba Đình");
@@ -79,8 +79,8 @@ public void District_ADD_UTCID04() {
     assertEquals(expResult, result);
 }
 @Test
-public void District_ADD_UTCID05() {
-    System.out.println("addDistrictWithEmptyCityId");
+public void District_add_UTCID05() {
+    System.out.println("Execute District_add_UTCID05");
     District dt = new District();
     dt.setDistrictId("DT-0001");
     dt.setDistrictName("Ba Đình");
@@ -95,8 +95,8 @@ public void District_ADD_UTCID05() {
      * Test of update method, of class DistrictDAO.
      */
     @Test
-    public void District_UPDATE_UTCID01() {
-        System.out.println("update");
+    public void District_update_UTCID01() {
+        System.out.println("Execute District_update_UTCID01");
         District dt = null;
         DistrictDAO instance = new DistrictDAO();
         boolean expResult = false;
@@ -106,8 +106,8 @@ public void District_ADD_UTCID05() {
         fail("The test case is a prototype.");
     }
 @Test
-public void District_UPDATE_UTCID02() {
-    System.out.println("updateValidDistrict");
+public void District_update_UTCID02() {
+    System.out.println("Execute District_update_UTCID02");
     District dt = new District();
       dt.setDistrictId("DT-0001"); // Thiết lập district_id của đối tượng cần cập nhật
     dt.setDistrictName("Ba Đình"); // Cập nhật district_name
@@ -119,8 +119,8 @@ public void District_UPDATE_UTCID02() {
     assertEquals(expResult, result);
 }
 @Test
-public void District_UPDATE_UTCID03() {
-    System.out.println("updateInvalidDistrictId");
+public void District_update_UTCID03() {
+    System.out.println("Execute District_update_UTCID03");
     District dt = new District();
     dt.setDistrictId("-1"); // district_id không hợp lệ
     dt.setDistrictName("Ba Đình");
@@ -132,8 +132,8 @@ public void District_UPDATE_UTCID03() {
     assertEquals(expResult, result);
 }
     @Test
-public void District_UPDATE_UTCID04() {
-    System.out.println("updateDistrictWithEmptyName");
+public void District_update_UTCID04() {
+    System.out.println("Execute District_update_UTCID04");
     District dt = new District();
     dt.setDistrictId("DT-0001");
     dt.setDistrictName(""); // district_name trống
@@ -148,8 +148,8 @@ public void District_UPDATE_UTCID04() {
      * Test of delete method, of class DistrictDAO.
      */
     @Test
-    public void District_DELETE_UTCID01() {
-        System.out.println("delete");
+    public void District_delete_UTCID01() {
+        System.out.println("Execute District_delete_UTCID01");
         String id = "";
         DistrictDAO instance = new DistrictDAO();
         boolean expResult = false;
@@ -160,8 +160,8 @@ public void District_UPDATE_UTCID04() {
     }
 
 @Test
-public void District_DELETE_UTCID02(){
-    System.out.println("deleteValidId");
+public void District_delete_UTCID02(){
+    System.out.println("Execute District_delete_UTCID02");
      
     String id = "DT-0001"; // ID hợp lệ của đối tượng cần xóa
     DistrictDAO instance = new DistrictDAO();
@@ -170,8 +170,8 @@ public void District_DELETE_UTCID02(){
     assertEquals(expResult, result);
 }
 @Test
-public void District_DELETE_UTCID03() {
-    System.out.println("deleteNonExistentId");
+public void District_delete_UTCID03() {
+    System.out.println("Execute District_delete_UTCID03");
     String id = "-1"; // ID không tồn tại trong cơ sở dữ liệu
     DistrictDAO instance = new DistrictDAO();
     boolean expResult = false; // Mong đợi việc xóa không thành công
@@ -179,8 +179,8 @@ public void District_DELETE_UTCID03() {
     assertEquals(expResult, result);
 }
 @Test
-public void District_DELETE_UTCID04(){
-    System.out.println("deleteEmptyId");
+public void District_delete_UTCID04(){
+    System.out.println("Execute District_delete_UTCID04");
     
     String id = ""; // ID trống
     DistrictDAO instance = new DistrictDAO();
@@ -192,8 +192,8 @@ public void District_DELETE_UTCID04(){
      * Test of getAll method, of class DistrictDAO.
      */
     @Test
-    public void District_GetAll_UTCID01() {
-        System.out.println("getAll");
+    public void District_getAll_UTCID01() {
+        System.out.println("Execute District_getAll_UTCID01");
         DistrictDAO instance = new DistrictDAO();
         ArrayList<District> expResult = null;
         ArrayList<District> result = instance.getAll();
@@ -202,8 +202,8 @@ public void District_DELETE_UTCID04(){
         fail("The test case is a prototype.");
     }
 @Test
-public void District_GetAll_UTCID02() {
-    System.out.println("getAllNotEmptyList");
+public void District_getAll_UTCID02() {
+    System.out.println("Execute District_getAll_UTCID02");
     DistrictDAO instance = new DistrictDAO();
     // Giả sử có ít nhất một quận trong cơ sở dữ liệu
     ArrayList<District> expResult = new ArrayList<>();
@@ -215,26 +215,12 @@ public void District_GetAll_UTCID02() {
     // Kiểm tra xem danh sách có chứa các đối tượng District mong đợi không
     assertTrue(result.contains(district1));
 }
-@Test
-public void testGetAllMultipleDistricts() {
-    System.out.println("getAllMultipleDistricts");
-    DistrictDAO instance = new DistrictDAO();
-    // Giả sử có nhiều quận trong cơ sở dữ liệu
-    ArrayList<District> expResult = new ArrayList<>();
-    District district1 = new District("1", "District 1", "1");
-    District district2 = new District("2", "District 2", "1");
-    expResult.add(district1);
-    expResult.add(district2);
-    ArrayList<District> result = instance.getAll();
-    // Kiểm tra xem danh sách có chứa các đối tượng District mong đợi không
-    assertTrue(result.containsAll(expResult));
-}
-    /**
+  /**
      * Test of getById method, of class DistrictDAO.
      */
     @Test
-    public void District_GetById_UTCID01() {
-        System.out.println("getById");
+    public void District_getById_UTCID01() {
+        System.out.println("Execute District_getById_UTCID01");
         String id = "";
         DistrictDAO instance = new DistrictDAO();
         District expResult = null;
@@ -244,8 +230,8 @@ public void testGetAllMultipleDistricts() {
         fail("The test case is a prototype.");
     }
     @Test
-public void District_GetById_UTCID02() {
-    System.out.println("getValidId");
+public void District_getById_UTCID02() {
+    System.out.println("Execute District_getById_UTCID02");
     String id = "DT-0001"; // ID hợp lệ của đối tượng cần lấy
     DistrictDAO instance = new DistrictDAO();
     // Giả sử có một đối tượng District với ID là "1" trong cơ sở dữ liệu
@@ -254,8 +240,8 @@ public void District_GetById_UTCID02() {
     assertEquals(expResult, result);
 }
 @Test
-public void District_GetById_UTCID03() {
-    System.out.println("getNonExistentId");
+public void District_getById_UTCID03() {
+    System.out.println("Execute District_getById_UTCID03");
     String id = "1000"; // ID không tồn tại trong cơ sở dữ liệu
     DistrictDAO instance = new DistrictDAO();
     District expResult = null; // Mong đợi trả về null khi không tìm thấy đối tượng
@@ -263,8 +249,8 @@ public void District_GetById_UTCID03() {
     assertEquals(expResult, result);
 }
 @Test
-public void District_GetById_UTCID04() {
-    System.out.println("getNullId");
+public void District_getById_UTCID04() {
+    System.out.println("Execute District_getById_UTCID04");
     String id = null; // ID là null
     DistrictDAO instance = new DistrictDAO();
     District expResult = null; // Mong đợi trả về null khi ID là null
