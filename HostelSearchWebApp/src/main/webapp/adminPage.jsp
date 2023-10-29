@@ -36,7 +36,7 @@
         <link rel="stylesheet" href="assets/css/animate.css">
         <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
         <!-- TEMPLATE -->
-           <!-- Favicon -->
+        <!-- Favicon -->
         <link href="img/favicon.ico" rel="icon">
 
         <!-- Google Web Fonts -->
@@ -92,31 +92,31 @@
                 color: #00ff00; /* Thay #00ff00 bằng mã màu hoặc tên màu bạn muốn sử dụng khi hover vào tab */
             }
             /* Đổi màu nền của bảng */
-.tab-content table {
-    background-color: rgba(245, 247, 201, 0.94); /* Đặt màu trong suốt với alpha = 0.5 */
-}
-.text-center.text-primary{
-     background-color:rgba(245, 247, 201, 0.94);
-     color: #eda536!important;
-}
-.nav-link {
-      color: #eda536!important;
-}
-.nav-link.dropdown-toggle{
- color: #ffffff!important;
-}
-.nav.nav-tabs.mt-5{
-    background-color:rgba(242, 242, 242, 0.94);
-}
+            .tab-content table {
+                background-color: rgba(245, 247, 201, 0.94); /* Đặt màu trong suốt với alpha = 0.5 */
+            }
+            .text-center.text-primary{
+                background-color:rgba(245, 247, 201, 0.94);
+                color: #eda536!important;
+            }
+            .nav-link {
+                color: #eda536!important;
+            }
+            .nav-link.dropdown-toggle{
+                color: #ffffff!important;
+            }
+            .nav.nav-tabs.mt-5{
+                background-color:rgba(242, 242, 242, 0.94);
+            }
 
 
-/* Đổi màu chữ của các ô bảng */
-.tab-content table th{
-    color: #eda536!important;
-}
-.tab-content table td {
-    color: #333; /* Thay #333 bằng mã màu hoặc tên màu bạn muốn sử dụng cho chữ trong ô bảng */
-}
+            /* Đổi màu chữ của các ô bảng */
+            .tab-content table th{
+                color: #eda536!important;
+            }
+            .tab-content table td {
+                color: #333; /* Thay #333 bằng mã màu hoặc tên màu bạn muốn sử dụng cho chữ trong ô bảng */
+            }
 
 
 
@@ -125,24 +125,24 @@
 
     <body>
 
-        <%! 
-             public String inputStreamToBase64(InputStream inputStream) throws IOException {
-                 ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-                 byte[] buffer = new byte[4096];
-                 int bytesRead;
-                 while ((bytesRead = inputStream.read(buffer)) != -1) {
-                     outputStream.write(buffer, 0, bytesRead);
-                 }
-                 byte[] imageBytes = outputStream.toByteArray();
-                 return Base64.getEncoder().encodeToString(imageBytes);
-             }
+        <%!
+            public String inputStreamToBase64(InputStream inputStream) throws IOException {
+                ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+                byte[] buffer = new byte[4096];
+                int bytesRead;
+                while ((bytesRead = inputStream.read(buffer)) != -1) {
+                    outputStream.write(buffer, 0, bytesRead);
+                }
+                byte[] imageBytes = outputStream.toByteArray();
+                return Base64.getEncoder().encodeToString(imageBytes);
+            }
 
-             public String formatCurrency(double price) {
-                 NumberFormat formatter = NumberFormat.getNumberInstance(Locale.US);
-                 DecimalFormat decimalFormat = (DecimalFormat) formatter;
-                 decimalFormat.applyPattern("#,### VNĐ");
-                 return decimalFormat.format(price);
-             }
+            public String formatCurrency(double price) {
+                NumberFormat formatter = NumberFormat.getNumberInstance(Locale.US);
+                DecimalFormat decimalFormat = (DecimalFormat) formatter;
+                decimalFormat.applyPattern("#,### VNĐ");
+                return decimalFormat.format(price);
+            }
         %>
 
         <!-- ***** Preloader Start ***** -->
@@ -161,21 +161,21 @@
 
         <!-- ***** Header Area Start ***** -->
         <header class="header-area">
-          
-                   <!-- Navbar Start -->
+
+            <!-- Navbar Start -->
             <jsp:include page="navbar.jsp" />
             <!-- Navbar End -->
 
-       
+
         </header>
         <!-- ***** Header Area End ***** -->
 
 
         <div class="container-fluid background-light" style="margin-top: 70px; margin-bottom: 40px; background-color: #fff; padding: 20px;">
-              <td>
+            <td>
                 <!-- Add action buttons for managing posts (e.g., update, delete) -->
-               
-             
+
+
             </td>
             <ul class="nav nav-tabs mt-5">
                 <li class="nav-item">
@@ -188,12 +188,12 @@
                     <a class="nav-link" data-bs-toggle="tab" href="#users">Accounts</a>
                 </li>
             </ul>
- <%--        TAB POST      --%>
+            <%--        TAB POST      --%>
             <div class="tab-content mt-3">
                 <div class="tab-pane fade show active" id="posts">
                     <h2 class="text-center text-primary">Post Detail</h2>
                     <!-- Table for displaying list of posts -->
-                       
+
                     <table class="table table-bordered table-hover">
                         <thead>
                             <tr>
@@ -213,16 +213,16 @@
                         </div>
 
                         <%-- Iterate over the list of posts and display the information --%>
-                        <% 
-                          ArrayList<Post> postsList = (ArrayList<Post>) session.getAttribute("postsList");
-                          if (postsList != null) {
-                               for (Post pList : postsList) { 
+                        <%
+                            ArrayList<Post> postsList = (ArrayList<Post>) session.getAttribute("postsList");
+                            if (postsList != null) {
+                                for (Post pList : postsList) {
                         %>
                         <tr>
                             <td><%= pList.getPostId()%></td>
                             <td><%= pList.getPostTitle()%></td>
                             <td>
-                                <% 
+                                <%
                                     String description = pList.getPostContent();
                                     int maxLength = 50; // Maximum length of the description
 
@@ -237,25 +237,25 @@
                                     <a href="#" class="collapse-link" style="display: none;">Show less</a> <!-- Add the collapse-link with the initial display set to none -->
                                 </div>
                                 <%
-                                            } else {
-                                                out.println(description);
-                                            }
+                                    } else {
+                                        out.println(description);
+                                    }
                                 %>
                             </td>
                             <td><%= pList.getPostDate()%></td>
                             <td><%= pList.getPostStatus()%></td>
                             <td>
                                 <!-- Add action buttons for managing posts (e.g., update, delete) -->
-                                <button class="btn btn-primary" >Accepted</button>
-                                <button class="btn btn-danger" >Rejected</button>
+                                <button class="btn btn-primary" onclick="approvePost(' postId%')">Accepted</button>
+                                <button class="btn btn-danger" onclick="rejectPost(' postId')">Rejected</button>
                             </td>
                         </tr>
                         <% }
                             } %>
                         </tbody>
                     </table>
-<%--      END  TAB POST      --%>
- <%--        TAB HOSTEL      --%>
+                    <%--      END  TAB POST      --%>
+                    <%--        TAB HOSTEL      --%>
                 </div>
                 <div class="tab-pane fade " id="hostel">
                     <h2 class="text-center text-primary">Hostel Detail</h2>
@@ -271,10 +271,10 @@
                                 <th>Area</th>
                                 <th>Total Room</th>
                                 <th>A-Room</th>
-<!--                                <button class="btn btn-danger" onclick="addHostel()">Add Hostel</button>
-                                <th>Actions</th>-->
+                                <!--                                <button class="btn btn-danger" onclick="addHostel()">Add Hostel</button>
+                                                                <th>Actions</th>-->
                             </tr>
-                            
+
                         </thead>
                         <tbody id="postsTableBody">
                             <!-- Search Bar -->
@@ -284,16 +284,16 @@
                         </div>
 
                         <%-- Iterate over the list of posts and display the information --%>
-                        <% 
-                           ArrayList<Hostel> hostelsList = (ArrayList<Hostel>) session.getAttribute("hostelsList");
-                           if (hostelsList != null) {
-                                for (Hostel hostel : hostelsList) { 
+                        <%
+                            ArrayList<Hostel> hostelsList = (ArrayList<Hostel>) session.getAttribute("hostelsList");
+                            if (hostelsList != null) {
+                                for (Hostel hostel : hostelsList) {
                         %>
                         <tr>
                             <td><%= hostel.getHostelId()%></td>
                             <td><%= hostel.getHostelName()%></td>
                             <td>
-                                <% 
+                                <%
                                     String description = hostel.getHostelDesc();
                                     int maxLength = 50; // Maximum length of the description
 
@@ -302,15 +302,15 @@
                                         String fullDescription = description;
                                 %>
                                 <div class="item-description"> <!-- Add the item-description class here -->
-                                    <span class="truncated-description"><%= truncatedDescription %></span>
-                                    <span class="full-description" style="display: none;"><%= fullDescription %></span>
+                                    <span class="truncated-description"><%= truncatedDescription%></span>
+                                    <span class="full-description" style="display: none;"><%= fullDescription%></span>
                                     <a href="#" class="read-more-link">Read More</a>
                                     <a href="#" class="collapse-link" style="display: none;">Show less</a> <!-- Add the collapse-link with the initial display set to none -->
                                 </div>
                                 <%
-                                       } else {
-                                           out.println(description);
-                                       }
+                                    } else {
+                                        out.println(description);
+                                    }
                                 %>
                             </td>
                             <td><%= hostel.getHostelAddr()%></td>
@@ -320,20 +320,20 @@
                             <td><%= hostel.getTotalRoom()%></td>
                             <td><%= hostel.getAvailableRoom()%></td>
 
-                         <!-- 
-                           <td>
-                               
-                                <button class="btn btn-primary" onclick="updateHostel(<%= hostel.getHostelId() %>)">Update</button>
-                                <button class="btn btn-danger" onclick="deleteHostel()(<%= hostel.getHostelId() %>)">Delete</button>
-                           </td> 
-                           -->
+                            <!-- 
+                              <td>
+                                  
+                                   <button class="btn btn-primary" onclick="updateHostel(<%= hostel.getHostelId()%>)">Update</button>
+                                   <button class="btn btn-danger" onclick="deleteHostel()(<%= hostel.getHostelId()%>)">Delete</button>
+                              </td> 
+                            -->
                         </tr>
                         <% }
                             } %>
                         </tbody>
                     </table>
- <%--       END TAB HOSTEL      --%>
- <%--        TAB ACCOUNT      --%>
+                    <%--       END TAB HOSTEL      --%>
+                    <%--        TAB ACCOUNT      --%>
 
                 </div>
                 <div class="tab-pane fade" id="users">
@@ -349,9 +349,9 @@
                                 <th>Email</th>
                                 <th>Phone Number</th>
                                 <th>User Type</th>
-                                 <button class="btn btn-primary" onclick="addUser()">Add User</button>
-                                <th>Action</th>
-                            </tr>
+                        <button class="btn btn-primary" onclick="addUser()">Add User</button>
+                        <th>Action</th>
+                        </tr>
                         </thead>
                         <tbody id="usersTableBody">
                         <div class="search-bar">
@@ -360,8 +360,8 @@
                         </div>
                         <%-- Iterate over the list of users and display the information --%>
                         <% ArrayList<Account> accList = (ArrayList<Account>) session.getAttribute("accList");
-                           if (accList != null) {
-                                for (Account u : accList) { 
+                            if (accList != null) {
+                                for (Account u : accList) {
                         %> 
                         <tr>
                             <td><%= u.getUserId()%></td>
@@ -374,14 +374,14 @@
 
                             <td>
                                 <!-- Add action buttons for managing posts (e.g., update, delete) -->
-                                <button class="btn btn-primary"  onclick="updateUser(<%= u.getUserId() %>)">Update</button>
-                                <button class="btn btn-danger"  onclick="deleteUser(<%= u.getUserId() %>)">Delete</button>
+                                <button class="btn btn-primary"  onclick="updateUser(<%= u.getUserId()%>)">Update</button>
+                                <button class="btn btn-danger"  onclick="deleteUser(<%= u.getUserId()%>)">Delete</button>
                             </td>
 
 
                         </tr>
                         <% }
-                                 }
+                            }
                         %>
                         </tbody>
                     </table>
@@ -394,11 +394,11 @@
 
         </div>   
 
-        
-              <!-- Footer Start -->
+
+        <!-- Footer Start -->
         <jsp:include page="footer.jsp"/>
         <!-- Footer End -->
-                 
+
 
         <!-- Scripts -->
         <!-- Bootstrap core JavaScript -->

@@ -82,8 +82,8 @@ public class LoginServlet extends HttpServlet {
             session.setAttribute("usertype", login_acc.getUserType());
             System.out.println("Usertype: " + login_acc.getUserType());
             session.setAttribute("login", "true");
-            //request.getRequestDispatcher("/home").forward(request, response);
-            response.sendRedirect(request.getContextPath() + "/index.jsp");
+           // request.getRequestDispatcher("/home").forward(request, response);
+            response.sendRedirect(request.getContextPath() + "/home");
 
         } else {
             System.out.println("Could not login");

@@ -29,13 +29,13 @@
         <style>
 
             body{
-               background-image: url("https://images.unsplash.com/photo-1615873968403-89e068629265?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1032&q=80 1032w");
-                
+                background-image: url("https://images.unsplash.com/photo-1615873968403-89e068629265?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1032&q=80 1032w");
+
                 background-repeat: no-repeat;
                 background-size: cover;
                 background-position: center;
             }
-            
+
             @media screen and (min-width: 1920px) {
                 .footer {
                     position: fixed;
@@ -79,7 +79,7 @@
                     <img style="object-fit: contain;" src="./assets/images/logohss2.png" alt="">
                 </a>
                 <!-- ***** Logo End ***** -->
-      
+
                 <!-- ***** Menu Start ***** -->
                 <ul class="nav" style="align-items: center;">
                     <li class="effect"><a href="./home" >Home</a></li>
@@ -107,13 +107,15 @@
                         <div class="text-center">
                             <h3 style="margin-top:30px; color: #aa5e2e; padding: 20px; padding-bottom: 20px;">WELCOME</h3>
                         </div>
-                        
-                        
+                        <div id="status" style="color:red">
+                        </div>
+
+
                         <!<!-- Start Form -->
                         <form id="loginform" method="post" action="login">
                             <div style="padding: 20px 48px;">
                                 <div class="row input-group mb-3">
-                                    
+
                                     <span class="input-group-text" style="width: 36px; background: #aa5e2e;"><i class="bi bi-person-plus-fill text-white mr-auto"></i></span>
                                     <input name="username" type="text" class="col-lg-10 col-md-10 col-sm-8 form-control" placeholder="Usernames">
                                 </div>
@@ -127,7 +129,8 @@
                                         <i class="far fa-check-square"></i> Remember Me
                                     </label>
                                 </div>
-
+                                <fb:login-button scope="public_profile,email" onlogin="checkLoginState();" style="color:red">
+                                </fb:login-button>
                                 <button class="w-50 mx-auto btn btn-primary text-center mt-2" style="display: flex; justify-content: center; background: #aa5e2e; border: none;" type="submit" type="submit">
                                     Login
                                 </button>
@@ -142,9 +145,13 @@
                                         Forgot your password?
                                     </a>
                                 </p>
-                       
+                                <!-- The JS SDK Login Button -->
+
+
                                 <!<!-- End Form -->
                             </div>
+
+
                         </form>
                     </div>
                 </div>
@@ -253,6 +260,53 @@
                 });
             });
         </script>
+        <script>
+
+            function statusChangeCallback(response) {  // Called with the results from FB.getLoginStatus().
+                console.log('statusChangeCallback');
+                console.log(response);                   // The current login status of the person.
+                if (response.status === 'connected') {   // Logged into your webpage and Facebook.
+                    testAPI();
+                } else {                                 // Not logged into your webpage or we are unable to tell.
+                    document.getElementById('status').innerHTML = 'Please log ' +
+                            'into this webpage.';
+                }
+            }
+
+
+            function checkLoginState() {               // Called when a person is finished with the Login Button.
+                FB.getLoginStatus(function (response) {   // See the onlogin handler
+                    statusChangeCallback(response);
+                });
+            }
+
+
+            window.fbAsyncInit = function () {
+                FB.init({
+                    appId: '341309981722075',
+                    cookie: true, // Enable cookies to allow the server to access the session.
+                    xfbml: true, // Parse social plugins on this webpage.
+                    version: 'v18.0'           // Use this Graph API version for this call.
+                });
+
+
+                FB.getLoginStatus(function (response) {   // Called after the JS SDK has been initialized.
+                    statusChangeCallback(response);        // Returns the login status.
+                });
+            };
+
+            function testAPI() {                      // Testing Graph API after login.  See statusChangeCallback() for when this call is made.
+                console.log('Welcome!  Fetching your information.... ');
+                FB.api('/me', function (response) {
+                    console.log('Successful login for: ' + response.name);
+                    document.getElementById('status').innerHTML =
+                            'Thanks for logging in, ' + response.name + '!';
+                });
+            }
+            
+
+        </script>
+        <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
     </body>
 
 </html>
