@@ -18,7 +18,7 @@ public class HostelMasterDAO implements IDao<HostelMaster,Integer> {
     }
 
     public boolean add(HostelMaster hostelMaster) {
-        String sql = "INSERT INTO hostel_master (user_id, hm_addr, authenticated)\n" +
+        String sql = "INSERT INTO hostelmaster (user_id, hm_addr, authenticated)\n" +
                 "VALUES (?, ?, ?);";
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
@@ -34,7 +34,7 @@ public class HostelMasterDAO implements IDao<HostelMaster,Integer> {
     }
     
     public boolean delete(Integer id) {
-        String sql = "DELETE FROM hostel_master WHERE user_id=?";
+        String sql = "DELETE FROM hostelmaster WHERE user_id=?";
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setInt(1, id);
@@ -47,7 +47,7 @@ public class HostelMasterDAO implements IDao<HostelMaster,Integer> {
     }
 
     public boolean update(HostelMaster hm) {
-        String sql = "UPDATE hostel_master SET hm_addr=?, authenticated=? WHERE user_id=?";
+        String sql = "UPDATE hostelmaster SET hm_addr=?, authenticated=? WHERE user_id=?";
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, hm.getHmAddr());
@@ -63,7 +63,7 @@ public class HostelMasterDAO implements IDao<HostelMaster,Integer> {
 
     public ArrayList<HostelMaster> getAll() {
         ArrayList<HostelMaster> hostelMasters = new ArrayList<HostelMaster>();
-        String sql = "SELECT * FROM hostel_master";
+        String sql = "SELECT * FROM hostelmaster";
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
@@ -82,7 +82,7 @@ public class HostelMasterDAO implements IDao<HostelMaster,Integer> {
 
     public HostelMaster getById(Integer id) {
         HostelMaster hostelMaster = new HostelMaster();
-        String sql = "SELECT * FROM hostel_master WHERE user_id=?";
+        String sql = "SELECT * FROM hostelmaster WHERE user_id=?";
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setInt(1, id);

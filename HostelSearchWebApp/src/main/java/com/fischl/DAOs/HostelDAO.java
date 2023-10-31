@@ -88,7 +88,7 @@ public class HostelDAO implements IDao<Hostel,Integer> {
                 hostel.setHostelName(rs.getString("hostel_name"));
                 hostel.setHostelAddr(rs.getString("hostel_addr"));
                 hostel.setHostelDesc(rs.getString("hostel_desc"));
-                hostel.setPrice(rs.getByte("price"));
+                hostel.setPrice(rs.getInt("price"));
                 hostel.setArea(rs.getDouble("area"));
                 hostel.setTotalRoom(rs.getByte("total_room"));
                 hostel.setAvailableRoom(rs.getByte("available_room"));
@@ -114,7 +114,7 @@ public class HostelDAO implements IDao<Hostel,Integer> {
                 hostel.setHostelName(rs.getString("hostel_name"));
                 hostel.setHostelAddr(rs.getString("hostel_addr"));
                 hostel.setHostelDesc(rs.getString("hostel_desc"));
-                hostel.setPrice(rs.getByte("price"));
+                hostel.setPrice(rs.getInt("price"));
                 hostel.setArea(rs.getDouble("area"));
                 hostel.setTotalRoom(rs.getByte("total_room"));
                 hostel.setAvailableRoom(rs.getByte("available_room"));

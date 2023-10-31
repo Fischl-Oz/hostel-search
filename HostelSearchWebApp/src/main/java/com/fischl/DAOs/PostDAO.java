@@ -27,8 +27,8 @@ public class PostDAO implements IDao<Post,Integer> {
     }
 
     public boolean add(Post p) {
-        String sql = "INSERT INTO post (post_id, post_title, post_date, post_content, post_status, hostel_id, district_id) "
-                + "VALUES (?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO post (post_id, post_title, post_date, post_content, post_status, hostel_id) "
+                + "VALUES (?, ?, ?, ?, ?, ?)";
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setInt(1, p.getPostId());
@@ -37,7 +37,6 @@ public class PostDAO implements IDao<Post,Integer> {
             ps.setString(4, p.getPostContent());
             ps.setString(5, p.getPostStatus());
             ps.setInt(6, p.getHostelId());
-            ps.setString(7, p.getDistrictId());
             ps.executeUpdate();
             return true;
         } catch (SQLException e) {
@@ -47,7 +46,7 @@ public class PostDAO implements IDao<Post,Integer> {
     }
 
     public boolean update(Post p) {
-        String sql = "UPDATE post SET post_title=?, post_date=?, post_content=?, post_status=?, hostel_id=?, district_id=? WHERE post_id=?";
+        String sql = "UPDATE post SET post_title=?, post_date=?, post_content=?, post_status=?, hostel_id=? WHERE post_id=?";
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, p.getPostTitle());
@@ -55,8 +54,7 @@ public class PostDAO implements IDao<Post,Integer> {
             ps.setString(3, p.getPostContent());
             ps.setString(4, p.getPostStatus());
             ps.setInt(5, p.getHostelId());
-            ps.setString(6, p.getDistrictId());
-            ps.setInt(7, p.getPostId());
+            ps.setInt(6, p.getPostId());
             ps.executeUpdate();
             return true;
         } catch (SQLException e) {
@@ -92,7 +90,6 @@ public class PostDAO implements IDao<Post,Integer> {
                 p.setPostContent(rs.getString("post_content"));
                 p.setPostStatus(rs.getString("post_status"));
                 p.setHostelId(rs.getInt("hostel_id"));
-                p.setDistrictId(rs.getString("district_id"));
                 posts.add(p);
             }
         } catch (SQLException e) {
@@ -115,7 +112,6 @@ public class PostDAO implements IDao<Post,Integer> {
                 p.setPostContent(rs.getString("post_content"));
                 p.setPostStatus(rs.getString("post_status"));
                 p.setHostelId(rs.getInt("hostel_id"));
-                p.setDistrictId(rs.getString("district_id"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
