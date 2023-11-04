@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import com.fischl.DAOs.interfaces.IDao;
 import com.fischl.models.Account;
 import com.fischl.database.DBConnection;
+import com.fischl.tools.MD5;
 
 public class AccountDAO implements IDao<Account,Integer> {
     private Connection conn = null;
@@ -62,9 +63,12 @@ public class AccountDAO implements IDao<Account,Integer> {
             ps.setString(5, account.getEmail());
             ps.setString(6, account.getUserType());
             ps.setInt(7, account.getUserId());
-            ps.executeUpdate();
-            return true;
+            int result = ps.executeUpdate();
+            return result > 0;
         } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        } catch (Exception e) {
             e.printStackTrace();
             return false;
         }
@@ -118,6 +122,7 @@ public class AccountDAO implements IDao<Account,Integer> {
     }
 
     public Account getByUsernamePassword(String user_name, String password) {
+        password = MD5.getMd5(password);
         Account account = null;
         String sql = "SELECT * FROM account WHERE user_name = ? AND password = ?";
         ResultSet rs = null;
