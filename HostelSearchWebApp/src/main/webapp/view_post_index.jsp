@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: ASUS
-  Date: 31/10/2023
-  Time: 1:28 AM
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <%@ page import="com.fischl.DAOs.PostDAO" %>
@@ -88,7 +81,7 @@
 						}
 					%>
 						<div class="col-12 text-center wow fadeInUp" data-wow-delay="0.1s">
-							<a class="btn btn-primary py-3 px-5" href="">Xem thêm nhiều bài đăng khác</a>
+							<a class="btn btn-primary py-3 px-5" href="/posts">Xem thêm nhiều bài đăng khác</a>
 						</div>
 					</div>
 				</div>
