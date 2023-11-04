@@ -8,6 +8,8 @@
 <%@ page import="java.text.DecimalFormat, java.text.NumberFormat, java.util.Locale" %>
 <%@ page import="java.io.IOException" %>
 <%@ page import="java.util.Base64" %>
+<%@ page import="com.fischl.tools.DatabaseContext" %>
+<%@ page import="com.fischl.models.Tag" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -121,6 +123,10 @@
                     <h1 class="mb-3">Các Tag Phổ Biến</h1>
                     <p>Với hơn 100 tags khác nhau, việc tìm kiếm nhà trọ phù hợp trở nên đơn giản hơn bao giờ hết. Đâu là nhu cầu của bạn?</p>
                 </div>
+                <%
+                    DatabaseContext dbContext = new DatabaseContext();
+                    ArrayList<Tag> tags = dbContext.Tags.toList();
+                %>
                 <div class="row g-4">
                     <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
                         <a class="cat-item d-block bg-light text-center rounded p-3" href="">
@@ -128,7 +134,7 @@
                                 <div class="icon mb-3">
                                     <img class="img-fluid" src="img/icon-apartment.png" alt="Icon">
                                 </div>
-                                <h6>Cho thuê nguyên căn</h6>
+                                <h6><%= tags.get(0).getTagTxt()%></h6>
                                 <span>123 Properties</span>
                             </div>
                         </a>
@@ -139,7 +145,7 @@
                                 <div class="icon mb-3">
                                     <img class="img-fluid" src="img/icon-villa.png" alt="Icon">
                                 </div>
-                                <h6>Ngoại ô</h6>
+                                <h6><%= tags.get(1).getTagTxt()%></h6>
                                 <span>123 Properties</span>
                             </div>
                         </a>
@@ -150,7 +156,7 @@
                                 <div class="icon mb-3">
                                     <img class="img-fluid" src="img/icon-house.png" alt="Icon">
                                 </div>
-                                <h6>Cho gia đình</h6>
+                                <h6><%= tags.get(2).getTagTxt()%></h6>
                                 <span>123 Properties</span>
                             </div>
                         </a>
@@ -161,7 +167,7 @@
                                 <div class="icon mb-3">
                                     <img class="img-fluid" src="img/icon-housing.png" alt="Icon">
                                 </div>
-                                <h6>Cho sinh viên</h6>
+                                <h6><%= tags.get(3).getTagTxt()%></h6>
                                 <span>123 Properties</span>
                             </div>
                         </a>
@@ -172,7 +178,7 @@
                                 <div class="icon mb-3">
                                     <img class="img-fluid" src="img/icon-building.png" alt="Icon">
                                 </div>
-                                <h6>Trọ siêu rộng</h6>
+                                <h6><%= tags.get(4).getTagTxt()%></h6>
                                 <span>123 Properties</span>
                             </div>
                         </a>
@@ -183,7 +189,7 @@
                                 <div class="icon mb-3">
                                     <img class="img-fluid" src="img/icon-neighborhood.png" alt="Icon">
                                 </div>
-                                <h6>Gần gũi thiên nhiên</h6>
+                                <h6><%= tags.get(5).getTagTxt()%></h6>
                                 <span>123 Properties</span>
                             </div>
                         </a>
@@ -194,7 +200,7 @@
                                 <div class="icon mb-3">
                                     <img class="img-fluid" src="img/icon-condominium.png" alt="Icon">
                                 </div>
-                                <h6>Nội thành</h6>
+                                <h6><%= tags.get(6).getTagTxt()%></h6>
                                 <span>123 Properties</span>
                             </div>
                         </a>
@@ -205,7 +211,7 @@
                                 <div class="icon mb-3">
                                     <img class="img-fluid" src="img/icon-luxury.png" alt="Icon">
                                 </div>
-                                <h6>Độc đáo</h6>
+                                <h6><%= tags.get(7).getTagTxt()%></h6>
                                 <span>123 Properties</span>
                             </div>
                         </a>
@@ -320,9 +326,7 @@
         
 
         <!-- Footer Start -->
-        <div class="container-xxl py-5">
-            <jsp:include page="footer.jsp"/>
-        </div>
+        <jsp:include page="footer.jsp"/>
         <!-- Footer End -->
 
 
