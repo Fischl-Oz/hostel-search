@@ -8,7 +8,7 @@ public class LoginValidator {
     public Account checkAccount(String user_name, String password) {
         Account acc = null;
 
-        acc = new AccountDAO().getByUsernamePassword(user_name,MD5.getMd5(password));
+        acc = new AccountDAO().getByUsernamePassword(user_name,password);
 
         return acc;
     }
