@@ -10,12 +10,15 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Date;
 
+import com.fischl.tools.Layout;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+
+import static java.lang.System.out;
 
 /**
  *
@@ -35,19 +38,7 @@ public class UserProfileController extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet UserProfileController</title>");
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet UserProfileController at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -69,7 +60,9 @@ public class UserProfileController extends HttpServlet {
             AccountDAO accDao = new AccountDAO();
             Account acc = accDao.getUserByUsername(username);
             session.setAttribute("currentAcc", acc);
-            request.getRequestDispatcher("/profile.jsp").forward(request, response);
+            Layout layout = new Layout(request);
+            layout.applyTo("userProfile.jsp");
+            request.getRequestDispatcher(layout.getPageURI()).forward(request, response);
         }
     }
 
@@ -84,21 +77,25 @@ public class UserProfileController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        if (request.getParameter("btn-submit") != null && request.getParameter("btn-submit").equals("submit")) {
+        if (request.getParameter("btn-submit") != null && request.getParameter("btn-submit").equals("submit-profile")) {
             Account currentAcc = (Account) request.getSession().getAttribute("currentAcc");
+            String full_name = request.getParameter("full-name");
             String user_name = request.getParameter("user-name");
-            Date date_signup = Date.valueOf(request.getParameter("date-signup"));
             String email = request.getParameter("email");
             String phone = request.getParameter("phone");
+            currentAcc.setFullName(full_name);
             currentAcc.setUserName(user_name);
-            currentAcc.setDateSignup(date_signup);
             currentAcc.setEmail(email);
             currentAcc.setPhone(phone);
             AccountDAO accDao = new AccountDAO();
+            Layout layout = new Layout(request);
+            layout.applyTo("userProfile.jsp");
             if (accDao.update(currentAcc)) {
-                response.sendRedirect("/home");
+                layout.hasPopup(Layout.Theme.success, "Cập nhật thành công!");
+                request.getRequestDispatcher(layout.getPageURI()).forward(request,response);
             } else {
-                request.getRequestDispatcher("/profile.jsp").forward(request,response);
+                layout.hasPopup(Layout.Theme.fail, "Cập nhật thất bại!");
+                request.getRequestDispatcher(layout.getPageURI()).forward(request,response);
             }
         }
     }
