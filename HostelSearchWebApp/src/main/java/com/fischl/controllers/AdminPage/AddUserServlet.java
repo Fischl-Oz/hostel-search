@@ -18,8 +18,7 @@ import jakarta.servlet.http.Cookie;
 
 /**
  *
- * @author Trung Thanh
- * XONG ROI NHA
+ * @author Trung Thanh XONG ROI NHA
  */
 public class AddUserServlet extends HttpServlet {
 
@@ -35,9 +34,9 @@ public class AddUserServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-         Cookie[] cookies = request.getCookies();
-        
-        if (cookies != null && request.getSession().getAttribute("username") == null && request.getSession().getAttribute("login") == null ) {
+        Cookie[] cookies = request.getCookies();
+
+        if (cookies != null && request.getSession().getAttribute("username") == null && request.getSession().getAttribute("login") == null) {
             for (Cookie cookie : cookies) {
                 if (cookie.getName().equals("accountt")) {
                     // Read the value of the "account" cookie
@@ -49,7 +48,7 @@ public class AddUserServlet extends HttpServlet {
                     String username = accountInfo[0];
                     String password = accountInfo[1];
                     System.out.println("username: " + username);
-                    System.out.println("password: "+ password);
+                    System.out.println("password: " + password);
                     AccountDAO udb = new AccountDAO();
                     Account u = udb.getByUsernamePassword(username, MD5.getMd5(password));
                     if (u != null) {
@@ -79,7 +78,7 @@ public class AddUserServlet extends HttpServlet {
                 request.getRequestDispatcher("/index.jsp").forward(request, response);
             }
         }
-        
+
     }
 
     /**
@@ -101,25 +100,39 @@ public class AddUserServlet extends HttpServlet {
         String usertype = request.getParameter("userType");
 
         AccountDAO accDAO = new AccountDAO();
+
         long millis = System.currentTimeMillis();
         java.sql.Date date_signup = new java.sql.Date(millis);
         try {
-            
-        
-     if (request.getSession().getAttribute("username") != null) {
-            AccountDAO udb = new AccountDAO();
-            HttpSession session = request.getSession();
+
+            if (request.getSession().getAttribute("username") != null) {
+                AccountDAO udb = new AccountDAO();
+                HttpSession session = request.getSession();
                 Account u = udb.getUserByUsername((String) request.getSession().getAttribute("username"));
                 System.out.println("u == null ?  " + (u == null));
                 session.setMaxInactiveInterval(Integer.MAX_VALUE);
                 session.setAttribute("username", request.getSession().getAttribute("username"));
                 session.setAttribute("usertype", u.getUserType());
 // Thêm người dùng vào cơ sở dữ liệu (sử dụng accDAO hoặc lớp xử lý tương ứng)
-     }
-             Account accNew = new Account(new IdGenerator().getNewUserId(), date_signup, fullname, username, MD5.getMd5(password), phonenumber, email, usertype);
-            accDAO.add(accNew);
-            // Chuyển hướng người dùng đến trang quản trị
-            response.sendRedirect(request.getContextPath() + "/admin");
+            }
+            boolean isUsernameExists = accDAO.isUsernameExists(username);
+            boolean isEmailExists = accDAO.isEmailExists(email);
+            boolean isPhoneExists = accDAO.isPhonenumberExists(phonenumber);
+
+
+//            boolean iemailExists = accDAO.isEmailExists(email);
+//            boolean isphonenumberExists = accDAO.isPhonenumberExists(phonenumber);
+            if (isUsernameExists || isEmailExists ||isPhoneExists ) {
+                request.setAttribute("registrationStatus", "failure");
+                request.getRequestDispatcher("/addUser.jsp").forward(request, response);
+            } else {
+             
+
+                Account accNew = new Account(new IdGenerator().getNewUserId(), date_signup, fullname, username, MD5.getMd5(password), phonenumber, email, usertype);
+                accDAO.add(accNew);
+                // Chuyển hướng người dùng đến trang quản trị
+                response.sendRedirect(request.getContextPath() + "/admin");
+            }
         } catch (IOException e) {
             System.out.println("Could not send user register");
             request.setAttribute("registrationStatus", "failure");
