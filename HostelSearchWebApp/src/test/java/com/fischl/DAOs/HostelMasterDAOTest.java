@@ -40,7 +40,7 @@ public class HostelMasterDAOTest {
     @Test
     public void HostelMasterDAO_add_UTCID02() {
         System.out.println("add");
-        HostelMaster hostelMaster = new HostelMaster(-1, "hostelAddr01", true);
+        HostelMaster hostelMaster = new HostelMaster(-1, "hostelAddr01", "blank", "blank", "blank", "test");
         HostelMasterDAO instance = new HostelMasterDAO();
         boolean expResult = false;
         boolean result = instance.add(hostelMaster);
@@ -51,7 +51,7 @@ public class HostelMasterDAOTest {
     @Test
     public void HostelMasterDAO_add_UTCID03() {
         System.out.println("add");
-        HostelMaster hostelMaster = new HostelMaster(80000007, "hostelAddr01", true);
+        HostelMaster hostelMaster = new HostelMaster(80000007, "hostelAddr01", "blank", "blank", "blank", "test");
         HostelMasterDAO instance = new HostelMasterDAO();
         boolean expResult = true;
         boolean result = instance.add(hostelMaster);
@@ -60,7 +60,7 @@ public class HostelMasterDAOTest {
     }@Test
     public void HostelMasterDAO_add_UTCID04() {
         System.out.println("add");
-        HostelMaster hostelMaster = new HostelMaster(80000001, "hostelAddr01", true);
+        HostelMaster hostelMaster = new HostelMaster(80000001, "hostelAddr01", "blank", "blank", "blank", "test");
         HostelMasterDAO instance = new HostelMasterDAO();
         boolean expResult = false;
         boolean result = instance.add(hostelMaster);
@@ -138,8 +138,10 @@ public class HostelMasterDAOTest {
         HostelMasterDAO instance = new HostelMasterDAO();
         HostelMaster hm = new HostelMaster();
         hm.setUserId(80000005);
-        hm.setHmAddr("HostelAddress 1");
-        hm.setAuthenticated(true);
+        hm.setHostelMasterAddress("HostelAddress 1");
+        hm.setCccdFront("blank");
+        hm.setCccdBack("blank");
+        hm.setHbc("blank");
         boolean expResult = false;
         boolean result = instance.update(hm);
         assertEquals(expResult, result);
@@ -154,8 +156,10 @@ public class HostelMasterDAOTest {
         HostelMasterDAO instance = new HostelMasterDAO();
         HostelMaster hm = new HostelMaster();
         hm.setUserId(80000001);
-        hm.setHmAddr("HostelAddress 1");
-        hm.setAuthenticated(true);
+        hm.setHostelMasterAddress("HostelAddress 1");
+        hm.setCccdFront("blank");
+        hm.setCccdBack("blank");
+        hm.setHbc("blank");
         boolean expResult = true;
         boolean result = instance.update(hm);
         assertEquals(expResult, result);
@@ -216,7 +220,7 @@ public class HostelMasterDAOTest {
         String hmAddress = "456 Main St";
         HostelMasterDAO instance = new HostelMasterDAO();
         boolean expResult = true;
-        String result = instance.getById(id).getHmAddr();
+        String result = instance.getById(id).getHostelMasterAddress();
         assertEquals(expResult, result.equals(hmAddress));
 
     }
@@ -229,7 +233,7 @@ public class HostelMasterDAOTest {
         Integer id = -1;
         HostelMasterDAO instance = new HostelMasterDAO();
         String expResult = null;
-        String result = instance.getById(id).getHmAddr();
+        String result = instance.getById(id).getHostelMasterAddress();
         assertEquals(expResult, result);
 
     }
