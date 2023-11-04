@@ -14,10 +14,33 @@ function searchPosts() {
         }
     }
 }
-
-function searchHostel() {
+function searchUsers() {
     var input = removeDiacritics(document.getElementById("userSearchQuery").value.toLowerCase());
     var tableBody = document.getElementById("usersTableBody");
+    var rows = tableBody.getElementsByTagName("tr");
+
+    for (var i = 0; i < rows.length; i++) {
+        var id = removeDiacritics(rows[i].getElementsByTagName("td")[0].innerText.toLowerCase()); // Lấy giá trị ID từ cột đầu tiên của bảng
+        var fullName = removeDiacritics(rows[i].getElementsByTagName("td")[2].innerText.toLowerCase());
+
+
+        if (fullName.includes(input) || id.includes(input)) {
+            rows[i].style.display = "";
+        } else {
+            rows[i].style.display = "none";
+        }
+    }
+}
+// Lấy tham chiếu đến ô tìm kiếm
+var searchInput = document.getElementById("userSearchQuery");
+
+// Gắn sự kiện keyup vào ô tìm kiếm
+searchInput.addEventListener("keyup", function () {
+    searchUsers();
+});
+function searchHostel() {
+    var input = removeDiacritics(document.getElementById("hostelSearchQuery").value.toLowerCase());
+    var tableBody = document.getElementById("hostelTableBody");
     var rows = tableBody.getElementsByTagName("tr");
 
     for (var i = 0; i < rows.length; i++) {
@@ -61,14 +84,15 @@ function updateUser(userId) {
     window.location.href = "updateUser?id=" + userId;
 }
 
-function deleteUser(userId) {
-    // Perform the necessary logic to update the post
-    // For example, you can redirect to an update page with the post ID
-    if(confirm("Bạn có chắc sẽ xóa người dùng này không? ") + userId){
-        window.location.href = "deleteUser?id=" + userId;
-    }
-    
-}
+//function deleteUser(userId) {
+//    // Perform the necessary logic to update the post
+//    // For example, you can redirect to an update page with the post ID
+//    if(confirm("Bạn có chắc sẽ xóa người dùng này không? ") + userId){
+//        window.location.href = "deleteUser?id=" + userId;
+//    }
+//    
+//}
+
 //User ADMIN PAGE END
 /////////////////////////////////////////
 //HOSTEL ADMIN PAGE
@@ -87,16 +111,16 @@ function updateHostel(hostelId) {
 function deleteHostel(hostelId) {
     // Perform the necessary logic to update the post
     // For example, you can redirect to an update page with the post ID
-    if(confirm("Bạn có chắc sẽ xóa người dùng này không? ") + hostelId){
+    if (confirm("Bạn có chắc sẽ xóa người dùng này không? ") + hostelId) {
         window.location.href = "deleteUser?id=" + hostelId;
     }
-    
+
 }
 ///HOSTEL ADMIN PAGE END
 function setDefaultUserType() {
     var userTypeSelect = document.getElementById("userType");
     var selectedValue = userTypeSelect.value;
-    
+
     if (selectedValue === "") {
         // Nếu không có giá trị được chọn, thiết lập giá trị mặc định là "admin"
         userTypeSelect.value = "admin";
