@@ -11,7 +11,7 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Template Stylesheet -->
-    <link href="css/style.css" rel="stylesheet">
+    <link href="css/template_style.css" rel="stylesheet">
     
     <div class="container-fluid bg-primary text-white-50 footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
             <div class="container py-5">
