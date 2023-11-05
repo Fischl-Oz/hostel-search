@@ -39,7 +39,7 @@
 <!-- Navbar Start -->
 <div class="container-fluid nav-bar bg-transparent">
     <nav class="navbar navbar-expand-lg bg-white navbar-light py-0 px-4">
-        <!-- logo icon nbar -->
+        <!-- logo icon navbar -->
         <a href="/" class="navbar-brand d-flex align-items-center text-center">
             <div class="icon p-2 me-2">
                 <img class="img-fluid" src="./assets/images/logohss3.png" alt="Icon" style="width: 150px; height: 60px;">
@@ -69,6 +69,12 @@
                 %>
                 <a href="/hm-register" class="nav-item nav-link">đăng ký chủ trọ</a>
                 <% } %>
+                <%
+                    if (acc != null)
+                        if (user.isHostelMaster() && user.isHostelMasterApproved()) {
+                %>
+                    <a href="/hm" class="nav-item nav-link">trang chủ trọ</a>
+                <% } %>
                 <a href="about.html" class="nav-item nav-link">hướng dẫn</a>
                 <%
                     if (acc == null) {
@@ -92,9 +98,7 @@
                 <a href="" class="btn btn-primary px-3 d-none d-lg-flex nav-link dropdown-toggle " data-bs-toggle="dropdown"><%= acc.getUserName()%></a>
                 <div class="dropdown-menu rounded-0 m-0">
                     <a href="/profile" class="dropdown-item">Profile</a>
-                    <a href="about.html" class="dropdown-item">Post Manage</a>
                     <a href="/logout" class="dropdown-item">Logout</a>
-
                 </div>
             </div>
             <%
