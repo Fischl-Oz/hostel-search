@@ -6,6 +6,7 @@ package com.fischl.DAOs;
 
 import com.fischl.database.DBConnection;
 import com.fischl.models.PostTag;
+import org.postgresql.util.PSQLException;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -26,8 +27,8 @@ public class PostTagDAO {
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, ptag.getTagId());
             ps.setInt(2, ptag.getPostId());
-            ps.executeUpdate();
-            return true;
+            int result = ps.executeUpdate();
+            return result > 0;
         } catch (SQLException e) {
             e.printStackTrace();
             return false;
@@ -89,8 +90,8 @@ public class PostTagDAO {
     }
 
     public ArrayList<String> getAllTagIdByPostId(int post_id) {
-        String sql = "SELECT tag_id FROM post_tag WHERE post_id=?";
-        ArrayList<String> tagIds = new ArrayList<String>();
+        String sql = "SELECT tag_id FROM posttag WHERE post_id=?";
+        ArrayList<String> tagIds = new ArrayList<>();
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setInt(1, post_id);
@@ -105,8 +106,8 @@ public class PostTagDAO {
     }
 
     public ArrayList<Integer> getAllPostIdByTagId(String tag_id) {
-        String sql = "SELECT post_id FROM post_tag WHERE tag_id=?";
-        ArrayList<Integer> postIds = new ArrayList<Integer>();
+        String sql = "SELECT post_id FROM posttag WHERE tag_id=?";
+        ArrayList<Integer> postIds = new ArrayList<>();
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, tag_id);
@@ -118,5 +119,25 @@ public class PostTagDAO {
             e.printStackTrace();
         }
         return postIds;
+    }
+
+    public ArrayList<PostTag> getAll() {
+        String sql = "SELECT * FROM posttag";
+        ArrayList<PostTag> postTags = new ArrayList<PostTag>();
+        try {
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.getResultSet();
+            while (rs.next()) {
+                PostTag postTag = new PostTag();
+                postTag.setTagId(rs.getString("tag_id"));
+                postTag.setPostId(rs.getInt("post_id"));
+                postTags.add(postTag);
+            }
+        } catch (PSQLException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return postTags;
     }
 }

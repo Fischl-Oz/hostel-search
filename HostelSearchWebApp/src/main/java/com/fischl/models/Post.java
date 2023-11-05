@@ -1,6 +1,7 @@
 package com.fischl.models;
 
 import java.sql.Timestamp;
+import java.util.Objects;
 
 public class Post implements Comparable<Post> {
     private int post_id;
@@ -83,5 +84,18 @@ public class Post implements Comparable<Post> {
     @Override
     public int compareTo(Post o) {
         return (this.post_id - o.post_id);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Post other = (Post) o;
+        return post_id == other.getPostId();
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(post_id);
     }
 }
