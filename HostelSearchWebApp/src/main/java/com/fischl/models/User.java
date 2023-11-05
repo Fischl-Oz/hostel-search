@@ -45,6 +45,14 @@ public class User implements IAccount, IHostelMaster {
         }
     }
 
+    public void reload() {
+        this.Account = new AccountDAO().getById(this.Account.getUserId());
+        if (Account.getUserType().equals("hostelmaster")) {
+            this.HostelMaster = new HostelMasterDAO().getById(this.Account.getUserId());
+            this.Hostels = new DatabaseContext().Hostels.Where(x -> x.getUserId() == this.Account.getUserId());
+        }
+    }
+
     public Account getAccount() {
         return Account;
     }

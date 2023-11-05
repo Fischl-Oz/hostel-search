@@ -4,6 +4,7 @@
  */
 package com.fischl.controllers.Form;
 
+import com.fischl.DAOs.AccountDAO;
 import com.fischl.models.Account;
 import com.fischl.tools.LoginValidator;
 import java.io.IOException;
@@ -82,6 +83,9 @@ public class LoginServlet extends HttpServlet {
             session.setAttribute("usertype", login_acc.getUserType());
             System.out.println("Usertype: " + login_acc.getUserType());
             session.setAttribute("login", "true");
+            //
+            session.setAttribute("currentAcc", new AccountDAO().getUserByUsername(username));
+            //
             //request.getRequestDispatcher("/home").forward(request, response);
             response.sendRedirect(request.getContextPath() + "/index.jsp");
 
