@@ -15,6 +15,12 @@ public class HostelMasterController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String path = request.getRequestURI();
         if (path.startsWith("/hm")) {
+            String postId = request.getParameter("modify-post");
+            if (postId != null) {
+                request.setAttribute("post-to-modify", new PostDAO().getById(Integer.parseInt(postId)));
+                request.getRequestDispatcher("/modify-post").forward(request, response);
+                return;
+            }
             Layout layout = new Layout(request);
             layout.applyTo("HostelMasterMainPage.jsp");
 
@@ -22,13 +28,14 @@ public class HostelMasterController extends HttpServlet {
             String activeTab = request.getParameter("active-tab");
             if (activeTab != null) {
                 request.getSession().setAttribute("active-tab", activeTab);
+            } else {
+                request.getSession().setAttribute("active-tab", "");
             }
 
             // Handle delete post
             String del = request.getParameter("del");
             if (del != null) {
                 new PostDAO().delete(Integer.parseInt(del));
-                request.getSession().setAttribute("active-tab", "post");
             }
 
             request.getRequestDispatcher(layout.getPageURI()).forward(request, response);

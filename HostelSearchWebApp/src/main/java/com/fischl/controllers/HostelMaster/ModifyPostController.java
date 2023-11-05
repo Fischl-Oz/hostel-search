@@ -1,11 +1,10 @@
 package com.fischl.controllers.HostelMaster;
 
 import com.fischl.DAOs.PostDAO;
-import com.fischl.DAOs.PostTagDAO;
 import com.fischl.models.Post;
-import com.fischl.models.PostTag;
 import com.fischl.tools.FileUploader;
 import com.fischl.tools.IdGenerator;
+import com.fischl.tools.Layout;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
@@ -13,17 +12,28 @@ import jakarta.servlet.annotation.*;
 import java.io.IOException;
 import java.sql.Date;
 import java.sql.Timestamp;
-import java.util.ArrayList;
 import java.util.Arrays;
 
 @MultipartConfig(fileSizeThreshold = 1024 * 1024 * 2, // 2MB
         maxFileSize = 1024 * 1024 * 10, // 10MB
         maxRequestSize = 1024 * 1024 * 50)
-@WebServlet(name = "CreatePostController", value = "/create-post")
-public class CreatePostController extends HttpServlet {
+@WebServlet(name = "ModifyPostController", value = "/modify-post")
+public class ModifyPostController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String path = request.getRequestURI();
+        if (path.startsWith("/modify-post")) {
+            Layout layout = new Layout(request);
+            layout.applyTo("modifyPostPage.jsp");
 
+            // Get post to modify
+            Post post = (Post) request.getAttribute("post-to-modify");
+            if (post == null) {
+                response.sendRedirect("/hm?active-tab=post");
+                return;
+            }
+            request.getRequestDispatcher(layout.getPageURI()).forward(request, response);
+        }
     }
 
     @Override
@@ -50,8 +60,8 @@ public class CreatePostController extends HttpServlet {
             System.out.println(fileUploader.getFileName(postImagePart));
 
             // Create post object
-            Post post = new Post();
-            post.setPostId(new IdGenerator().getNewPostId());
+            String postId = request.getParameter("post-to-modify");
+            Post post = new PostDAO().getById(Integer.parseInt(postId));
             Date date = new Date(System.currentTimeMillis());
             post.setPostDate(new Timestamp(date.getTime()));
             post.setPostTitle(title);
@@ -59,24 +69,9 @@ public class CreatePostController extends HttpServlet {
             post.setPostStatus("pending");
             post.setHostelId(hostel_id);
 
-            // Create posttag objects
-            ArrayList<PostTag> postTags = new ArrayList<>();
-            if (tag_ids != null) {
-                for (String tag_id : tag_ids) {
-                    PostTag postTag = new PostTag();
-                    postTag.setPostId(post.getPostId());
-                    postTag.setTagId(tag_id);
-                    postTags.add(postTag);
-                }
-            }
-
-            // Add to database
+            // Update to database
             try {
-                new PostDAO().add(post);
-                PostTagDAO postTagDAO = new PostTagDAO();
-                for (PostTag postTag : postTags) {
-                    postTagDAO.add(postTag);
-                }
+                new PostDAO().update(post);
                 response.sendRedirect("/hm?active-tab=post");
             } catch (Exception e) {
                 e.printStackTrace();

@@ -49,7 +49,7 @@
 <section id="hostel-master-main">
 
 	<nav class="navbar navbar-expand-lg navbar-light bg-dark">
-		<a class="navbar-brand mx-auto" id="main-title" href="#">Dashboard Chủ Trọ</a>
+		<a class="navbar-brand mx-auto" id="main-title" href="">Dashboard Chủ Trọ</a>
 	</nav>
 
 	<!-- Tabs -->
@@ -75,7 +75,7 @@
 		<%
 			ArrayList<Hostel> hostels = db.Hostels.Where(h -> h.getUserId() == acc.getUserId());
 		%>
-		<div class="tab-pane fade show active" id="manageHostels" role="tabpanel" aria-labelledby="manageHostels-tab">
+		<div class="tab-pane fade <%= (!activeTab.equals("")? "" : "show active") %>" id="manageHostels" role="tabpanel" aria-labelledby="manageHostels-tab">
 			<div class="row">
 				<div class="col-md-8"></div>
 				<div class="col-md-4" style="text-align: right;"><a href="#" class="btn btn-success" style="padding: 10px; margin-right: 30px; margin-top: 20px; margin-bottom: 10px;"><i class="fas fa-plus"></i> Thêm Trọ Mới</a></div>
@@ -127,7 +127,7 @@
 		<%
 		    ArrayList<Post> posts = db.Posts.Where(p -> db.Hostels.FirstOrDefault(h -> h.getHostelId() == p.getHostelId()).getUserId() == acc.getUserId());
 		%>
-		<div class="tab-pane fade" id="managePosts" role="tabpanel" aria-labelledby="managePosts-tab">
+		<div class="tab-pane fade <%= (activeTab.equals("post"))? "show active" : "" %>" id="managePosts" role="tabpanel" aria-labelledby="managePosts-tab">
 			<div class="row">
 				<div class="col-md-8"></div>
 				<!-- Button to trigger the modal -->
@@ -158,10 +158,10 @@
 							<div class="row card-btns">
 								<!-- CRUD buttons -->
 								<div class="col-md-6">
-									<a href="#" class="btn btn-primary">Sửa</a>
+									<a href="/hm?modify-post=<%= post.getPostId() %>" class="btn btn-primary">Sửa</a>
 								</div>
 								<div class="col-md-6">
-									<a href="/hm?del=<%= post.getPostId() %>" class="btn btn-danger del-post-btn">Xóa</a>
+									<a href="/hm?del=<%= post.getPostId() %>&active-tab=post" class="btn btn-danger del-post-btn">Xóa</a>
 								</div>
 							</div>
 						</div>
@@ -188,7 +188,7 @@
 		</script>
 
 		<!-- Quản lý đăng ký -->
-		<div class="tab-pane fade" id="manageRegistrations" role="tabpanel" aria-labelledby="manageRegistrations-tab">
+		<div class="tab-pane fade <%= (activeTab.equals("reg"))? "show active" : "" %>" id="manageRegistrations" role="tabpanel" aria-labelledby="manageRegistrations-tab">
 			<h2>Chả có j ở đây do chưa làm xong :D</h2>
 			<!-- You can add content for managing registrations here (if needed) -->
 		</div>

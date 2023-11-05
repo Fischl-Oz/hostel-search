@@ -2,7 +2,7 @@ package com.fischl.models;
 
 import java.sql.Timestamp;
 
-public class Post {
+public class Post implements Comparable<Post> {
     private int post_id;
     private String post_title;
     private Timestamp post_date;
@@ -78,5 +78,10 @@ public class Post {
 
     public void setDistrictId(String districtId) {
         this.district_id = districtId;
+    }
+
+    @Override
+    public int compareTo(Post o) {
+        return (this.post_id - o.post_id);
     }
 }
