@@ -81,7 +81,7 @@
 						}
 					%>
 						<div class="col-12 text-center wow fadeInUp" data-wow-delay="0.1s">
-							<a class="btn btn-primary py-3 px-5" href="/posts">Xem thêm nhiều bài đăng khác</a>
+							<a class="btn btn-primary py-3 px-5" href="${pageContext.request.contextPath}/posts">Xem thêm nhiều bài đăng khác</a>
 						</div>
 					</div>
 				</div>

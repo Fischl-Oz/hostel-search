@@ -1,11 +1,9 @@
-<%@ page import="com.fischl.models.Post" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="com.fischl.DAOs.CityDAO" %>
-<%@ page import="com.fischl.models.City" %>
-<%@ page import="com.fischl.models.Tag" %>
 <%@ page import="java.util.Arrays" %>
 <%@ page import="com.fischl.DAOs.TagDAO" %>
+<%@ page import="com.fischl.models.*" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <style>
 	#filter {
@@ -52,7 +50,7 @@
 			<div id="filter">
 				<h2>Bộ lọc</h2>
 
-				<form action="/posts" method="post">
+				<form action="${pageContext.request.contextPath}/posts" method="post">
 					<div class="row">
 						<div class="form-group">
 							<label for="search">Tìm kiếm</label>
@@ -99,7 +97,7 @@
 				  <h3>Không tìm thấy kết quả nào!</h3>
 				<% } %>
 				<%
-					for (Post post : posts) {
+					for (Post post : posts ) {
 				%>
 				<div class="col-md-4" id="post">
 					<div class="card" id="post-card">
@@ -107,7 +105,12 @@
 						<div class="card-body">
 							<h5 class="card-title"><%=post.getPostTitle()%></h5>
 							<p class="card-text"><%=post.getPostContent()%></p>
-							<a href="about.html" class="btn btn-primary">Đọc thêm</a>
+							<form method="get" action="${pageContext.request.contextPath}/postsInfo">
+								<input type="hidden" name="postid" value="<%=post.getPostId()%>">
+								<input type="hidden" name="hostelid" value="<%=post.getHostelId()%>">
+								<input type="submit" class="btn btn-primary" value="Đọc thêm"/>
+							</form>
+
 						</div>
 					</div>
 				</div>
