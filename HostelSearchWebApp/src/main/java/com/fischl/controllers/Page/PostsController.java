@@ -5,6 +5,7 @@ import com.fischl.DAOs.TagDAO;
 import com.fischl.models.Post;
 import com.fischl.models.Tag;
 import com.fischl.tools.Layout;
+import com.fischl.tools.Range;
 import com.fischl.tools.SearchEngine;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
@@ -54,6 +55,46 @@ public class PostsController extends HttpServlet {
             request.setAttribute("status", "search");
             request.setAttribute("keywords", keywords);
             request.setAttribute("tags", tags);
+            Layout layout = new Layout(request);
+            layout.applyTo("postsGrid.jsp");
+            request.getRequestDispatcher(layout.getPageURI()).forward(request,response);
+        } else if (request.getParameter("search-bar-btn") != null && request.getParameter("search-bar-btn").equals("search")) {
+            // Get keywords
+            String keywords = request.getParameter("search-bar-keywords");
+
+            // Get prices
+            String prices = request.getParameter("search-bar-prices");
+            int min = 0;
+            int max = 0;
+            switch (Integer.parseInt(prices)) {
+                case 1:
+                    min = 0;
+                    max = 800000;
+                    break;
+                case 2:
+                    min = 800000;
+                    max = 1000000;
+                    break;
+                case 3:
+                    min = 1000000;
+                    max = 1500000;
+                    break;
+            }
+            Range range = new Range(min, max);
+            SearchEngine searchEngine = new SearchEngine();
+            searchEngine.setKeyword(keywords);
+            searchEngine.setPriceRange(range);
+            searchEngine.search();
+            ArrayList<Post> results = searchEngine.getResults();
+
+            // Set attributes
+            request.setAttribute("post-list", results);
+            TagDAO tagDAO = new TagDAO();
+            List<Tag> tagList = tagDAO.getAll();
+            request.setAttribute("tag-list", tagList);
+            request.setAttribute("status", "search");
+            request.setAttribute("keywords", keywords);
+            request.setAttribute("prices", prices);
             Layout layout = new Layout(request);
             layout.applyTo("postsGrid.jsp");
             request.getRequestDispatcher(layout.getPageURI()).forward(request,response);

@@ -1,0 +1,161 @@
+DT-0002	Hoàn Kiếm	CT-0001
+DT-0003	Hai Bà Trưng	CT-0001
+DT-0004	Đống Đa	CT-0001
+DT-0005	Tây Hồ	CT-0001
+DT-0006	Cầu Giấy	CT-0001
+DT-0007	Thanh Xuân	CT-0001
+DT-0008	Nam Từ Liêm	CT-0001
+DT-0009	Bắc Từ Liêm	CT-0001
+DT-0010	Hà Đông	CT-0001
+DT-0011	Quận 1	CT-0002
+DT-0012	Quận 2	CT-0002
+DT-0013	Quận 3	CT-0002
+DT-0014	Quận 4	CT-0002
+DT-0015	Quận 5	CT-0002
+DT-0016	Quận 6	CT-0002
+DT-0017	Quận 7	CT-0002
+DT-0018	Quận 8	CT-0002
+DT-0019	Quận 9	CT-0002
+DT-0020	Quận 10	CT-0002
+DT-0021	Quận 11	CT-0002
+DT-0022	Quận 12	CT-0002
+DT-0023	Quận Bình Thạnh	CT-0002
+DT-0024	Quận Gò Vấp	CT-0002
+DT-0025	Quận Phú Nhuận	CT-0002
+DT-0026	Quận Tân Bình	CT-0002
+DT-0027	Quận Tân Phú	CT-0002
+DT-0028	Thành phố Thủ Đức	CT-0002
+DT-0029	Huyện Hóc Môn	CT-0002
+DT-0030	Huyện Củ Chi	CT-0002
+DT-0031	Huyện Bình Chánh	CT-0002
+DT-0032	Huyện Nhà Bè	CT-0002
+DT-0033	Huyện Cần Giờ	CT-0002
+DT-0034	Quận Hải Châu	CT-0003
+DT-0035	Quận Cẩm Lệ	CT-0003
+DT-0036	Quận Thanh Khê	CT-0003
+DT-0037	Quận Liên Chiểu	CT-0003
+DT-0038	Quận Ngũ Hành Sơn	CT-0003
+DT-0039	Quận Sơn Trà	CT-0003
+DT-0040	Huyện Hòa Vang	CT-0003
+DT-0041	Huyện Hoàng Sa	CT-0003
+DT-0042	Quận Hồng Bàng	CT-0004
+DT-0043	Quận Lê Chân	CT-0004
+DT-0044	Quận Ngô Quyền	CT-0004
+DT-0045	Quận Hải An	CT-0004
+DT-0046	Quận Dương Kinh	CT-0004
+DT-0047	Quận Đồ Sơn	CT-0004
+DT-0048	Huyện An Dương	CT-0004
+DT-0049	Huyện An Lão	CT-0004
+DT-0050	Huyện Kiến Thụy	CT-0004
+DT-0051	Huyện Thủy Nguyên	CT-0004
+DT-0052	Huyện Tiên Lãng	CT-0004
+DT-0053	Huyện Vĩnh Bảo	CT-0004
+DT-0054	Huyện Cát Hải	CT-0004
+DT-0055	Huyện Bạch Long Vĩ	CT-0004
+DT-0056	Quận Ninh Kiều	CT-0005
+DT-0057	Quận Cái Răng	CT-0005
+DT-0058	Quận Bình Thủy	CT-0005
+DT-0059	Quận Ô Môn	CT-0005
+DT-0060	Quận Thốt Nốt	CT-0005
+DT-0061	Huyện Phong Điền	CT-0005
+DT-0062	Huyện Cờ Đỏ	CT-0005
+DT-0063	Huyện Vĩnh Thạnh	CT-0005
+DT-0064	Huyện Thới Lai	CT-0005
+DT-0065	Thành phố Biên Hòa	CT-0006
+DT-0066	Huyện Nhơn Trạch	CT-0006
+DT-0067	Huyện Long Thành	CT-0006
+DT-0068	Huyện Vĩnh Cửu	CT-0006
+DT-0069	Huyện Trảng Bom	CT-0006
+DT-0070	Huyện Xuân Lộc	CT-0006
+DT-0071	Thành phố Huế	CT-0007
+DT-0072	Huyện Phong Điền	CT-0007
+DT-0073	Huyện Quảng Điền	CT-0007
+DT-0074	Huyện Phú Vang	CT-0007
+DT-0075	Huyện Hương Trà	CT-0007
+DT-0076	Huyện Hương Thủy	CT-0007
+DT-0077	Huyện Nam Đông	CT-0007
+DT-0078	Huyện A Lưới	CT-0007
+DT-0079	Thành phố Nha Trang	CT-0008
+DT-0080	Huyện Cam Lâm	CT-0008
+DT-0081	Huyện Diên Khánh	CT-0008
+DT-0082	Huyện Khánh Vĩnh	CT-0008
+DT-0083	Huyện Ninh Hòa	CT-0008
+DT-0084	Thành phố Buôn Ma Thuột	CT-0009
+DT-0085	Huyện Cư M''gar	CT-0009
+DT-0086	Huyện Krông Pắk	CT-0009
+DT-0087	Huyện Krông Năng	CT-0009
+DT-0088	Huyện Krông Bông	CT-0009
+DT-0089	Huyện Ea H''leo	CT-0009
+DT-0090	Huyện Ea Kar	CT-0009
+DT-0091	Huyện M''Đrăk	CT-0009
+DT-0092	Huyện Krông Búk	CT-0009
+DT-0093	Huyện Đắk Mil	CT-0009
+DT-0094	Huyện Cư Kuin	CT-0009
+DT-0095	Huyện Lắk	CT-0009
+DT-0096	Huyện Ea Súp	CT-0009
+DT-0097	Thành phố Vũng Tàu	CT-0010
+DT-0098	Huyện Long Điền	CT-0010
+DT-0099	Huyện Đất Đỏ	CT-0010
+DT-0100	Huyện Châu Đức	CT-0010
+DT-0101	Huyện Xuyên Mộc	CT-0010
+DT-0102	Thành phố Hạ Long	CT-0011
+DT-0103	Huyện Hoành Bồ	CT-0011
+DT-0104	Huyện Yên Hưng	CT-0011
+DT-0105	Huyện Quảng Yên	CT-0011
+DT-0106	Thành phố Phan Thiết	CT-0012
+DT-0107	Huyện Hàm Thuận Bắc	CT-0012
+DT-0108	Huyện Hàm Thuận Nam	CT-0012
+DT-0109	Huyện Tuy Phong	CT-0012
+DT-0110	Huyện Bắc Bình	CT-0012
+DT-0111	Thành phố Long Xuyên	CT-0013
+DT-0112	Huyện Châu Thành	CT-0013
+DT-0113	Huyện An Phú	CT-0013
+DT-0114	Huyện Thoại Sơn	CT-0013
+DT-0115	Huyện Châu Phú	CT-0013
+DT-0116	Huyện Phú Tân	CT-0013
+DT-0117	Huyện Chợ Mới	CT-0013
+DT-0118	Thành phố Cam Ranh	CT-0014
+DT-0119	Huyện Cam Lâm	CT-0014
+DT-0120	Huyện Khánh Vĩnh	CT-0014
+DT-0121	Huyện Ninh Hòa	CT-0014
+DT-0122	Thành phố Quy Nhơn	CT-0015
+DT-0123	Huyện An Nhơn	CT-0015
+DT-0124	Huyện Tuy Phước	CT-0015
+DT-0125	Huyện Phù Cát	CT-0015
+DT-0126	Huyện Phù Mỹ	CT-0015
+DT-0127	Huyện Tây Sơn	CT-0015
+DT-0128	Huyện Hoài Nhơn	CT-0015
+DT-0129	Huyện Vĩnh Thạnh	CT-0015
+DT-0130	Huyện Vân Canh	CT-0015
+DT-0131	Thành phố Mỹ Tho	CT-0016
+DT-0132	Huyện Chợ Gạo	CT-0016
+DT-0133	Huyện Châu Thành	CT-0016
+DT-0134	Huyện Cai Lậy	CT-0016
+DT-0135	Huyện Gò Công Đông	CT-0016
+DT-0136	Huyện Gò Công Tây	CT-0016
+DT-0137	Thành phố Rạch Giá	CT-0017
+DT-0138	Huyện Châu Thành	CT-0017
+DT-0139	Huyện Giồng Riềng	CT-0017
+DT-0140	Huyện Kiên Hải	CT-0017
+DT-0141	Huyện Kiên Lương	CT-0017
+DT-0142	Huyện Phú Quốc	CT-0017
+DT-0143	Thành phố Sa Đéc	CT-0018
+DT-0144	Huyện Cao Lãnh	CT-0018
+DT-0145	Huyện Lấp Vò	CT-0018
+DT-0146	Huyện Tháp Mười	CT-0018
+DT-0147	Huyện Lai Vung	CT-0018
+DT-0148	Thành phố Tân An	CT-0019
+DT-0149	Huyện Bến Lức	CT-0019
+DT-0150	Huyện Cần Đước	CT-0019
+DT-0151	Huyện Cần Giuộc	CT-0019
+DT-0152	Huyện Thủ Thừa	CT-0019
+DT-0153	Huyện Châu Thành	CT-0019
+DT-0154	Huyện Tân Trụ	CT-0019
+DT-0155	Thành phố Tam Kỳ	CT-0020
+DT-0156	Huyện Núi Thành	CT-0020
+DT-0157	Huyện Phú Ninh	CT-0020
+DT-0158	Huyện Thăng Bình	CT-0020
+DT-0159	Huyện Tiên Phước	CT-0020
+DT-0160	Huyện Điện Bàn	CT-0020
+DT-0001		CT-0001
+\.

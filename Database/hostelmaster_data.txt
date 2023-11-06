@@ -1,0 +1,4 @@
+80000000	123 Main St	blank	blank	blank	pending
+80000001	456 Main St	blank	blank	blank	accepted
+80000022	asd	D:/GITHUB/hostel-search/HostelSearchWebApp/src/main/webapp/uploadImages\\testaccount_front_id_card_image.jpg	D:/GITHUB/hostel-search/HostelSearchWebApp/src/main/webapp/uploadImages\\testaccount_back_id_card_image.jpg	D:/GITHUB/hostel-search/HostelSearchWebApp/src/main/webapp/uploadImages\\testaccount_business_certificate_image.jpg	pending
+\.

@@ -6,15 +6,11 @@ package com.fischl.controllers.AdminPage;
 
 import com.fischl.DAOs.AccountDAO;
 import com.fischl.models.Account;
-import com.fischl.tools.IdGenerator;
 import com.fischl.tools.MD5;
-import java.io.IOException;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.http.Cookie;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
+import jakarta.servlet.http.*;
+
+import java.io.IOException;
 
 /**
  *
