@@ -13,7 +13,7 @@
 							<input type="text" class="form-control border-0 py-3" name="search-bar-keywords" placeholder="Tìm nhanh">
 						</div>
 						<div class="col-md-4">
-							<select class="form-select border-0 py-3" name="search-bar-cities">
+							<select class="form-select border-0 py-3" name="search-bar-city">
 								<option value="-1" selected>Chọn Thành phố</option>
 								<%
 									CityDAO cityDAO = new CityDAO();

@@ -12,6 +12,7 @@ package com.fischl.DAOs;
 import com.fischl.DAOs.interfaces.IDao;
 import com.fischl.database.DBConnection;
 import com.fischl.models.Post;
+import org.postgresql.util.PSQLException;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -117,5 +118,30 @@ public class PostDAO implements IDao<Post,Integer> {
             e.printStackTrace();
         }
         return p;
+    }
+
+    public ArrayList<Post> getPostByCityId(String cityId) {
+        ArrayList<Post> posts = new ArrayList<Post>();
+        String sql = "SELECT p.post_id FROM post p\n" +
+                "JOIN city_post cp ON p.post_id = cp.post_id\n" +
+                "JOIN city c ON cp.city_id = c.city_id\n" +
+                "where c.city_id = ?";
+        try {
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, cityId);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Post p = new Post();
+                int postId = rs.getInt("post_id");
+                Post post = this.getById(postId);
+                if (post != null)
+                    posts.add(post);
+            }
+        } catch (PSQLException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return posts;
     }
 }

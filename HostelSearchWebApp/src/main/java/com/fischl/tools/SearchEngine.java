@@ -1,8 +1,6 @@
 package com.fischl.tools;
 
-import com.fischl.DAOs.HostelDAO;
-import com.fischl.DAOs.PostDAO;
-import com.fischl.DAOs.PostTagDAO;
+import com.fischl.DAOs.*;
 import com.fischl.models.City;
 import com.fischl.models.Hostel;
 import com.fischl.models.Post;
@@ -14,10 +12,14 @@ public class SearchEngine {
     String keyword;
     String[] tags;
     Range price_range;
-    City city;
+    String cityId;
 
     public SearchEngine() {
         keyword = "";
+        results = new ArrayList<>();
+        tags = null;
+        price_range = null;
+        cityId = null;
     }
 
     public void setKeyword(String keyword) {
@@ -44,18 +46,20 @@ public class SearchEngine {
         this.price_range = price_range;
     }
 
-    public void setCity(City city) {
-        if (city == null) return;
-        this.city = city;
+    public void setCityId(String cityId) {
+        if (cityId == null) return;
+        this.cityId = cityId;
     }
 
     public void search() {
         // Get st<Post> posts = new DatabaseContext().Posts.toList();
         ArrayList<Post> posts = new PostDAO().getAll();
+        System.out.println("SearchEngine: " + posts.size());
 
         SearchByKeywords(posts);
         SearchByTags();
         SearchByPriceRange(posts);
+        SearchByCity();
     }
 
     public ArrayList<Post> getResults() {
@@ -63,10 +67,10 @@ public class SearchEngine {
     }
 
     private void SearchByKeywords(ArrayList<Post> posts) {
-        if (!keyword.isEmpty()) {
-            posts = new DatabaseContext().Posts.Where(p -> p.getPostTitle().toLowerCase().contains(keyword)
-                                                        || p.getPostContent().toLowerCase().contains(keyword));
-        }
+        if (keyword.isEmpty()) return;
+
+        posts = new DatabaseContext().Posts.Where(p -> p.getPostTitle().toLowerCase().contains(keyword)
+                || p.getPostContent().toLowerCase().contains(keyword));
 //        System.out.println(keyword);
         if (!posts.isEmpty()) {
             System.out.println(posts.size());
@@ -106,34 +110,30 @@ public class SearchEngine {
             // Get attached hostel
             int hostel_id = post.getHostelId();
             Hostel hostel = hostelDAO.getById(hostel_id);
-
+//            System.out.println("hostel.getPrice() = " + hostel.getPrice());
             // Check if price is in range, if it does, add to result
             if (price_range.isInRange(hostel.getPrice())) {
                 // Check if result already contains this post
                 if (results.contains(post)) continue;
                 results.add(post);
+                System.out.println("Added post " + post.getPostId() + " to results");
             }
 
         }
     }
 
-    private void SearchByCity(ArrayList<Post> posts) {
-        if (city == null) return;
+    private void SearchByCity() {
+        if (cityId == null) return;
+
+        PostDAO postDAO = new PostDAO();
+        ArrayList<Post> postsHasCity = postDAO.getPostByCityId(cityId);
 
         // Loop through all posts
-        HostelDAO hostelDAO = new HostelDAO();
-        for (Post post : posts) {
-            // Get attached hostel
-            int hostel_id = post.getHostelId();
-            Hostel hostel = hostelDAO.getById(hostel_id);
-
-//            // Check if price is in range, if it does, add to result
-//            if (hostel.getCityId() == city.getCityId()) {
-//                // Check if result already contains this post
-//                if (results.contains(post)) continue;
-//                results.add(post);
-//            }
-
+        for (Post post : postsHasCity){
+            // Check if result already contains this post
+            if (results.contains(post)) continue;
+            results.add(post);
+            System.out.println("Added post " + post.getPostId() + " to results");
         }
     }
 }

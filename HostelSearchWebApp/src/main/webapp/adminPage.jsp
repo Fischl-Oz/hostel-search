@@ -249,11 +249,11 @@
                                 %>
                             </td>
                             <td><%= pList.getPostDate()%></td>
-                            <td><%= pList.getPostStatus()%></td>
+                            <td style="<%= pList.getPostStatus().equals("accepted")? "Color: green" : "" %>"><%= pList.getPostStatus()%></td>
                             <td>
                                 <!-- Add action buttons for managing posts (e.g., update, delete) -->
-                                <button class="btn btn-primary" >Accepted</button>
-                                <button class="btn btn-danger" >Rejected</button>
+                                <button class="btn btn-primary" <%= (pList.getPostStatus().equals("accepted") || pList.getPostStatus().equals("rejected")? "disabled" : "") %>>Accepted</button>
+                                <button class="btn btn-danger" <%= (pList.getPostStatus().equals("accepted") || pList.getPostStatus().equals("rejected")? "disabled" : "") %>>Rejected</button>
                             </td>
                         </tr>
                         <% }
@@ -464,24 +464,55 @@
                                         });
                                     });
 
+                                    // var tabs = document.querySelectorAll('.nav-link');
+                                    // tabs.forEach(function (tab) {
+                                    //     tab.addEventListener('click', function (event) {
+                                    //         var tabId = event.target.getAttribute('href').substring(1);
+                                    //         localStorage.setItem('activeTab', tabId);
+                                    //     });
+                                    // });
+
                                     var tabs = document.querySelectorAll('.nav-link');
+
                                     tabs.forEach(function (tab) {
                                         tab.addEventListener('click', function (event) {
+                                            // Lấy ID của tab được click
                                             var tabId = event.target.getAttribute('href').substring(1);
+
+                                            // Lưu tab hiện tại vào localStorage
                                             localStorage.setItem('activeTab', tabId);
+
+                                            // Xóa lớp 'active' khỏi tất cả các tab
+                                            tabs.forEach(function (t) {
+                                                t.classList.remove('active');
+                                            });
+
+                                            // Thêm lớp 'active' cho tab được click
+                                            event.target.classList.add('active');
                                         });
                                     });
-                                    // JavaScript
-                                    document.addEventListener('DOMContentLoaded', function () {
-                                        var activeTabId = localStorage.getItem('activeTab');
-                                        if (activeTabId) {
-                                            // Nếu có trạng thái tab được lưu, hiển thị tab đó khi trang được tải lại
-                                            var activeTab = document.querySelector('.nav-link[href="#' + activeTabId + '"]');
-                                            if (activeTab) {
-                                                activeTab.click(); // Kích hoạt sự kiện click trên tab được lưu
-                                            }
+
+                                    // Đặt tab active dựa trên giá trị trong localStorage
+                                    var activeTabId = localStorage.getItem('activeTab');
+                                    if (activeTabId) {
+                                        var activeTab = document.querySelector('a[href="#' + activeTabId + '"]');
+                                        if (activeTab) {
+                                            activeTab.classList.add('active');
                                         }
-                                    });
+                                    }
+
+
+                                    // // JavaScript
+                                    // document.addEventListener('DOMContentLoaded', function () {
+                                    //     var activeTabId = localStorage.getItem('activeTab');
+                                    //     if (activeTabId) {
+                                    //         // Nếu có trạng thái tab được lưu, hiển thị tab đó khi trang được tải lại
+                                    //         var activeTab = document.querySelector('.nav-link[href="#' + activeTabId + '"]');
+                                    //         if (activeTab) {
+                                    //             activeTab.click(); // Kích hoạt sự kiện click trên tab được lưu
+                                    //         }
+                                    //     }
+                                    // });
 
                                     function deleteUser(userId) {
                                         Swal.fire({

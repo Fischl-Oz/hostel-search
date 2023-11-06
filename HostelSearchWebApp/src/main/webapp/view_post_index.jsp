@@ -1,10 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<%@ page import="com.fischl.DAOs.PostDAO" %>
 <%@ page import="com.fischl.models.Post" %>
-<%@ page import="com.fischl.models.HostelMaster" %>
-<%@ page import="com.fischl.DAOs.HostelMasterDAO" %>
-<%@ page import="com.fischl.DAOs.HostelDAO" %>
 <%@ page import="com.fischl.tools.DatabaseContext" %>
 <%@ page import="com.fischl.models.Hostel" %>
 <%@ page import="com.fischl.models.Account" %>

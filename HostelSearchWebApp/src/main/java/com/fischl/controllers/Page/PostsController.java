@@ -1,5 +1,6 @@
 package com.fischl.controllers.Page;
 
+import com.fischl.DAOs.CityDAO;
 import com.fischl.DAOs.PostDAO;
 import com.fischl.DAOs.TagDAO;
 import com.fischl.models.Post;
@@ -64,6 +65,7 @@ public class PostsController extends HttpServlet {
 
             // Get prices
             String prices = request.getParameter("search-bar-prices");
+            System.out.println("prices = " + prices);
             int min = 0;
             int max = 0;
             switch (Integer.parseInt(prices)) {
@@ -80,10 +82,15 @@ public class PostsController extends HttpServlet {
                     max = 1500000;
                     break;
             }
+
+            // Get city
+            String cityId = request.getParameter("search-bar-city");
+
             Range range = new Range(min, max);
             SearchEngine searchEngine = new SearchEngine();
             searchEngine.setKeyword(keywords);
             searchEngine.setPriceRange(range);
+            searchEngine.setCityId(cityId);
             searchEngine.search();
             ArrayList<Post> results = searchEngine.getResults();
 
