@@ -6,10 +6,6 @@
 </web-app>-->
 <web-app version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee             http://java.sun.com/xml/ns/javaee/web-app_2_4.xsd">
     <servlet>
-        <servlet-name>HomeServlet</servlet-name>
-        <servlet-class>com.fischl.controllers.Page.HomeServlet</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>AdminPageServlet</servlet-name>
         <servlet-class>com.fischl.controllers.Page.AdminPageServlet</servlet-class>
     </servlet>
@@ -41,9 +37,21 @@
         <servlet-name>UpdateUserServlet</servlet-name>
         <servlet-class>com.fischl.controllers.AdminPage.UpdateUserServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>PostController</servlet-name>
+        <servlet-class>com.fischl.controllers.Page.PostsController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>PostsInfoController</servlet-name>
+        <servlet-class>com.fischl.controllers.Page.PostsInfoController</servlet-class>
+    </servlet>
     <servlet-mapping>
-        <servlet-name>HomeServlet</servlet-name>
-        <url-pattern>/home</url-pattern>
+        <servlet-name>PostsInfoController</servlet-name>
+        <url-pattern>/postsInfo</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PostController</servlet-name>
+        <url-pattern>/posts</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>AdminPageServlet</servlet-name>
