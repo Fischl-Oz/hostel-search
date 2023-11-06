@@ -1,0 +1,24 @@
+CT-0001	Updated City
+CT-0002	Hồ Chí Minh
+CT-0003	Đà Nẵng
+CT-0004	Hải Phòng
+CT-0005	Cần Thơ
+CT-0006	Biên Hòa
+CT-0007	Huế
+CT-0008	Nha Trang
+CT-0009	Buôn Ma Thuột
+CT-0010	Vũng Tàu
+CT-0011	Hạ Long
+CT-0012	Phan Thiết
+CT-0013	Long Xuyên
+CT-0014	Cam Ranh
+CT-0015	Quy Nhơn
+CT-0016	Mỹ Tho
+CT-0017	Rạch Giá
+CT-0018	Sa Đéc
+CT-0019	Tân An
+CT-0020	Tam Kỳ
+CT-0021	sdfds
+CT-0022	sdfdsgfd
+CT-0023	ưqeqư
+\.

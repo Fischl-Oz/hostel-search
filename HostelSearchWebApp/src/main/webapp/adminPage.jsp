@@ -36,7 +36,7 @@
         <link rel="stylesheet" href="assets/css/animate.css">
         <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
         <!-- TEMPLATE -->
-           <!-- Favicon -->
+        <!-- Favicon -->
         <link href="img/favicon.ico" rel="icon">
 
         <!-- Google Web Fonts -->
@@ -57,25 +57,17 @@
 
         <!-- Template Stylesheet -->
         <link href="css/template_style.css" rel="stylesheet">
-
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         <style>
-            .container-fluid.background-light {
+            /*            .container-fluid.background-light {
+            
+                            background-image: url("https://images.unsplash.com/photo-1615873968403-89e068629265?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1032&q=80 1032w");
+            
+                            background-repeat: no-repeat;
+                            background-size: cover;
+                            background-position: center;
+                        }*/
 
-                background-image: url("https://images.unsplash.com/photo-1615873968403-89e068629265?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1032&q=80 1032w");
-
-                background-repeat: no-repeat;
-                background-size: cover;
-                background-position: center;
-            }
-
-            @media screen and (min-width: 1920px) {
-                .footer {
-                    position: fixed;
-                    left: 0;
-                    bottom: 0;
-                    width: 100%;
-                }
-            }
 
             @media screen and (max-width: 16in) {
                 .footer {
@@ -92,33 +84,48 @@
                 color: #00ff00; /* Thay #00ff00 bằng mã màu hoặc tên màu bạn muốn sử dụng khi hover vào tab */
             }
             /* Đổi màu nền của bảng */
-.tab-content table {
-    background-color: rgba(245, 247, 201, 0.94); /* Đặt màu trong suốt với alpha = 0.5 */
-}
-.text-center.text-primary{
-     background-color:rgba(245, 247, 201, 0.94);
-     color: #eda536!important;
-}
-.nav-link {
-      color: #eda536!important;
-}
-.nav-link.dropdown-toggle{
- color: #ffffff!important;
-}
-.nav.nav-tabs.mt-5{
-    background-color:rgba(242, 242, 242, 0.94);
-}
+            .tab-content table {
+                background-color: rgba(245, 247, 201, 0.94); /* Đặt màu trong suốt với alpha = 0.5 */
+            }
+            .text-center.text-primary{
+                background-color:rgba(245, 247, 201, 0.94);
+                color: #eda536!important;
+            }
+            .nav-link {
+                color: #eda536!important;
+            }
+            .nav-link.dropdown-toggle{
+                color: #ffffff!important;
+            }
+            .nav.nav-tabs.mt-5{
+                background-color:rgba(242, 242, 242, 0.94);
+            }
 
 
-/* Đổi màu chữ của các ô bảng */
-.tab-content table th{
-    color: #eda536!important;
-}
-.tab-content table td {
-    color: #333; /* Thay #333 bằng mã màu hoặc tên màu bạn muốn sử dụng cho chữ trong ô bảng */
-}
+            /* Đổi màu chữ của các ô bảng */
+            .tab-content table th{
+                color: #eda536!important;
+            }
+            .tab-content table td {
+                color: #333; /* Thay #333 bằng mã màu hoặc tên màu bạn muốn sử dụng cho chữ trong ô bảng */
+            }
 
+            /* CSS */
+            .pagination a.page-link {
+                color: #007bff; /* Màu chữ cho các liên kết */
+                text-decoration: none; /* Loại bỏ gạch chân */
+                transition: color 0.3s ease; /* Hiệu ứng màu chữ thay đổi trong 0.3 giây */
+            }
 
+            .pagination a.page-link:hover {
+                color: #0056b3; /* Màu chữ khi di chuột qua liên kết */
+            }
+
+            .pagination a.page-link.active {
+                font-weight: bold; /* In đậm chữ khi liên kết được chọn */
+                color: black; /* Màu chữ khi liên kết được chọn */
+                background-color: #f0eec0; /* Màu nền khi liên kết được chọn */
+            }
 
         </style>
     </head>
@@ -161,39 +168,38 @@
 
         <!-- ***** Header Area Start ***** -->
         <header class="header-area">
-          
-                   <!-- Navbar Start -->
+
+            <!-- Navbar Start -->
             <jsp:include page="navbar.jsp" />
             <!-- Navbar End -->
 
-       
+
         </header>
         <!-- ***** Header Area End ***** -->
 
 
         <div class="container-fluid background-light" style="margin-top: 70px; margin-bottom: 40px; background-color: #fff; padding: 20px;">
-              <td>
-                <!-- Add action buttons for managing posts (e.g., update, delete) -->
-               
-             
-            </td>
+
             <ul class="nav nav-tabs mt-5">
                 <li class="nav-item">
-                    <a class="nav-link active" data-bs-toggle="tab" href="#posts">Post</a>
+                    <a class="nav-link" data-bs-toggle="tab" href="#posts">Bài đăng</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " data-bs-toggle="tab" href="#hostel">Hostel</a>
+                    <a class="nav-link " data-bs-toggle="tab" href="#hostel">Chủ trọ</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" data-bs-toggle="tab" href="#users">Accounts</a>
+                    <a class="nav-link " data-bs-toggle="tab" href="#users">Tài khoản</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " data-bs-toggle="tab" href="#chartjs">Biểu đồ</a>
                 </li>
             </ul>
- <%--        TAB POST      --%>
+            <%--        TAB POST      --%>
             <div class="tab-content mt-3">
                 <div class="tab-pane fade show active" id="posts">
                     <h2 class="text-center text-primary">Post Detail</h2>
                     <!-- Table for displaying list of posts -->
-                       
+
                     <table class="table table-bordered table-hover">
                         <thead>
                             <tr>
@@ -238,7 +244,7 @@
                                 </div>
                                 <%
                                             } else {
-                                                out.println(description);
+                                                System.out.println(description);
                                             }
                                 %>
                             </td>
@@ -254,8 +260,8 @@
                             } %>
                         </tbody>
                     </table>
-<%--      END  TAB POST      --%>
- <%--        TAB HOSTEL      --%>
+                    <%--      END  TAB POST      --%>
+                    <%--        TAB HOSTEL      --%>
                 </div>
                 <div class="tab-pane fade " id="hostel">
                     <h2 class="text-center text-primary">Hostel Detail</h2>
@@ -271,15 +277,15 @@
                                 <th>Area</th>
                                 <th>Total Room</th>
                                 <th>A-Room</th>
-<!--                                <button class="btn btn-danger" onclick="addHostel()">Add Hostel</button>
-                                <th>Actions</th>-->
+                                <!--                                <button class="btn btn-danger" onclick="addHostel()">Add Hostel</button>
+                                                                <th>Actions</th>-->
                             </tr>
-                            
+
                         </thead>
-                        <tbody id="postsTableBody">
+                        <tbody id="hostelTableBody">
                             <!-- Search Bar -->
                         <div class="search-bar">
-                            <input type="text" id="userSearchQuery" placeholder="Tìm kiếm theo ID hoặc Tên chủ nhà trọ">
+                            <input type="text" id="hostelSearchQuery" placeholder="Tìm kiếm theo ID hoặc Tên chủ nhà trọ">
                             <button type="button" onclick="searchHostel()"><i class="bi bi-search"></i></button>
                         </div>
 
@@ -309,7 +315,7 @@
                                 </div>
                                 <%
                                        } else {
-                                           out.println(description);
+                                           System.out.println(description);
                                        }
                                 %>
                             </td>
@@ -320,20 +326,20 @@
                             <td><%= hostel.getTotalRoom()%></td>
                             <td><%= hostel.getAvailableRoom()%></td>
 
-                         <!-- 
-                           <td>
-                               
-                                <button class="btn btn-primary" onclick="updateHostel(<%= hostel.getHostelId() %>)">Update</button>
-                                <button class="btn btn-danger" onclick="deleteHostel()(<%= hostel.getHostelId() %>)">Delete</button>
-                           </td> 
-                           -->
+                            <!-- 
+                              <td>
+                                  
+                                   <button class="btn btn-primary" onclick="updateHostel(<%= hostel.getHostelId() %>)">Update</button>
+                                   <button class="btn btn-danger" onclick="deleteHostel()(<%= hostel.getHostelId() %>)">Delete</button>
+                              </td> 
+                            -->
                         </tr>
                         <% }
                             } %>
                         </tbody>
                     </table>
- <%--       END TAB HOSTEL      --%>
- <%--        TAB ACCOUNT      --%>
+                    <%--       END TAB HOSTEL      --%>
+                    <%--        TAB ACCOUNT      --%>
 
                 </div>
                 <div class="tab-pane fade" id="users">
@@ -349,9 +355,9 @@
                                 <th>Email</th>
                                 <th>Phone Number</th>
                                 <th>User Type</th>
-                                 <button class="btn btn-primary" onclick="addUser()">Add User</button>
-                                <th>Action</th>
-                            </tr>
+                        <button class="btn btn-primary" onclick="addUser()" ><i class="fas fa-plus"></i></button>
+                        <th>Action</th>
+                        </tr>
                         </thead>
                         <tbody id="usersTableBody">
                         <div class="search-bar">
@@ -374,8 +380,8 @@
 
                             <td>
                                 <!-- Add action buttons for managing posts (e.g., update, delete) -->
-                                <button class="btn btn-primary"  onclick="updateUser(<%= u.getUserId() %>)">Update</button>
-                                <button class="btn btn-danger"  onclick="deleteUser(<%= u.getUserId() %>)">Delete</button>
+                                <button class="btn btn-primary"  onclick="updateUser(<%= u.getUserId() %>)"> <i class="fas fa-edit"></i></button>
+                                <button class="btn btn-danger"  onclick="deleteUser(<%= u.getUserId() %>)"><i class="fas fa-trash-alt"></i></button>
                             </td>
 
 
@@ -386,32 +392,51 @@
                         </tbody>
                     </table>
 
+
+
+                    <!-- Cách sử dụng giá trị endPage trong trang JSP -->
+                    <div class="pagination">
+                        <% 
+                            int endPage = (int)request.getAttribute("endPage");
+                            int tag = (int)request.getAttribute("tag");
+                            // Lấy giá trị của endPage từ attribute
+                            for (int i = 1; i <= endPage; i++) { 
+                        %>
+                        <a class="page-link <%= i == tag ? "active" : "" %>" href="admin?index=<%= i %>"><%= i %></a>
+                        <% } %>
+                    </div>
+
                 </div>
                 <%--     END TAB ACCOUNT      --%>
+                <div class="tab-pane fade" id="chartjs">
+                    <h2 class="text-center text-primary">Số lượng bài đăng hàng tháng</h2>
+                    <!-- Table for displaying list of users -->
+                    <canvas id="myChart" class="charrt" width="100" height="100"></canvas>
+                    
 
+                </div>
             </div>
 
 
         </div>   
 
-        
-              <!-- Footer Start -->
-        <jsp:include page="footer.jsp"/>
-        <!-- Footer End -->
-                 
+
+
+
 
         <!-- Scripts -->
         <!-- Bootstrap core JavaScript -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
-
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>;
         <script src="assets/js/isotope.js"></script>
         <script src="assets/js/owl-carousel.js"></script>
         <script src="assets/js/tabs.js"></script>
         <script src="assets/js/popup.js"></script>
         <script src="assets/js/custom.js"></script>
         <script src="assets/js/admin.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
         <script>
                                     $(document).ready(function () {
                                         $('.dropdown').on('focusin mouseenter', function () {
@@ -438,7 +463,71 @@
                                             container.find(".read-more-link").show(); // Show the "Read More" link
                                         });
                                     });
+
+                                    var tabs = document.querySelectorAll('.nav-link');
+                                    tabs.forEach(function (tab) {
+                                        tab.addEventListener('click', function (event) {
+                                            var tabId = event.target.getAttribute('href').substring(1);
+                                            localStorage.setItem('activeTab', tabId);
+                                        });
+                                    });
+                                    // JavaScript
+                                    document.addEventListener('DOMContentLoaded', function () {
+                                        var activeTabId = localStorage.getItem('activeTab');
+                                        if (activeTabId) {
+                                            // Nếu có trạng thái tab được lưu, hiển thị tab đó khi trang được tải lại
+                                            var activeTab = document.querySelector('.nav-link[href="#' + activeTabId + '"]');
+                                            if (activeTab) {
+                                                activeTab.click(); // Kích hoạt sự kiện click trên tab được lưu
+                                            }
+                                        }
+                                    });
+
+                                    function deleteUser(userId) {
+                                        Swal.fire({
+                                            title: 'Bạn có chắc chắn muốn xóa người dùng này không?',
+                                            icon: 'warning',
+                                            showCancelButton: true,
+                                            confirmButtonColor: '#d33',
+                                            cancelButtonColor: '#3085d6',
+                                            confirmButtonText: 'Xóa',
+                                            cancelButtonText: 'Hủy bỏ'
+                                        }).then((result) => {
+                                            if (result.isConfirmed) {
+                                                window.location.href = 'deleteUser?id=' + userId;
+                                            }
+                                        });
+                                    }
+//CHART
+                                    // Lấy thẻ canvas bằng ID
+                                    var ctx = document.getElementById('myChart').getContext('2d');
+
+// Dữ liệu cho biểu đồ (ví dụ: số liệu của biểu đồ đường)
+                                    var data = {
+                                        labels: ['Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6', 'Tháng 7', 'Tháng 8', 'Tháng 9', 'Tháng 10', 'Tháng 11', 'Tháng 12'],
+                                        datasets: [{
+                                                label: 'Bài đăng hàng tháng',
+                                                data: [12, 19, 3, 5, 2, 5, 2, 6, 7, 4, 8, 3, 7, 11, 15], // Dữ liệu số liệu của bạn ở đây
+                                                backgroundColor: 'rgba(75, 192, 192, 0.2)', // Màu nền của biểu đồ
+                                                borderColor: 'rgba(75, 192, 192, 1)', // Màu đường viền của biểu đồ
+                                                borderWidth: 1 // Độ đậm của đường viền
+                                            }]
+                                    };
+
+// Tạo một biểu đồ đường
+                                    var myChart = new Chart(ctx, {
+                                        type: 'bar', // Loại biểu đồ (ở đây là biểu đồ đường)
+                                        data: data, // Dữ liệu cho biểu đồ
+                                        options: {
+                                            scales: {
+                                                y: {
+                                                    beginAtZero: true // Hiển thị trục y bắt đầu từ giá trị 0
+                                                }
+                                            }
+                                        }
+                                    });
         </script>
+
     </body>
 
 </html>

@@ -1,0 +1,20 @@
+81000000	2023-10-15	Nguyen Tran Trung Thanh	ThanhNTT1	123456	0939289911	thanhnttce1709012@fpt.edu.vnn	admin	\N
+80000003	2023-10-06	Nguyen Tran Trung Thanh	ThanhNTT	e10adc3949ba59abbe56e057f20f883e	0939289910	thanhnttce170901@fpt.edu.vnn	admin	\N
+80000005	2023-10-18	Nguyễn Đạt	datNCE	e10adc3949ba59abbe56e057f20f883e	0793989857	nguyendat1511003@gmail.com	normal	\N
+80000007	2023-10-19	Test Dang Ky	testdangky1	e10adc3949ba59abbe56e057f20f883e	0999999999	testdangky1@gmail.com	normal	\N
+80000002	2023-10-02	Alice Johnson	alicej	securepassword	987654321	alicejohnson@example.com	hostelmaster	\N
+80000013	2023-10-31	Nguyễn Hoàng Nam	NamNH1	e10adc3949ba59abbe56e057f20f883e	1122334455		admin	\N
+80000014	2023-10-31	Nguyễn Hoàng Nam	NamNH4	d41d8cd98f00b204e9800998ecf8427e	1133557799	namsample3@gmail.com	admin	\N
+80000015	2023-10-31	a	NAMNH	e10adc3949ba59abbe56e057f20f883e	2244668800	namsample4@gmail.com	normal	\N
+80000016	2023-10-31	!@#$%^	testFullname	e10adc3949ba59abbe56e057f20f883e	1212121212	namsample6@gmail.com	normal	\N
+80000017	2023-10-31	123456	testFullname2	e10adc3949ba59abbe56e057f20f883e	1111111111	namsample7@gmail.com	normal	\N
+80000001	2023-10-06	Nguyen Khoi Minh	testhm	e10adc3949ba59abbe56e057f20f883e	0123444535	dd@dsa.asd	hostelmaster	\N
+80000009	2023-10-20	Trung Thanh	admin3	123445	0987654345	pjkay210203@gmail.com	normal	\N
+80000011	2023-10-31	Nguyễn Hoàng Nam		14e1b600b1fd579f47433b88e8d85291	0859918883	namsample1@gmail.com	normal	\N
+80000000	2023-10-06	Nguyen Khoi Minh	testhmpending	e10adc3949ba59abbe56e057f20f883e	null	null@f	hostelmaster	\N
+80000020	2023-10-31	Nguyễn Hoàng Nam	TestPhone2	e10adc3949ba59abbe56e057f20f883e	!@#$%^&*()	namsample10@gmail.com	admin	\N
+80000021	2023-10-31	Nguyễn Hoàng Nam	testEmail1	e10adc3949ba59abbe56e057f20f883e	0987654322	!bhwenk@a.c	admin	\N
+80000022	2023-11-04	Test Account	testaccount	e10adc3949ba59abbe56e057f20f883e	0333333333	test.account@email.com	hostelmaster	\N
+80000018	2023-10-31	Nguyễn Hoàng Nam	NamNH#	14e1b600b1fd579f47433b88e8d85291	0000000000	namsample8@gmail.com	normal	\N
+81000001	2023-11-02	Nguyễn Khởi Minh	normal_user	e10adc3949ba59abbe56e057f20f883e	0919191911	email@email.com	normal	\N
+\.

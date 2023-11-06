@@ -1,0 +1,10 @@
+TAG-002	Trọ ở ghép
+TAG-003	Trọ gần trường học
+TAG-004	Trọ gần công ty
+TAG-005	Trọ cho gia đình
+TAG-006	Trọ cho người đi làm
+TAG-007	Trọ tháng/ngày
+TAG-008	Trọ có bữa ăn
+TAG-009	Trọ có internet
+TAG-010	Trọ có điều hòa nhiệt độ
+\.

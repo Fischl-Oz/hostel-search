@@ -26,8 +26,8 @@
         <link rel="stylesheet" href="assets/css/owl.css">
         <link rel="stylesheet" href="assets/css/animate.css">
         <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
- <!-- TEMPLATE -->
-           <!-- Favicon -->
+        <!-- TEMPLATE -->
+        <!-- Favicon -->
         <link href="img/favicon.ico" rel="icon">
 
         <!-- Google Web Fonts -->
@@ -49,11 +49,18 @@
         <!-- Template Stylesheet -->
         <link href="css/template_style.css" rel="stylesheet">
         <style>
-           .btn-primary {
-    color: #000;
-    background-color: #ff9a00;
-    border-color: #ff9a00;
-}
+            body {
+                background-image: url("https://images.unsplash.com/photo-1615873968403-89e068629265?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1032&q=80 1032w");
+                width: 100%;
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-position: center;
+            }
+            .btn-primary {
+                color: #000;
+                background-color: #ff9a00;
+                border-color: #ff9a00;
+            }
             @media screen and (min-width: 1920px) {
                 .footer {
                     position: fixed;
@@ -91,7 +98,7 @@
 
         <!-- ***** Header Area Start ***** -->
         <header class="header-area">
-                <!-- Navbar Start -->
+            <!-- Navbar Start -->
             <jsp:include page="navbar.jsp" />
             <!-- Navbar End -->
         </header>
@@ -102,21 +109,21 @@
             <div id="toast" style="z-index: 1;"></div>
             <div class="">
                 <div class="rounded d-flex justify-content-center" style="margin-bottom: 70px;">
-                    <div class="col-lg-4 col-md-6 col-sm-12 shadow-lg p-5 background-light" style="background-color: rgba(255, 255, 255, 0.5); border-radius: 25px;">
-                       
+                    <div class="col-lg-4 col-md-6 col-sm-12 shadow-lg p-5 background-light" style="background-color: rgb(233 218 182 / 76%); border-radius: 25px; backdrop-filter: blur(3px); ">
+
                         <% Account u = (Account) request.getAttribute("data");%>
-                         <div class="text-center">
-                            <h3 class="text-primary">Update ID: <%= u.getUserId()%></h3>
+                        <div class="text-center">
+                            <h3 class="text-primary">Cập Nhật Tài Khoản ID: <%= u.getUserId()%></h3>
                         </div>
                         <!-- FORM NEEEEE -->
                         <form id="updateUser" method="POST" action="updateUser">
                             <div class="p-4">
 
+
                                 <!--<!-- FULL NAME -->
-                                <div class="row input-group mb-3">
-                                    <span class="input-group-text bg-primary" style="width: 36px;"><i class="bi bi-person-plus-fill text-white"></i></span>
-                                    <input name="id" type="number" class="form-control" placeholder="ID" readonly value="<%= u.getUserId()%>">
-                                </div>
+                              
+                                    <input name="id" type="hidden" class="form-control" placeholder="ID" value="<%= u.getUserId()%>">
+                           
                                 <!--<!-- FULL NAME -->
                                 <div class="row input-group mb-3">
                                     <span class="input-group-text bg-primary" style="width: 36px;"><i class="bi bi-person-plus-fill text-white"></i></span>
@@ -127,9 +134,9 @@
                                     <span class="col-1 input-group-text bg-primary" style="width: 36px;"><i class="bi bi-person-plus-fill text-white"></i></span>
                                     <input name="username" type="text" class="form-control" placeholder="User Name" value="<%= u.getUserName()%>">
                                 </div>
-                                 <div class="row input-group mb-3">
-                                    <span class="input-group-text bg-primary" style="width: 36px;"><i class="bi bi-phone text-white"></i></span>
-                                    <input name="password" type="text" class="form-control" placeholder="password" value="<%= u.getPassword()%>">
+                                <div class="row input-group mb-3">
+                                    <span class="input-group-text bg-primary" style="width: 36px;"><i class="bi bi-key-fill text-white"></i></span>
+                                    <input name="password" type="password" class="form-control" placeholder="password" value="<%= u.getPassword()%>">
                                 </div>
                                 <!--<!-- PHONE NAME -->
                                 <div class="row input-group mb-3">
@@ -142,11 +149,11 @@
                                     <input name="email" type="email" class="form-control" placeholder="Email" value="<%= u.getEmail()%>">
                                 </div>
                                 <!-- User Type -->
-                                <div class="form-group">
+                                <div class="row input-group mb-3">
                                     <span class="input-group-text bg-primary" style="width: 120px;"><i
-                                            class="bi bi-discord text-white"> User Type</i></span>
+                                            class="bi bi-discord text-white"> Quyền hạn</i></span>
 
-                                    <!-- Assume u là đối tượng User được chuyển đến từ servlet hoặc controller -->
+                                    <!--                                     Assume u là đối tượng User được chuyển đến từ servlet hoặc controller -->
                                     <select class="form-control" name="userType">
                                         <c:choose>
                                             <c:when test="${u.getUserType() eq 'admin'}">
@@ -158,11 +165,12 @@
                                         </c:choose>
                                     </select>
                                 </div>
+
                             </div>
 
 
                             <button class="w-50 mx-auto btn btn-primary text-center mt-2" style="display: flex; justify-content: center;" type="submit">
-                                Update
+                                Cập Nhật
                             </button>
                         </form>
 
@@ -170,39 +178,39 @@
                 </div>
             </div>
         </div>
-    </div>
-
-    <div class="footer">
-      <!-- Footer Start -->
-        <jsp:include page="footer.jsp"/>
-        <!-- Footer End -->
-    </div>
 
 
+        <div class="footer">
+            <!-- Footer Start -->
+            <jsp:include page="footer.jsp"/>
+            <!-- Footer End -->
+        </div>
 
 
-    <!-- Scripts -->
-    <!-- Bootstrap core JavaScript -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
 
-    <script src="./assets/js/isotope.js"></script>
-    <script src="./assets/js/owl-carousel.js"></script>
-    <script src="./assets/js/tabs.js"></script>
-    <script src="./assets/js/popup.js"></script>
-    <script src="./assets/js/custom.js"></script>
-    <script src="./assets/js/toast.js"></script>
 
-    <script>
-        if ("${requestScope.registrationStatus}" === "failure") {
-            showErrorRegister();
-        <%
-            request.setAttribute("registrationStatus", null);
-        %>
-        }
-    </script>
-</body>
+        <!-- Scripts -->
+        <!-- Bootstrap core JavaScript -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+
+        <script src="./assets/js/isotope.js"></script>
+        <script src="./assets/js/owl-carousel.js"></script>
+        <script src="./assets/js/tabs.js"></script>
+        <script src="./assets/js/popup.js"></script>
+        <script src="./assets/js/custom.js"></script>
+        <script src="./assets/js/toast.js"></script>
+
+        <script>
+            if ("${requestScope.registrationStatus}" === "failure") {
+                showErrorRegister();
+            <%
+                request.setAttribute("registrationStatus", null);
+            %>
+            }
+        </script>
+    </body>
 
 </html>
 

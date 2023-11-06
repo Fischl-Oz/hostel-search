@@ -4,16 +4,12 @@
  */
 package com.fischl.controllers.Form;
 
-import com.fischl.DAOs.AccountDAO;
 import com.fischl.models.Account;
 import com.fischl.tools.LoginValidator;
-import java.io.IOException;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.http.Cookie;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
+import jakarta.servlet.http.*;
+
+import java.io.IOException;
 
 /**
  *
@@ -84,10 +80,10 @@ public class LoginServlet extends HttpServlet {
             System.out.println("Usertype: " + login_acc.getUserType());
             session.setAttribute("login", "true");
             //
-            session.setAttribute("currentAcc", new AccountDAO().getUserByUsername(username));
+            session.setAttribute("currentAcc", login_acc);
             //
             //request.getRequestDispatcher("/home").forward(request, response);
-            response.sendRedirect(request.getContextPath() + "/index.jsp");
+            response.sendRedirect(request.getContextPath() + "/home");
 
         } else {
             System.out.println("Could not login");

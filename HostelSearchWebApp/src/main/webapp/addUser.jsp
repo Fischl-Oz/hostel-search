@@ -11,7 +11,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Register form</title>
+        <title>Thêm Tài Khoản</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
               integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
               crossorigin="anonymous">
@@ -118,87 +118,82 @@
         <jsp:include page="navbar.jsp" />
         <!-- Navbar End -->
 
-        <div class="container-fluid vh-40" style="margin-top:70px; padding: 40px;">
-            <div id="toast" style="z-index: 1;"></div>
-            <div class="">
-                <div class="rounded d-flex justify-content-center">
-                    <div class="col-lg-4 col-md-6 col-sm-12 background-light"
-                         style="background-color: rgb(233 218 182 / 76%); border-radius: 25px;">
-                        <div class="text-center" style="margin-top: 20px;">
-                            <h3 style="margin-top:30px; color: #aa5e2e; padding: 20px; padding-bottom: 20px;">
-                                Register</h3>
-                        </div>
-                        <form id="adduserform" method="post" action="addUser">
-                            <div style="padding: 30px 48px;">
-                                <div class="row input-group mb-3">
-                                    <span class="input-group-text bg-primary" style="width: 36px;"><i
-                                            class="bi bi-person-plus-fill text-white"></i></span>
-                                    <input id="fullname" name="fullname" type="text" class="form-control"
-                                           placeholder="Full Name">
+             <div class="container-fluid vh-40" style="margin-top:70px; padding: 40px;">
+                    <div id="toast" style="z-index: 1;"></div>
+                    <div class="">
+                        <div class="rounded d-flex justify-content-center">
+                            <div class="col-lg-4 col-md-6 col-sm-12 background-light"
+                                 style="background-color: rgb(233 218 182 / 76%); border-radius: 25px; backdrop-filter: blur(3px); ">
+                                <div class="text-center" style="margin-top: 20px;">
+                                    <h3 style="margin-top:30px; color: #aa5e2e; padding: 20px; padding-bottom: 20px;">
+                                        Thêm Tài Khoản</h3>
                                 </div>
-                                <div class="row input-group mb-3">
-                                    <span class="col-1 input-group-text bg-primary" style="width: 36px;"><i
-                                            class="bi bi-person-plus-fill text-white"></i></span>
-                                    <input id="username" name="username" type="text" class="form-control"
-                                           placeholder="User Name">
-                                </div>
-                                <div class="row input-group mb-3">
-                                    <span class="input-group-text bg-primary" style="width: 36px;"><i
-                                            class="bi bi-phone text-white"></i></span>
-                                    <input id="phoneNumber" name="phoneNumber" type="text" class="form-control"
-                                           placeholder="Phone Number">
-                                </div>
-                                <div class="row input-group mb-3">
-                                    <span class="col-1 input-group-text bg-primary" style="width: 36px;"><i
-                                            class="bi bi-envelope text-white"></i></span>
-                                    <input id="email" name="email" type="email" class="form-control"
-                                           placeholder="Email">
-                                </div>
-                                <div class="row input-group mb-3">
-                                    <span class="input-group-text bg-primary" style="width: 36px;"><i
-                                            class="bi bi-key-fill text-white"></i></span>
-                                    <input id="password" name="password" type="password" class="form-control"
-                                           placeholder="Password">
-                                </div>
-                                <!--                                <div class="row input-group mb-3">
-                                                                    <button type="button" id="adminButton" onclick="selectRole('admin')">Admin</button>
-                                                                    <button type="button" id="normalButton" onclick="selectRole('normal')">Normal</button>
-                                                                    <input type="text" id="userType" name="usertype" value="">
-                                                                </div>-->
-                                <div class="form-group">
-                                    <span class="input-group-text bg-primary" style="width: 36px;"><i
-                                            class="bi bi-discord text-white"></i>User Type</span>
-                                   
-                                    <select class="form-control" name="userType">
-                                        <option>admin</option>
-                                        <option>normal</option>
-                                        
-                                    </select>
-                                </div>
-
-                                <button class="w-50 mx-auto btn btn-primary text-center mt-2"
-                                        style="display: flex; justify-content: center;" type="submit" value="Submit" name="btnSubmit">
-                                    Add User
-                                </button>
-                                <p class="text-center" style="color: #000;">
-                                    Don't have an account?
-                                    <!--<span class="text-primary">Sign In</span>-->
-                                    <a href="./login" class="text-primary" style="cursor: pointer; color: #aa5e2e;">
-                                        Sign In
-                                    </a>
-                                </p>
-                                <p class="text-center text-primary">
-                                    <a href="./forgot" class="text-primary"
-                                       style="cursor: pointer; color: #aa5e2e;">
-                                        Forgot your password?
-                                    </a>
-                                </p>
+                                <form id="adduserform" method="post" action="addUser">
+                                    <div style="padding: 20px 70px;">
+                                        <div class="row input-group mb-3">
+                                            <div id="username-error" class="text-danger"></div>
+                                            <span class="input-group-text bg-primary" style="width: 35px;"><i
+                                                    class="bi bi-person-plus-fill text-white"></i></span>
+                                            <input id="fullname" name="fullname" type="text" class="form-control"
+                                                   placeholder="Nhập tên đầy đủ">
+                                        </div>
+                                        <div class="row input-group mb-3">
+                                            <span class="col-1 input-group-text bg-primary" style="width: 35px;"><i
+                                                    class="bi bi-person-plus-fill text-white"></i></span>
+                                            <input id="username" name="username" type="text" class="form-control"
+                                                   placeholder="Nhập tên tài khoản">
+                                        </div>
+                                        <div class="row input-group mb-3">
+                                            <span class="input-group-text bg-primary" style="width: 35px;"><i
+                                                    class="bi bi-phone text-white"></i></span>
+                                            <input id="phoneNumber" name="phoneNumber" type="text" class="form-control"
+                                                   placeholder="Nhập số điện thoại">
+                                        </div>
+                                        <div class="row input-group mb-3">
+                                            <span class="col-1 input-group-text bg-primary" style="width: 35px;"><i
+                                                    class="bi bi-envelope text-white"></i></span>
+                                            <input id="email" name="email" type="email" class="form-control"
+                                                   placeholder="Nhập Email">
+                                        </div>
+                                        <div class="row input-group mb-3">
+                                            <span class="input-group-text bg-primary" style="width: 35px;"><i
+                                                    class="bi bi-key-fill text-white"></i></span>
+                                            <input id="password" name="password" type="password" class="form-control"
+                                                   placeholder="Nhập mật khẩu">
+                                        </div>
+        
+                                        <div class="row input-group mb-3">
+                                            <label for="userType" class="form-label" style="color:black">Quyền Hạn Truy Cập</label>
+                                            <div class="input-group" id="usertype-error">
+                                                <span class="input-group-text bg-primary text-white"><i class="bi bi-discord"></i></span>
+                                                <select class="form-select" id="userType" name="userType">
+                                                    <option value="none" selected>none</option>  Giá trị mặc định là "none" và được chọn sẵn 
+                                                    <option value="admin">admin</option>
+                                                    <option value="normal">normal</option>
+                                                </select>
+                                            </div>
+                                        </div>
+        
+        
+                                        <div class="d-flex justify-content-between">
+                                            <a href="/admin" class=" text-center mt-2 float-left mr-2"
+                                               style="text-decoration: none; color: black;">
+                                                Quay Lại
+                                            </a>
+                                            <button class="w-50 btn btn-primary text-center mt-2 float-right"
+                                                    type="submit" value="Submit" name="btnSubmit">
+                                                Thêm Tài Khoản
+                                            </button>
+                                        </div>
+        
+        
+                                    </div>                       
+                                </form>
+        
                             </div>
-                        </form>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
         <!-- Footer Start -->
         <jsp:include page="footer.jsp"/>
         <!-- Footer End -->
@@ -231,7 +226,7 @@
             }
 
             $(document).ready(function () {
-                $('#registerform').validate({
+                $('#adduserform').validate({
                     rules: {
                         // Define validation rules for your form fields
                         fullname: {
@@ -262,6 +257,10 @@
                         cfpassword: {
                             required: true, // Field is required
                             equalTo: "#password"
+                        },
+                        userType: {
+                            required: true,
+                            customUserRole: true
                         }
                         // Add more fields and rules as needed
                     },
@@ -295,12 +294,50 @@
                         cfpassword: {
                             required: 'Please enter a value for this field',
                             equalTo: 'Must equal to password'
+                        },
+                        userType: {
+                            required: 'Please select a user type',
+                            customUserRole: 'Please select either "admin" or "normal"'
                         }
                         // Add more fields and messages as needed
                     }
                 });
+                $.validator.addMethod("customUserRole", function (value, element) {
+                    return this.optional(element) || /^(admin|normal)$/i.test(value);
+                }, "Please select either 'admin' or 'normal'");
             });
-        </script>
+            // Sử dụng jQuery để chờ đến khi trang đã tải hoàn toàn
+            $(document).ready(function () {
+                // Lắng nghe sự kiện khi người dùng nhập `username`
+                $('#username').on('input', function () {
+                    // Lấy giá trị `username` từ trường nhập liệu
+                    var username = $(this).val();
+                    // Kiểm tra `username` chỉ khi nó có ít nhất 3 ký tự
+                    if (username.length >= 3) {
+                        // Gửi yêu cầu Ajax đến máy chủ để kiểm tra `username`
+                        $.ajax({
+                            type: 'POST',
+                            url: 'AddUserServlet', // Đường dẫn đến servlet hoặc API kiểm tra `username`
+                            data: {username: username},
+                            success: function (response) {
+                                // Xử lý phản hồi từ máy chủ
+                                if (response === 'true') {
+                                    // `username` đã tồn tại trong cơ sở dữ liệu
+                                    $('#username-error').text('Tài khoản đã tồn tại trong hệ thống!.');
+                                } else {
+                                    // `username` là duy nhất
+                                    $('#username-error').text('');
+                                }
+                            }
+                        });
+                    } else {
+                        // Nếu `username` có ít hơn 3 ký tự, không kiểm tra
+                        $('#username-error').text('');
+                    }
+                });
+
+            });
+      </script>
     </body>
 
 </html>

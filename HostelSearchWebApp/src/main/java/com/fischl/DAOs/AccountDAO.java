@@ -147,8 +147,8 @@ public class AccountDAO implements IDao<Account,Integer> {
         }
         return account;
     }
-      public Account getUserByUsername(String username) {
-           Account account = null;
+    public Account getUserByUsername(String username) {
+       Account account = null;
         String query = "SELECT * FROM account WHERE user_name = ?";
         try {
             PreparedStatement st = conn.prepareStatement(query);
@@ -164,11 +164,122 @@ public class AccountDAO implements IDao<Account,Integer> {
                 account.setPhone(rs.getString("phone"));
                 account.setEmail(rs.getString("email"));
                 account.setUserType(rs.getString("user_type"));
-             
+
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
-        } 
+        }
         return account;
+    }
+    public boolean isUsernameExists(String username) {
+        boolean usernameExists = false;
+        String sql = "SELECT COUNT(*) FROM account WHERE user_name = ?";
+
+        try (PreparedStatement st = conn.prepareStatement(sql)) {
+            st.setString(1, username);
+            try ( ResultSet resultSet = st.executeQuery()) {
+                if (resultSet.next()) {
+                    int count = resultSet.getInt(1);
+                    // Nếu count > 0, `username` đã tồn tại trong cơ sở dữ liệu
+                    usernameExists = count > 0;
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            // Xử lý các ngoại lệ nếu cần thiết
+        }
+
+        return usernameExists;
+    }
+    //mới thêm 1/11
+
+    public boolean isPhonenumberExists(String phonenumber) {
+        boolean phonenumberExists = false;
+        String sql = "SELECT COUNT(*) FROM account WHERE phone = ?";
+
+        try (
+                PreparedStatement st = conn.prepareStatement(sql)) {
+            st.setString(1, phonenumber);
+            try ( ResultSet resultSet = st.executeQuery()) {
+                if (resultSet.next()) {
+                    int count = resultSet.getInt(1);
+                    // Nếu count > 0, `username` đã tồn tại trong cơ sở dữ liệu
+                    phonenumberExists = count > 0;
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            // Xử lý các ngoại lệ nếu cần thiết
+        }
+
+        return phonenumberExists;
+    }
+    //mới thêm 1/11
+
+    public boolean isEmailExists(String email) {
+        boolean emailExists = false;
+        String sql = "SELECT COUNT(*) FROM account WHERE email = ?";
+
+        try (
+                PreparedStatement st = conn.prepareStatement(sql)) {
+            st.setString(1, email);
+            try ( ResultSet resultSet = st.executeQuery()) {
+                if (resultSet.next()) {
+                    int count = resultSet.getInt(1);
+                    // Nếu count > 0, `username` đã tồn tại trong cơ sở dữ liệu
+                    emailExists = count > 0;
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            // Xử lý các ngoại lệ nếu cần thiết
+        }
+
+        return emailExists;
+    }
+    //dem so luong account trong data 3/11
+
+    public int getTotalAccount() {
+        String sql = "SELECT COUNT(*) FROM account";
+
+        try ( PreparedStatement ps = conn.prepareStatement(sql);
+              ResultSet rs = ps.executeQuery()){
+
+            if (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            // Xử lý các ngoại lệ nếu cần thiết
+        }
+
+        return 0;
+    }
+    //dem so luong hostel trong data 3/11
+    //phan trang cho account 3/11
+    public ArrayList<Account> pagingAccounts(int index){
+        ArrayList<Account> list = new ArrayList<Account>();
+        String sql = "Select * from account order by user_id desc offset ? rows fetch next 5 rows only;";
+        try {
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(1,(index -1)*5);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Account acc = new Account();
+                acc.setUserId(rs.getInt("user_id"));
+                acc.setDateSignup(rs.getDate("date_signup"));
+                acc.setFullName(rs.getString("full_name"));
+                acc.setUserName(rs.getString("user_name"));
+                acc.setPassword(rs.getString("password"));
+                acc.setPhone(rs.getString("phone"));
+                acc.setEmail(rs.getString("email"));
+                acc.setUserType(rs.getString("user_type"));
+                list.add(acc);
+
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return list;
     }
 }
