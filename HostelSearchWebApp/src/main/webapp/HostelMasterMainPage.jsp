@@ -64,9 +64,9 @@
 		<li class="nav-item">
 			<a class="nav-link <%= (activeTab.equals("post"))? "active" : "" %>" id="managePosts-tab" data-toggle="tab" href="#managePosts" role="tab" aria-controls="managePosts" aria-selected="<%= (activeTab.equals("post"))? "true" : "false" %>">Quản lý post</a>
 		</li>
-		<li class="nav-item">
-			<a class="nav-link <%= (activeTab.equals("reg"))? "active" : "" %>" id="manageRegistrations-tab" data-toggle="tab" href="#manageRegistrations" role="tab" aria-controls="manageRegistrations" aria-selected="<%= (activeTab.equals("reg"))? "true" : "false" %>">Quản lý đăng ký</a>
-		</li>
+<%--		<li class="nav-item">--%>
+<%--			<a class="nav-link <%= (activeTab.equals("reg"))? "active" : "" %>" id="manageRegistrations-tab" data-toggle="tab" href="#manageRegistrations" role="tab" aria-controls="manageRegistrations" aria-selected="<%= (activeTab.equals("reg"))? "true" : "false" %>">Quản lý đăng ký</a>--%>
+<%--		</li>--%>
 	</ul>
 
 	<!-- Tab Content -->
@@ -78,7 +78,12 @@
 		<div class="tab-pane fade <%= (!activeTab.equals("")? "" : "show active") %>" id="manageHostels" role="tabpanel" aria-labelledby="manageHostels-tab">
 			<div class="row">
 				<div class="col-md-8"></div>
-				<div class="col-md-4" style="text-align: right;"><a href="#" class="btn btn-success" style="padding: 10px; margin-right: 30px; margin-top: 20px; margin-bottom: 10px;"><i class="fas fa-plus"></i> Thêm Trọ Mới</a></div>
+				<div class="col-md-4" style="text-align: right;">
+					<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#createHostelModal" style="padding: 10px; margin-right: 30px; margin-top: 20px; margin-bottom: 10px;">
+						<i class="fas fa-plus"></i> Thêm Trọ Mới
+					</button>
+				</div>
+				<jsp:include page="createHostelModal.jsp"></jsp:include>
 			</div>
 			<div class="container mt-4">
 				<!-- Add hostel cards and CRUD buttons here -->
@@ -104,10 +109,10 @@
 							<!-- CRUD buttons -->
 							<div class="row card-btns">
 								<div class="col-md-4">
-									<a href="#" class="btn btn-primary">Sửa</a>
+									<a href="/hm?modify-hostel=<%= hostel.getHostelId() %>" class="btn btn-primary">Sửa</a>
 								</div>
 								<div class="col-md-4">
-									<a href="#" class="btn btn-danger">Xóa</a>
+									<a href="/hm?delH=<%= hostel.getHostelId() %>" class="btn btn-danger del-hostel-btn">Xóa</a>
 								</div>
 								<div class="col-md-4">
 									<a href="" class="btn btn-primary btn-success">Chi tiết</a>
@@ -121,7 +126,20 @@
 				</div>
 			</div>
 		</div>
-
+		<script>
+			let deleteButtonsH = document.querySelectorAll(".del-hostel-btn");
+			deleteButtonsH.forEach(btn => {
+				btn.addEventListener("click", e => {
+					e.preventDefault();
+					if (confirm("Nếu bạn xóa trọ này thì tất cả bài đăng của trọ cũng sẽ bị xóa, bạn có chắc muốn xóa?")) {
+						// go to the link specify in button's href attribute
+						window.location.href = btn.getAttribute("href");
+					} else {
+						// do nothing
+					}
+				})
+			});
+		</script>
 
 		<!-- Quản lý post -->
 		<%
@@ -161,7 +179,7 @@
 									<a href="/hm?modify-post=<%= post.getPostId() %>" class="btn btn-primary">Sửa</a>
 								</div>
 								<div class="col-md-6">
-									<a href="/hm?del=<%= post.getPostId() %>&active-tab=post" class="btn btn-danger del-post-btn">Xóa</a>
+									<a href="/hm?delP=<%= post.getPostId() %>&active-tab=post" class="btn btn-danger del-post-btn">Xóa</a>
 								</div>
 							</div>
 						</div>
@@ -173,8 +191,8 @@
 			</div>
 		</div>
 		<script>
-            let deleteButtons = document.querySelectorAll(".del-post-btn");
-            deleteButtons.forEach(btn => {
+            let deleteButtonsP = document.querySelectorAll(".del-post-btn");
+            deleteButtonsP.forEach(btn => {
                 btn.addEventListener("click", e => {
                     e.preventDefault();
                     if (confirm("Bạn có chắc chắn muốn xóa post này?")) {

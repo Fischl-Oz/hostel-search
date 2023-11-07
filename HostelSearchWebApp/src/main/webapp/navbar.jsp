@@ -60,7 +60,7 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav ms-auto">
                 <a href="/" class="nav-item nav-link active">trang chủ</a>
-                <a href="about.html" class="nav-item nav-link">nhà/phòng trọ cho thuê</a>
+                <a href="/posts" class="nav-item nav-link">nhà/phòng trọ cho thuê</a>
                 <%
                     User user = new User(acc);
                     if (acc != null)
@@ -75,7 +75,6 @@
                 %>
                     <a href="/hm" class="nav-item nav-link">trang chủ trọ</a>
                 <% } %>
-                <a href="about.html" class="nav-item nav-link">hướng dẫn</a>
                 <%
                     if (acc == null) {
                 %>

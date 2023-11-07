@@ -112,7 +112,7 @@ public class SearchEngine {
             Hostel hostel = hostelDAO.getById(hostel_id);
 //            System.out.println("hostel.getPrice() = " + hostel.getPrice());
             // Check if price is in range, if it does, add to result
-            if (price_range.isInRange(hostel.getPrice())) {
+            if (price_range.isInRange((int) hostel.getPrice())) {
                 // Check if result already contains this post
                 if (results.contains(post)) continue;
                 results.add(post);

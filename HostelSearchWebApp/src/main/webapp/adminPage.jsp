@@ -57,7 +57,7 @@
 
         <!-- Template Stylesheet -->
         <link href="css/template_style.css" rel="stylesheet">
-        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<%--        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>--%>
         <style>
             /*            .container-fluid.background-light {
             
@@ -190,9 +190,9 @@
                 <li class="nav-item">
                     <a class="nav-link " data-bs-toggle="tab" href="#users">Tài khoản</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link " data-bs-toggle="tab" href="#chartjs">Biểu đồ</a>
-                </li>
+<%--                <li class="nav-item">--%>
+<%--                    <a class="nav-link " data-bs-toggle="tab" href="#chartjs">Biểu đồ</a>--%>
+<%--                </li>--%>
             </ul>
             <%--        TAB POST      --%>
             <div class="tab-content mt-3">
@@ -237,8 +237,8 @@
                                         String fullDescription = description;
                                 %>
                                 <div class="item-description"> <!-- Add the item-description class here -->
-                                    <span class="truncated-description"></span>
-                                    <span class="full-description" style="display: none;"></span>
+                                    <span class="truncated-description"><%= truncatedDescription %></span>
+                                    <span class="full-description" style="display: none;"><%= fullDescription %></span>
                                     <a href="#" class="read-more-link">Read More</a>
                                     <a href="#" class="collapse-link" style="display: none;">Show less</a> <!-- Add the collapse-link with the initial display set to none -->
                                 </div>
@@ -408,13 +408,13 @@
 
                 </div>
                 <%--     END TAB ACCOUNT      --%>
-                <div class="tab-pane fade" id="chartjs">
-                    <h2 class="text-center text-primary">Số lượng bài đăng hàng tháng</h2>
-                    <!-- Table for displaying list of users -->
-                    <canvas id="myChart" class="charrt" width="100" height="100"></canvas>
-                    
+<%--                <div class="tab-pane fade" id="chartjs">--%>
+<%--                    <h2 class="text-center text-primary">Số lượng bài đăng hàng tháng</h2>--%>
+<%--                    <!-- Table for displaying list of users -->--%>
+<%--                    <canvas id="myChart" class="charrt" width="100" height="100"></canvas>--%>
 
-                </div>
+
+<%--                </div>--%>
             </div>
 
 
@@ -439,11 +439,11 @@
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
         <script>
                                     $(document).ready(function () {
-                                        $('.dropdown').on('focusin mouseenter', function () {
-                                            $(this).addClass('show').find('.dropdown-menu').addClass('show');
-                                        }).on('focusout mouseleave', function () {
-                                            $(this).removeClass('show').find('.dropdown-menu').removeClass('show');
-                                        });
+                                        // $('.dropdown').on('focusin mouseenter', function () {
+                                        //     $(this).addClass('show').find('.dropdown-menu').addClass('show');
+                                        // }).on('focusout mouseleave', function () {
+                                        //     $(this).removeClass('show').find('.dropdown-menu').removeClass('show');
+                                        // });
 
                                         $(document).on("click", ".read-more-link", function (e) {
                                             e.preventDefault();
@@ -492,10 +492,11 @@
                                         });
                                     });
 
+
                                     // Đặt tab active dựa trên giá trị trong localStorage
                                     var activeTabId = localStorage.getItem('activeTab');
                                     if (activeTabId) {
-                                        var activeTab = document.querySelector('a[href="#' + activeTabId + '"]');
+                                        var activeTab = document.querySelector('.nav-link[href="#' + activeTabId + '"]');
                                         if (activeTab) {
                                             activeTab.classList.add('active');
                                         }
@@ -531,32 +532,32 @@
                                     }
 //CHART
                                     // Lấy thẻ canvas bằng ID
-                                    var ctx = document.getElementById('myChart').getContext('2d');
-
-// Dữ liệu cho biểu đồ (ví dụ: số liệu của biểu đồ đường)
-                                    var data = {
-                                        labels: ['Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6', 'Tháng 7', 'Tháng 8', 'Tháng 9', 'Tháng 10', 'Tháng 11', 'Tháng 12'],
-                                        datasets: [{
-                                                label: 'Bài đăng hàng tháng',
-                                                data: [12, 19, 3, 5, 2, 5, 2, 6, 7, 4, 8, 3, 7, 11, 15], // Dữ liệu số liệu của bạn ở đây
-                                                backgroundColor: 'rgba(75, 192, 192, 0.2)', // Màu nền của biểu đồ
-                                                borderColor: 'rgba(75, 192, 192, 1)', // Màu đường viền của biểu đồ
-                                                borderWidth: 1 // Độ đậm của đường viền
-                                            }]
-                                    };
-
-// Tạo một biểu đồ đường
-                                    var myChart = new Chart(ctx, {
-                                        type: 'bar', // Loại biểu đồ (ở đây là biểu đồ đường)
-                                        data: data, // Dữ liệu cho biểu đồ
-                                        options: {
-                                            scales: {
-                                                y: {
-                                                    beginAtZero: true // Hiển thị trục y bắt đầu từ giá trị 0
-                                                }
-                                            }
-                                        }
-                                    });
+//                                     var ctx = document.getElementById('myChart').getContext('2d');
+//
+// // Dữ liệu cho biểu đồ (ví dụ: số liệu của biểu đồ đường)
+//                                     var data = {
+//                                         labels: ['Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6', 'Tháng 7', 'Tháng 8', 'Tháng 9', 'Tháng 10', 'Tháng 11', 'Tháng 12'],
+//                                         datasets: [{
+//                                                 label: 'Bài đăng hàng tháng',
+//                                                 data: [12, 19, 3, 5, 2, 5, 2, 6, 7, 4, 8, 3, 7, 11, 15], // Dữ liệu số liệu của bạn ở đây
+//                                                 backgroundColor: 'rgba(75, 192, 192, 0.2)', // Màu nền của biểu đồ
+//                                                 borderColor: 'rgba(75, 192, 192, 1)', // Màu đường viền của biểu đồ
+//                                                 borderWidth: 1 // Độ đậm của đường viền
+//                                             }]
+//                                     };
+//
+// // Tạo một biểu đồ đường
+//                                     var myChart = new Chart(ctx, {
+//                                         type: 'bar', // Loại biểu đồ (ở đây là biểu đồ đường)
+//                                         data: data, // Dữ liệu cho biểu đồ
+//                                         options: {
+//                                             scales: {
+//                                                 y: {
+//                                                     beginAtZero: true // Hiển thị trục y bắt đầu từ giá trị 0
+//                                                 }
+//                                             }
+//                                         }
+//                                     });
         </script>
 
     </body>

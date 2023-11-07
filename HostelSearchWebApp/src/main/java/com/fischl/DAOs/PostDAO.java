@@ -144,4 +144,16 @@ public class PostDAO implements IDao<Post,Integer> {
         }
         return posts;
     }
+    public boolean deleteByHostelId(Integer id) {
+        String sql = "DELETE FROM post WHERE hostel_id=?";
+        try {
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(1, id);
+            int result = ps.executeUpdate();
+            return result > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 }

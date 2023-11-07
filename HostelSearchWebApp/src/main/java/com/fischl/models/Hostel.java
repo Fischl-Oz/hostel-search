@@ -6,7 +6,7 @@ public class Hostel {
     private String hostel_name;
     private String hostel_addr;
     private String hostel_desc;
-    private int price;
+    private double price;
     private double area;
     private byte total_room;
     private byte available_room;
@@ -61,11 +61,11 @@ public class Hostel {
         this.hostel_desc = hostel_desc;
     }
 
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 

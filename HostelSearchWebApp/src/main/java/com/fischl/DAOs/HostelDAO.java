@@ -28,7 +28,7 @@ public class HostelDAO implements IDao<Hostel,Integer> {
             ps.setString(2, hostel.getHostelName());
             ps.setString(3, hostel.getHostelAddr());
             ps.setString(4, hostel.getHostelDesc());
-            ps.setFloat(5, hostel.getPrice());
+            ps.setDouble(5, hostel.getPrice());
             ps.setDouble(6, hostel.getArea());
             ps.setInt(7, hostel.getTotalRoom());
             ps.setInt(8, hostel.getAvailableRoom());
@@ -62,7 +62,7 @@ public class HostelDAO implements IDao<Hostel,Integer> {
             ps.setString(1, hostel.getHostelName());
             ps.setString(2, hostel.getHostelAddr());
             ps.setString(3, hostel.getHostelDesc());
-            ps.setFloat(4, hostel.getPrice());
+            ps.setDouble(4, hostel.getPrice());
             ps.setDouble(5, hostel.getArea());
             ps.setInt(6, hostel.getTotalRoom());
             ps.setInt(7, hostel.getAvailableRoom());

@@ -70,7 +70,7 @@ public class LogoutServlet extends HttpServlet {
             cookie.setMaxAge(0); // Đặt thời gian sống của cookie thành 0 (xóa ngay lập tức)
             cookie.setPath("/"); // Đặt lại path của cookie để khớp với path ban đầu khi tạo cookie
             response.addCookie(cookie); // Gửi cookie xóa đến client
-            response.sendRedirect("/home");
+            response.sendRedirect("/");
         }
     }
 

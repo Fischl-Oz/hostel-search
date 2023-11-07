@@ -83,7 +83,7 @@ public class LoginServlet extends HttpServlet {
             session.setAttribute("currentAcc", login_acc);
             //
             //request.getRequestDispatcher("/home").forward(request, response);
-            response.sendRedirect(request.getContextPath() + "/home");
+            response.sendRedirect(request.getContextPath() + "/");
 
         } else {
             System.out.println("Could not login");

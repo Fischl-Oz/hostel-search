@@ -19,7 +19,7 @@
 
 
         <!-- Additional CSS Files -->
-        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap">
               <link rel="stylesheet" href="assets/css/fontawesome.css">
         <link rel="stylesheet" href="assets/css/style.css">
         <link rel="stylesheet" href="assets/css/owl.css">
@@ -110,11 +110,6 @@
                                     Bạn không có tài khoản?
                                     <a href="./signup" style="color:#aa5e2e; cursor: pointer">
                                         Đăng ký
-                                    </a>
-                                </p>
-                                <p class="text-center">
-                                    <a href="./forgot"  style="cursor: pointer; color: #aa5e2e;">
-                                        Quên mật khẩu?
                                     </a>
                                 </p>
 

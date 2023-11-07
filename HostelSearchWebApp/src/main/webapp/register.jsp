@@ -93,7 +93,7 @@
         <header class="header-area">
             <nav class="container main-nav">
                 <!-- ***** Logo Start ***** -->
-                <a href="./home" class="logo">
+                <a href="./" class="logo">
                     <!--<img src="../src/java/imgs/logo3.jpg" alt="">-->
                     <img style="object-fit: contain;" src="./assets/images/logohss2.png" alt="">
                 </a>
@@ -101,7 +101,7 @@
 
                 <!-- ***** Menu Start ***** -->
                 <ul class="nav" style="align-items: center;">
-                    <li class="effect"><a href="./home">Home</a></li>
+                    <li class="effect"><a href="./">Home</a></li>
                     <li class="effect"><a href="./rental">Rental</a></li>
                     <li class="effect"><a href="./instruction">Instruction</a></li>
                     <li class="effect"><a href="/signup" class="active">Register</a></li>
@@ -175,12 +175,6 @@
                                     <!--<span class="text-primary">Sign In</span>-->
                                     <a href="./login" class="text-primary" style="cursor: pointer; color: #aa5e2e;">
                                         Sign In
-                                    </a>
-                                </p>
-                                <p class="text-center text-primary">
-                                    <a href="./forgot" class="text-primary"
-                                       style="cursor: pointer; color: #aa5e2e;">
-                                        Forgot your password?
                                     </a>
                                 </p>
                             </div>

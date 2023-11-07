@@ -9,8 +9,8 @@ import java.util.logging.Logger;
 public class DBConnection {
     private static final String DB_URL = "jdbc:postgresql://localhost:5432/maindb";
     private static final String DB_REMOTE_URL = "jdbc:postgresql://26.226.51.225:5432/maindb";
-    private static final String USER = "IuseArch";
-    private static final String PASS = "btw";
+    private static final String USER = "postgres";
+    private static final String PASS = "admin@00";
     private static Connection conn = null;
 
     public static Connection getConnection() {
